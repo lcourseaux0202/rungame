@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfup2bwo2eyyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83sm3"]
+size = Vector2(92.6486, 20.4977)
+
+[node name="BoostPanel" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35.5303, -18.4542)
+rotation = -0.507271
+shape = SubResource("RectangleShape2D_83sm3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -5.0
+offset_right = 83.0
+offset_bottom = 16.0
+rotation = -0.509606
+color = Color(0, 1, 1, 0.52549)

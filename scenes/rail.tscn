@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmmj85q33gim1"]
+
+[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://assets/sprites/rail.png" id="1_g7idb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sdqqt"]
+b = Vector2(257.302, 0)
+
+[node name="Rail" type="Area2D"]
+scale = Vector2(0.99494, 1.00225)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 257.302, 0)
+width = 5.0
+texture = ExtResource("1_g7idb")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.78814e-07)
+shape = SubResource("SegmentShape2D_sdqqt")
