@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ou5p82cs6wbo"]
+
+[ext_resource type="Script" uid="uid://d4nvu5ur85q5s" path="res://Scripts/OldArchitecture/section_end.gd" id="1_yubr1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdctp"]
+size = Vector2(64, 256)
+
+[node name="SectionEnd" type="Area2D"]
+script = ExtResource("1_yubr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_qdctp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

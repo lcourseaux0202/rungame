@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://chfc4naus1dlx"]
+
+[ext_resource type="Script" uid="uid://7c0wu1isvsi2" path="res://Scripts/OldArchitecture/sol.gd" id="1_0la72"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mttk7"]
+b = Vector2(272, 0)
+
+[node name="Sol" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_0la72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-140, 1)
+shape = SubResource("SegmentShape2D_mttk7")
