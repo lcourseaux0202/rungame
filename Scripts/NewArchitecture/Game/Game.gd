@@ -7,19 +7,27 @@ extends Node2D
 @onready var player: Player = $Player
 
 var next_section_marker : Marker2D = null
+var sections_queue : Array[Section]
 
 func _ready() -> void:
 	for i in range(sectionNumber):
-		place_random_section()
+		_place_random_section()
 
-func place_random_section() -> void:
+func _place_random_section() -> void:
 	var new_section : Section = sections.pick_random().instantiate()
-	call_deferred("add_child", new_section) 
 	
 	if next_section_marker:
 		new_section.global_position = next_section_marker.global_position
 	
+	add_child(new_section)
+	
 	next_section_marker = new_section.next_section_position_marker
+	new_section.create_new_section.connect(_place_random_section)
+	
+	sections_queue.append(new_section)
+	if sections_queue.size() > Settings.MAX_SECTIONS:
+		sections_queue[0].queue_free()
+		sections_queue.pop_front()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	camera.position = player.position

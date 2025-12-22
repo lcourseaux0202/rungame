@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameController="*res://Scripts/NewArchitecture/Autoloads/GameController.gd"
+Settings="*res://Scripts/NewArchitecture/Autoloads/Settings.gd"
 
 [file_customization]
 
@@ -53,6 +54,7 @@ fast_fall={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2=" Obstacles"
 2d_physics/layer_3="Players"
+2d_physics/layer_4="NextSectionAreas"
 
 [rendering]
 
