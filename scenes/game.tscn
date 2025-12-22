@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://hdna7ethm7f3" path="res://scenes/sections/section_9.tscn" id="10_c5k8e"]
 
 [node name="game" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_pu7tr")
 section_scenes = Array[PackedScene]([ExtResource("2_cq3fp"), ExtResource("3_7pceq"), ExtResource("4_pu8x1"), ExtResource("5_b7y02"), ExtResource("6_u380t"), ExtResource("7_npc0a"), ExtResource("8_77pjl"), ExtResource("9_kl8a3"), ExtResource("10_c5k8e")])
 start_section = ExtResource("6_263mm")
