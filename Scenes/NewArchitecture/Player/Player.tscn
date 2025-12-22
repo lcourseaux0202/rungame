@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://du523sab55bjb"]
+[gd_scene load_steps=17 format=3 uid="uid://du523sab55bjb"]
 
 [ext_resource type="Script" uid="uid://cr6nj02y2ice1" path="res://Scripts/NewArchitecture/Player/Player.gd" id="1_tydc3"]
 [ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/player.png" id="2_t6kul"]
@@ -7,9 +7,18 @@
 [ext_resource type="Script" uid="uid://dtw64wtrvuiwq" path="res://Scripts/NewArchitecture/Player/States/Running.gd" id="5_0fvhp"]
 [ext_resource type="Script" uid="uid://da1iub5fsqlxi" path="res://Scripts/NewArchitecture/Player/States/Falling.gd" id="6_jk0de"]
 [ext_resource type="Script" uid="uid://b6r46kvq7u43c" path="res://Scripts/NewArchitecture/Player/States/Jumping.gd" id="7_p35re"]
+[ext_resource type="Script" uid="uid://daypxasmdawdp" path="res://Scripts/NewArchitecture/Player/States/Sliding.gd" id="8_lg6vi"]
+[ext_resource type="Script" uid="uid://wbd0kxuyjb07" path="res://Scripts/NewArchitecture/Player/States/Recovering.gd" id="9_h58ff"]
+[ext_resource type="Script" uid="uid://bpfs4urg8b033" path="res://Scripts/NewArchitecture/Player/States/Boosting.gd" id="10_oxbxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk0de"]
 size = Vector2(8, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lg6vi"]
+size = Vector2(20, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h58ff"]
+size = Vector2(4, 16)
 
 [sub_resource type="Animation" id="Animation_rstok"]
 length = 0.001
@@ -52,9 +61,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 27
 script = ExtResource("1_tydc3")
-jump_impulse = 1000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
@@ -64,6 +72,24 @@ vframes = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_jk0de")
+
+[node name="RailDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RailDetector"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_lg6vi")
+debug_color = Color(0, 0.933929, 0.843119, 0.42)
+
+[node name="ObstacleDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
+position = Vector2(6, -10)
+shape = SubResource("RectangleShape2D_h58ff")
+debug_color = Color(0.848926, 0.374343, 0, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -86,3 +112,17 @@ script = ExtResource("7_p35re")
 
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("6_jk0de")
+
+[node name="Sliding" type="Node" parent="StateMachine"]
+script = ExtResource("8_lg6vi")
+
+[node name="Recovering" type="Node" parent="StateMachine"]
+script = ExtResource("9_h58ff")
+
+[node name="Boosting" type="Node" parent="StateMachine"]
+script = ExtResource("10_oxbxg")
+
+[connection signal="body_entered" from="RailDetector" to="." method="_on_rail_detector_body_entered"]
+[connection signal="body_exited" from="RailDetector" to="." method="_on_rail_detector_body_exited"]
+[connection signal="body_entered" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_entered"]
+[connection signal="body_exited" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_exited"]

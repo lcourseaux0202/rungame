@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameController="*res://Scripts/NewArchitecture/Autoloads/GameController.gd"
+EventBus="*res://Scripts/NewArchitecture/Autoloads/EventBus.gd"
 Settings="*res://Scripts/NewArchitecture/Autoloads/Settings.gd"
 
 [file_customization]
@@ -27,6 +27,11 @@ folder_colors={
 "res://Scenes/": "pink",
 "res://Scripts/": "teal"
 }
+
+[global_group]
+
+Rails=""
+Obstacles=""
 
 [input]
 
@@ -55,6 +60,7 @@ fast_fall={
 2d_physics/layer_2=" Obstacles"
 2d_physics/layer_3="Players"
 2d_physics/layer_4="NextSectionAreas"
+2d_physics/layer_5="Rails"
 
 [rendering]
 

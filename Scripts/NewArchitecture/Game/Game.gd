@@ -5,6 +5,8 @@ extends Node2D
 
 @onready var camera: Camera2D = $Camera
 @onready var player: Player = $Player
+@onready var main_ui: MainUI = $Camera/CanvasLayer/MainUi
+
 
 var next_section_marker : Marker2D = null
 var sections_queue : Array[Section]
@@ -30,4 +32,4 @@ func _place_random_section() -> void:
 		sections_queue.pop_front()
 
 func _process(_delta: float) -> void:
-	camera.position = player.position
+	camera.global_position.x = player.global_position.x

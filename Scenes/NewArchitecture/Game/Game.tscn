@@ -1,15 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3t03r7ksnbl6"]
+[gd_scene load_steps=7 format=3 uid="uid://c3t03r7ksnbl6"]
 
 [ext_resource type="Script" uid="uid://xnxnilj0annk" path="res://Scripts/NewArchitecture/Game/Game.gd" id="1_3h2u2"]
 [ext_resource type="PackedScene" uid="uid://du523sab55bjb" path="res://Scenes/NewArchitecture/Player/Player.tscn" id="1_v36fd"]
 [ext_resource type="PackedScene" uid="uid://kn6a5b46a67v" path="res://Scenes/NewArchitecture/Game/Sections/Section1.tscn" id="2_xxgs8"]
+[ext_resource type="PackedScene" uid="uid://biewf3kqf7vgm" path="res://Scenes/NewArchitecture/Game/Sections/Section2.tscn" id="3_wbain"]
 [ext_resource type="PackedScene" uid="uid://djtrd1gi0ccvr" path="res://Scenes/NewArchitecture/Game/Camera.tscn" id="3_weapr"]
+[ext_resource type="PackedScene" uid="uid://bytw46n2fthjw" path="res://Scenes/NewArchitecture/UI/MainUI.tscn" id="5_2p3wq"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3h2u2")
-sections = Array[PackedScene]([ExtResource("2_xxgs8")])
+sections = Array[PackedScene]([ExtResource("2_xxgs8"), ExtResource("3_wbain")])
 sectionNumber = 5
 
 [node name="Player" parent="." instance=ExtResource("1_v36fd")]
 
 [node name="Camera" parent="." instance=ExtResource("3_weapr")]
+offset = Vector2(500, -170)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
+
+[node name="MainUi" parent="Camera/CanvasLayer" instance=ExtResource("5_2p3wq")]

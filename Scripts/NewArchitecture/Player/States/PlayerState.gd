@@ -3,9 +3,10 @@ class_name PlayerState extends State
 const IDLE = "Idle"
 const RUNNING = "Running"
 const JUMPING = "Jumping"
-const DOUBLE_JUMPING = "DoubleJumping"
 const FALLING = "Falling"
-const FALLING_NO_JUMP = "FallingNoJump"
+const SLIDING = "Sliding"
+const RECOVERING = "Recovering"
+const BOOSTING = "Boosting"
 
 var player: Player
 

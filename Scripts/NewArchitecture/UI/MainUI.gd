@@ -1,10 +1,10 @@
 extends Control
 class_name MainUI
 
-@onready var speed_bar: ProgressBar = $Speed
+@onready var boost_bar: ProgressBar = $BoostBar
 
 func _ready() -> void:
-	GameController.updateRunSpeed.connect(_on_update_run_speed)
-	
-func _on_update_run_speed(runSpeed : float):
-	speed_bar.value = clamp(runSpeed, speed_bar.min_value, speed_bar.max_value)
+	EventBus.boost_value_changed.connect(_update_boost_bar)
+
+func _update_boost_bar(boost_value : float):
+	boost_bar.value = clamp(boost_value, boost_bar.min_value, boost_bar.max_value)

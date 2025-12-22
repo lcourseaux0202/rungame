@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8nxtxmut7xc5"]
+
+[ext_resource type="PackedScene" uid="uid://dtlcb5fjkeg5r" path="res://Scenes/NewArchitecture/Rails/BaseRail.tscn" id="1_3pv6n"]
+[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/rail.png" id="2_534qs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pv6n"]
+size = Vector2(144, 16)
+
+[node name="ShortRail" instance=ExtResource("1_3pv6n")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(72, 8)
+shape = SubResource("RectangleShape2D_3pv6n")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(72, 8)
+scale = Vector2(4.5, 0.5)
+texture = ExtResource("2_534qs")

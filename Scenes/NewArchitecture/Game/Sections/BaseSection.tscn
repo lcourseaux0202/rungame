@@ -46,7 +46,7 @@ sources/0 = SubResource("TileSetAtlasSource_6xypq")
 [node name="BaseSection" type="Node2D"]
 script = ExtResource("1_nu70f")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Obstacles"]]
 tile_set = SubResource("TileSet_y72vp")
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -60,3 +60,5 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextSectionArea"]
+
+[node name="RailsContainer" type="Node2D" parent="."]
