@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://djtrd1gi0ccvr"]
-
-[ext_resource type="Script" uid="uid://t2ojoljrtidp" path="res://Scripts/NewArchitecture/Game/Camera.gd" id="1_c5g0v"]
-
-[node name="Camera" type="Camera2D"]
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-script = ExtResource("1_c5g0v")

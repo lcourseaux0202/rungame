@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://Scripts/NewArchitecture/Autoloads/EventBus.gd"
-Settings="*res://Scripts/NewArchitecture/Autoloads/Settings.gd"
+EventBus="*res://Scripts/Autoloads/EventBus.gd"
+Settings="*res://Scripts/Autoloads/Settings.gd"
 
 [file_customization]
 
