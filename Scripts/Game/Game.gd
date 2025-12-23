@@ -12,12 +12,20 @@ var next_section_marker : Marker2D = null
 var sections_queue : Array[Section]
 
 func _ready() -> void:
+	_place_selected_section(1)
 	for i in range(sectionNumber):
 		_place_random_section()
 
+func _place_selected_section(index : int) -> void:
+	var new_section : Section = sections.get(index).instantiate()
+	_place_section(new_section)
+	
+
 func _place_random_section() -> void:
 	var new_section : Section = sections.pick_random().instantiate()
+	_place_section(new_section)
 	
+func _place_section(new_section : Section) -> void:
 	if next_section_marker:
 		new_section.global_position = next_section_marker.global_position
 	

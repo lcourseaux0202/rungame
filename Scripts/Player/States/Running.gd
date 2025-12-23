@@ -5,8 +5,11 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.set_collision_mask_value(1, true)
 
 func physics_update(delta: float) -> void:
-	player.animation_player.speed_scale = inverse_lerp(player.base_speed, player.max_speed * 2, player.speed) * 3
-	player.speed = clamp(player.speed + player.acceleration * delta, player.base_speed, player.max_speed)
+	player.animation_player.speed_scale = max(inverse_lerp(player.base_speed, player.max_speed * 2, player.speed) * 3, player.min_animation_speed_scale)
+	if(player.speed > player.max_speed):
+		player.speed = player.speed - player.deceleration * delta
+	else:
+		player.speed = clamp(player.speed + player.acceleration * delta, player.base_speed, player.max_speed)
 	player.velocity.x = player.speed
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()

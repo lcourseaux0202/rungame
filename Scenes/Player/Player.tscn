@@ -95,7 +95,6 @@ debug_color = Color(0.848926, 0.374343, 0, 0.42)
 libraries = {
 &"": SubResource("AnimationLibrary_5birp")
 }
-speed_scale = 2.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i5acl")

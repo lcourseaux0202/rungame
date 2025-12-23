@@ -1,16 +1,18 @@
 class_name Player extends CharacterBody2D
 
-@export var base_speed := 200.0
+@export var base_speed := 400.0
 @export var max_speed := 1000.0
-@export var acceleration := 100.0
-@export var deceleration := 50.0
+@export var acceleration := 180.0
+@export var deceleration := 300.0
 @export var rail_acceleration := -100.0
 @export var gravity := 3000.0
 @export var jump_impulse := 800.0
 @export var fast_fall_power := 1000.0
+@export_range(1.0,3.0) var boost_factor := 1.5
 @export var boost_generation := 50.0
 @export var stock_needed_for_boost := 30.0
 @export_range(1,10) var jump_number := 2
+@export_range(0.0,10.0) var min_animation_speed_scale := 0.6
 
 @onready var speed = base_speed
 @onready var boost_stock = 0
@@ -22,7 +24,7 @@ var on_rail : bool = false
 var obstacle_encountered : bool = false
 
 func _process(_delta: float) -> void:
-	pass
+	print(int(speed))
 
 func _on_rail_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Rails"):
