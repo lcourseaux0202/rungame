@@ -4,7 +4,8 @@ class_name Player extends CharacterBody2D
 @export var max_speed := 1000.0
 @export var acceleration := 180.0
 @export var deceleration := 300.0
-@export var rail_acceleration := -100.0
+@export var boost_deceleration := 200.0
+@export var rail_deceleration := 100.0
 @export var gravity := 3000.0
 @export var jump_impulse := 800.0
 @export var fast_fall_power := 1000.0

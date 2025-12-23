@@ -9,6 +9,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	else : n_jump = 1
 
 func physics_update(delta: float) -> void:
+	if player.speed > player.max_speed:
+		player.speed -= player.deceleration * delta
 	player.velocity.x = player.speed
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
