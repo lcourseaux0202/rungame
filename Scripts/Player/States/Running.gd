@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.animation_player.play("RunAnimation")
-	player.set_collision_mask_value(1, true)
+	player.set_collision_mask_value(2, true)
 
 func physics_update(delta: float) -> void:
 	player.animation_player.speed_scale = max(inverse_lerp(player.base_speed, player.max_speed * 2, player.speed) * 3, player.min_animation_speed_scale)

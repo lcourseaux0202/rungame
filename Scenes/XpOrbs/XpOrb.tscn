@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bm4nb7wif5mng"]
+
+[ext_resource type="Script" uid="uid://5m7f8oche7ul" path="res://Scripts/Game/XpOrb.gd" id="1_tr2m2"]
+[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="2_cj4bm"]
+[ext_resource type="AudioStream" uid="uid://civnpefgkarqu" path="res://Assets/SFX/XpCollect.mp3" id="3_3ivko"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifxuk"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_v2glp"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lf3t5"]
+gradient = SubResource("Gradient_v2glp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xf74g"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 5.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 5.0
+emission_ring_cone_angle = 90.0
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+scale_min = 0.08
+scale_max = 0.12
+color_ramp = SubResource("GradientTexture1D_lf3t5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xf74g"]
+random_pitch = 1.5
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_3ivko")
+
+[node name="XpOrb" type="Area2D"]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_tr2m2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ifxuk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 12
+texture = ExtResource("2_cj4bm")
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_xf74g")
+
+[node name="CollectAudio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xf74g")
+volume_db = -5.0
+pitch_scale = 4.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

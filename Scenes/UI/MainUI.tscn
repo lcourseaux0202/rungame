@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bytw46n2fthjw"]
+[gd_scene load_steps=5 format=3 uid="uid://bytw46n2fthjw"]
 
 [ext_resource type="Script" uid="uid://rg82vn2jbilp" path="res://Scripts/UI/MainUI.gd" id="1_piul3"]
+[ext_resource type="Shader" uid="uid://c03nohjd3t80e" path="res://Assets/Shaders/Rainbow.gdshader" id="2_52ctl"]
+[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="3_4cpe4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52ctl"]
+shader = ExtResource("2_52ctl")
+shader_parameter/can_boost_color = Color(0.463802, 0.673554, 0.946313, 1)
+shader_parameter/no_boost_color = Color(0.496406, 0.545601, 0.557367, 1)
+shader_parameter/can_boost = false
+shader_parameter/is_full = false
 
 [node name="MainUi" type="Control"]
 layout_mode = 3
@@ -11,14 +20,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_piul3")
 
-[node name="BoostBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(300, 0)
+[node name="BoostBar" type="TextureProgressBar" parent="."]
+material = SubResource("ShaderMaterial_52ctl")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
 offset_top = -55.0
-offset_right = 320.0
-offset_bottom = -15.0
+offset_right = 222.0
+offset_bottom = -23.0
 grow_vertical = 0
+nine_patch_stretch = true
+texture_under = ExtResource("3_4cpe4")
+texture_progress = ExtResource("3_4cpe4")
+tint_under = Color(0, 0, 0, 1)

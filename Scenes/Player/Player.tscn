@@ -1,24 +1,78 @@
-[gd_scene load_steps=18 format=3 uid="uid://du523sab55bjb"]
+[gd_scene load_steps=28 format=3 uid="uid://du523sab55bjb"]
 
 [ext_resource type="Script" uid="uid://cr6nj02y2ice1" path="res://Scripts/Player/Player.gd" id="1_ji083"]
-[ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/player.png" id="2_0kmp4"]
+[ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/PlayerSheet.png" id="2_0kmp4"]
+[ext_resource type="AudioStream" uid="uid://7m6drx8srcsi" path="res://Assets/SFX/MegaBoost.wav" id="3_0kmp4"]
+[ext_resource type="Texture2D" uid="uid://dqp2huygukycd" path="res://Assets/Sprites/Aura.png" id="3_0u84n"]
+[ext_resource type="AudioStream" uid="uid://1o4xc3paei4f" path="res://Assets/SFX/Boost.wav" id="3_epg6k"]
 [ext_resource type="Script" uid="uid://cialqfn8wbskh" path="res://Scripts/StateMachine/StateMachine.gd" id="3_i5acl"]
 [ext_resource type="Script" uid="uid://b1gvbpaslc7ab" path="res://Scripts/Player/States/Idle.gd" id="4_epg6k"]
 [ext_resource type="Script" uid="uid://dtw64wtrvuiwq" path="res://Scripts/Player/States/Running.gd" id="5_0u84n"]
+[ext_resource type="AudioStream" uid="uid://bc56ojg4ow21c" path="res://Assets/SFX/Footstep.mp3" id="6_0u84n"]
 [ext_resource type="Script" uid="uid://b6r46kvq7u43c" path="res://Scripts/Player/States/Jumping.gd" id="6_esmjy"]
 [ext_resource type="Script" uid="uid://da1iub5fsqlxi" path="res://Scripts/Player/States/Falling.gd" id="7_6tu5v"]
+[ext_resource type="AudioStream" uid="uid://bdscs646bp37q" path="res://Assets/SFX/Slide.wav" id="7_esmjy"]
 [ext_resource type="Script" uid="uid://daypxasmdawdp" path="res://Scripts/Player/States/Sliding.gd" id="8_spxdj"]
 [ext_resource type="Script" uid="uid://wbd0kxuyjb07" path="res://Scripts/Player/States/Recovering.gd" id="9_0objx"]
 [ext_resource type="Script" uid="uid://bpfs4urg8b033" path="res://Scripts/Player/States/Boosting.gd" id="10_w71ue"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg6k"]
+atlas = ExtResource("3_0u84n")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u84n"]
+atlas = ExtResource("3_0u84n")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esmjy"]
+atlas = ExtResource("3_0u84n")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tu5v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u84n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esmjy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk0de"]
-size = Vector2(8, 20)
+size = Vector2(16, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lg6vi"]
 size = Vector2(20, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h58ff"]
-size = Vector2(4, 16)
+size = Vector2(3.5, 16)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_epg6k"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("6_0u84n")
+
+[sub_resource type="Animation" id="Animation_ji083"]
+resource_name = "SlidingAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_rstok"]
 length = 0.001
@@ -52,38 +106,45 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-
-[sub_resource type="Animation" id="Animation_ji083"]
-resource_name = "SlidingAnimation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
+"values": [{
+"args": [],
+"method": &"_play_footstep_audio"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5birp"]
 _data = {
+&"AirAnimation": SubResource("Animation_ji083"),
 &"RESET": SubResource("Animation_rstok"),
-&"RunAnimation": SubResource("Animation_u2myq"),
-&"SlidingAnimation": SubResource("Animation_ji083")
+&"RunAnimation": SubResource("Animation_u2myq")
 }
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 59
 script = ExtResource("1_ji083")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
 texture = ExtResource("2_0kmp4")
-hframes = 5
+hframes = 6
+
+[node name="AuraAnimation" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.396078)
+position = Vector2(-33, -18)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6tu5v")
+autoplay = "default"
+frame_progress = 0.188377
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
@@ -94,7 +155,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RailDetector"]
-position = Vector2(0, 1)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_lg6vi")
 debug_color = Color(0, 0.933929, 0.843119, 0.42)
 
@@ -103,9 +164,31 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
-position = Vector2(6, -10)
+position = Vector2(10, -11)
 shape = SubResource("RectangleShape2D_h58ff")
 debug_color = Color(0.848926, 0.374343, 0, 0.42)
+
+[node name="BoostAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_epg6k")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="MegaBoostAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0kmp4")
+volume_db = -10.0
+max_polyphony = 3
+bus = &"SFX"
+
+[node name="FootstepAudio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_epg6k")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SlideAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_esmjy")
+volume_db = -15.0
+pitch_scale = 0.9
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -57,10 +57,11 @@ fast_fall={
 [layer_names]
 
 2d_physics/layer_1="Ground"
-2d_physics/layer_2=" Obstacles"
+2d_physics/layer_2="Obstacles"
 2d_physics/layer_3="Players"
 2d_physics/layer_4="NextSectionAreas"
 2d_physics/layer_5="Rails"
+2d_physics/layer_6="XpOrbs"
 
 [rendering]
 

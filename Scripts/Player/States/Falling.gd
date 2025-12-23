@@ -3,7 +3,7 @@ extends PlayerState
 var n_jump : int
 
 func enter(previous_state_path: String, data := {}) -> void:
-	player.animation_player.play("RESET")
+	player.animation_player.play("AirAnimation")
 	if data.has("n_jump"):
 		n_jump = data["n_jump"]
 	else : n_jump = 1
@@ -15,7 +15,9 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	
-	if player.on_rail:
+	if player.obstacle_encountered:
+		finished.emit(RECOVERING)
+	elif player.on_rail:
 		finished.emit(SLIDING)
 	elif player.is_on_floor():
 		finished.emit(RUNNING)

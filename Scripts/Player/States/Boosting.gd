@@ -1,15 +1,23 @@
 extends PlayerState
 
+
 func enter(previous_state_path: String, data := {}) -> void:
 	player.animation_player.play("RunAnimation")
-	player.speed = player.max_speed * player.boost_factor
-	player.boost_stock -= player.stock_needed_for_boost
 	
-	EventBus.boost_value_changed.emit(player.boost_stock)
+	if player.boost_stock >= 100.0:
+		player.mega_boost_audio.play()
+		player.speed = player.max_speed * player.mega_boost_factor
+		player.boost_stock -= 100
+	else:
+		player.boost_audio.play()
+		player.speed = player.max_speed * player.boost_factor
+		player.boost_stock -= player.stock_needed_for_boost
+		
+	EventBus.boost_value_changed.emit(player.boost_stock, (player.boost_stock >= player.stock_needed_for_boost))
 	EventBus.zoom_on_player.emit(player)
 
 func physics_update(delta: float) -> void:
-	player.animation_player.speed_scale = max(inverse_lerp(player.base_speed, player.max_speed * 2, player.speed) * 3, player.min_animation_speed_scale)
+	player.animation_player.speed_scale = max(inverse_lerp(player.base_speed, player.max_speed * player.mega_boost_factor, player.speed) * 3, player.min_animation_speed_scale)
 	player.speed = player.speed - player.boost_deceleration * delta
 	player.velocity.x = player.speed
 	player.velocity.y += player.gravity * delta

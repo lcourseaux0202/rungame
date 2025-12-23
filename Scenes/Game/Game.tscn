@@ -1,15 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3t03r7ksnbl6"]
+[gd_scene load_steps=16 format=3 uid="uid://c3t03r7ksnbl6"]
 
 [ext_resource type="Script" uid="uid://xnxnilj0annk" path="res://Scripts/Game/Game.gd" id="1_3h2u2"]
 [ext_resource type="PackedScene" uid="uid://du523sab55bjb" path="res://Scenes/Player/Player.tscn" id="1_v36fd"]
+[ext_resource type="PackedScene" uid="uid://q3du831qlygd" path="res://Scenes/Game/Sections/Section0.tscn" id="2_jf0ra"]
 [ext_resource type="PackedScene" uid="uid://kn6a5b46a67v" path="res://Scenes/Game/Sections/Section1.tscn" id="2_xxgs8"]
 [ext_resource type="PackedScene" uid="uid://biewf3kqf7vgm" path="res://Scenes/Game/Sections/Section2.tscn" id="3_wbain"]
 [ext_resource type="PackedScene" uid="uid://djtrd1gi0ccvr" path="res://Scenes/Game/Camera.tscn" id="3_weapr"]
+[ext_resource type="PackedScene" uid="uid://cph3pojxl3yt7" path="res://Scenes/Game/Sections/Section3.tscn" id="4_m1o7v"]
 [ext_resource type="PackedScene" uid="uid://bytw46n2fthjw" path="res://Scenes/UI/MainUI.tscn" id="5_2p3wq"]
+[ext_resource type="PackedScene" uid="uid://bn44ljknsb6wq" path="res://Scenes/Game/Sections/Section4.tscn" id="5_3586x"]
+[ext_resource type="PackedScene" uid="uid://dyitb3ceem42v" path="res://Scenes/Game/Sections/Section5.tscn" id="6_ti1oi"]
+[ext_resource type="PackedScene" uid="uid://bdm4lf01micbq" path="res://Scenes/Game/Sections/Section6.tscn" id="8_bsqcq"]
+[ext_resource type="PackedScene" uid="uid://wvixh5xp5o0u" path="res://Scenes/Game/Sections/Section7.tscn" id="9_jf0ra"]
+[ext_resource type="PackedScene" uid="uid://df1srye5odc08" path="res://Scenes/Game/Sections/Section8.tscn" id="10_fg52j"]
+[ext_resource type="PackedScene" uid="uid://c6d2a35wtojcy" path="res://Scenes/Game/Sections/Section9.tscn" id="11_6581v"]
+[ext_resource type="PackedScene" uid="uid://cfdq8vp58h606" path="res://Scenes/Game/Sections/Section10.tscn" id="12_6hht6"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3h2u2")
-sections = Array[PackedScene]([ExtResource("2_xxgs8"), ExtResource("3_wbain")])
+sections = Array[PackedScene]([ExtResource("2_jf0ra"), ExtResource("2_xxgs8"), ExtResource("3_wbain"), ExtResource("4_m1o7v"), ExtResource("5_3586x"), ExtResource("6_ti1oi"), ExtResource("8_bsqcq"), ExtResource("9_jf0ra"), ExtResource("10_fg52j"), ExtResource("11_6581v"), ExtResource("12_6hht6")])
 sectionNumber = 5
 
 [node name="Player" parent="." instance=ExtResource("1_v36fd")]

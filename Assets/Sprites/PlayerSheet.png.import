@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc6ge4br4dryv"
-path="res://.godot/imported/rail.png-55161781b5458b1a750e47ac8ab764a9.ctex"
+uid="uid://jt26tknpri3k"
+path="res://.godot/imported/PlayerSheet.png-0d47df1273578e5aa204143cdf0574e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/rail.png"
-dest_files=["res://.godot/imported/rail.png-55161781b5458b1a750e47ac8ab764a9.ctex"]
+source_file="res://Assets/Sprites/PlayerSheet.png"
+dest_files=["res://.godot/imported/PlayerSheet.png-0d47df1273578e5aa204143cdf0574e2.ctex"]
 
 [params]
 

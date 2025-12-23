@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://be5hgw3h2cl7d"]
+
+[ext_resource type="PackedScene" uid="uid://bm4nb7wif5mng" path="res://Scenes/XpOrbs/XpOrb.tscn" id="1_067jn"]
+
+[node name="XpOrbsLine5" type="Node2D"]
+
+[node name="XpOrb" parent="." instance=ExtResource("1_067jn")]
+
+[node name="XpOrb2" parent="." instance=ExtResource("1_067jn")]
+position = Vector2(24, 0)
+
+[node name="XpOrb3" parent="." instance=ExtResource("1_067jn")]
+position = Vector2(48, 0)
+
+[node name="XpOrb4" parent="." instance=ExtResource("1_067jn")]
+position = Vector2(72, 0)
+
+[node name="XpOrb5" parent="." instance=ExtResource("1_067jn")]
+position = Vector2(96, 0)
