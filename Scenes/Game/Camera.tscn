@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://djtrd1gi0ccvr"]
+[gd_scene load_steps=6 format=3 uid="uid://djtrd1gi0ccvr"]
 
 [ext_resource type="Script" uid="uid://t2ojoljrtidp" path="res://Scripts/Game/Camera.gd" id="1_c5g0v"]
+[ext_resource type="AudioStream" uid="uid://bb84ffwrccu2h" path="res://Assets/Tracks/SpeedLight.mp3" id="2_whgkk"]
 
 [sub_resource type="Animation" id="Animation_whgkk"]
 length = 0.001
@@ -49,3 +50,9 @@ script = ExtResource("1_c5g0v")
 libraries = {
 &"": SubResource("AnimationLibrary_njjoo")
 }
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_whgkk")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"

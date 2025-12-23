@@ -16,5 +16,3 @@ func _on_body_entered(body: Node2D) -> void:
 	var tween : Tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 0.2)
 	tween.tween_property(self, "global_position", Vector2(global_position.x, global_position.y - 20), 0.2)
-	
-	

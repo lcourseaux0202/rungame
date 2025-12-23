@@ -16,6 +16,8 @@ class_name Player extends CharacterBody2D
 @export var stock_needed_for_boost := 30.0
 @export_range(1,10) var jump_number := 2
 @export_range(0.0,10.0) var min_animation_speed_scale := 0.6
+@export_color_no_alpha var character_color
+@export_color_no_alpha var aura_color
 
 @onready var speed = base_speed
 @onready var boost_stock = 0
@@ -25,12 +27,18 @@ class_name Player extends CharacterBody2D
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepAudio
 @onready var slide_audio: AudioStreamPlayer2D = $SlideAudio
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var obstacle_detector: Area2D = $ObstacleDetector
 @onready var aura: AnimatedSprite2D = $AuraAnimation
+@onready var obstacle_detector: Area2D = $ObstacleDetector
 
 var xp : int = 0
 var on_rail : bool = false
 var obstacle_encountered : bool = false
+
+func _ready() -> void:
+	if character_color:
+		sprite.modulate = character_color
+	if aura_color:
+		aura.modulate = aura_color
 
 func _process(delta: float) -> void:
 	aura.modulate.a = min(inverse_lerp(max_speed, max_speed*mega_boost_factor, speed),0.5)
