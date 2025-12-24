@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bn135mpefh00b" path="res://Scripts/Rails/Rail.gd" id="1_3mag2"]
 
 [node name="BaseRail" type="StaticBody2D" groups=["Rails"]]
+z_index = 1
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_3mag2")

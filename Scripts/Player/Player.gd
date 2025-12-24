@@ -37,8 +37,12 @@ var obstacle_encountered : bool = false
 func _ready() -> void:
 	if character_color:
 		sprite.modulate = character_color
+	else : 
+		sprite.modulate = Settings.character_color
 	if aura_color:
 		aura.modulate = aura_color
+	else : 
+		aura.modulate = Settings.aura_color
 
 func _process(delta: float) -> void:
 	aura.modulate.a = min(inverse_lerp(max_speed, max_speed*mega_boost_factor, speed),0.5)
@@ -54,10 +58,12 @@ func _on_rail_detector_body_exited(body: Node2D) -> void:
 func _on_obstacle_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Obstacles"):
 		obstacle_encountered = true
+		sprite.modulate.a = 0.5
 
 func _on_obstacle_detector_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Obstacles"):
 		obstacle_encountered = false
+		sprite.modulate.a = 1.0
 
 func _play_footstep_audio():
 	footstep_audio.play()
