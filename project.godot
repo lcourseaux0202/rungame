@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 EventBus="*res://Scripts/Autoloads/EventBus.gd"
 Settings="*res://Scripts/Autoloads/Settings.gd"
 
+[display]
+
+window/size/mode=3
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={

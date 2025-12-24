@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3t03r7ksnbl6"]
+[gd_scene load_steps=19 format=3 uid="uid://c3t03r7ksnbl6"]
 
 [ext_resource type="Script" uid="uid://xnxnilj0annk" path="res://Scripts/Game/Game.gd" id="1_3h2u2"]
 [ext_resource type="PackedScene" uid="uid://du523sab55bjb" path="res://Scenes/Player/Player.tscn" id="1_v36fd"]
@@ -15,11 +15,29 @@
 [ext_resource type="PackedScene" uid="uid://df1srye5odc08" path="res://Scenes/Game/Sections/Section8.tscn" id="10_fg52j"]
 [ext_resource type="PackedScene" uid="uid://c6d2a35wtojcy" path="res://Scenes/Game/Sections/Section9.tscn" id="11_6581v"]
 [ext_resource type="PackedScene" uid="uid://cfdq8vp58h606" path="res://Scenes/Game/Sections/Section10.tscn" id="12_6hht6"]
+[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="13_6581v"]
+[ext_resource type="PackedScene" uid="uid://beeawe0b33fb1" path="res://Scenes/UI/UpgradeSelectMenu.tscn" id="16_fg52j"]
+[ext_resource type="PackedScene" uid="uid://beg65mxmwr3sa" path="res://Scenes/UI/SettingsMenu.tscn" id="18_6hht6"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3h2u2")
 sections = Array[PackedScene]([ExtResource("2_jf0ra"), ExtResource("2_xxgs8"), ExtResource("3_wbain"), ExtResource("4_m1o7v"), ExtResource("5_3586x"), ExtResource("6_ti1oi"), ExtResource("8_bsqcq"), ExtResource("9_jf0ra"), ExtResource("10_fg52j"), ExtResource("11_6581v"), ExtResource("12_6hht6")])
 sectionNumber = 5
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-100, 0)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sky" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(960, -781.5)
+scale = Vector2(60, 48.8438)
+texture = ExtResource("13_6581v")
+
+[node name="Ground" type="Sprite2D" parent="Parallax2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(960, 777)
+scale = Vector2(60, 48.5625)
+texture = ExtResource("13_6581v")
 
 [node name="SectionsContainer" type="Node2D" parent="."]
 
@@ -31,3 +49,9 @@ offset = Vector2(500, -170)
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
 
 [node name="MainUi" parent="Camera/CanvasLayer" instance=ExtResource("5_2p3wq")]
+
+[node name="UpgradeSelectMenu" parent="Camera/CanvasLayer" instance=ExtResource("16_fg52j")]
+visible = false
+
+[node name="SettingsMenu" parent="Camera/CanvasLayer" instance=ExtResource("18_6hht6")]
+visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bytw46n2fthjw"]
+[gd_scene load_steps=6 format=3 uid="uid://bytw46n2fthjw"]
 
 [ext_resource type="Script" uid="uid://rg82vn2jbilp" path="res://Scripts/UI/MainUI.gd" id="1_piul3"]
 [ext_resource type="Shader" uid="uid://c03nohjd3t80e" path="res://Assets/Shaders/Rainbow.gdshader" id="2_52ctl"]
@@ -10,6 +10,8 @@ shader_parameter/can_boost_color = Color(0.463802, 0.673554, 0.946313, 1)
 shader_parameter/no_boost_color = Color(0.496406, 0.545601, 0.557367, 1)
 shader_parameter/can_boost = false
 shader_parameter/is_full = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cpe4"]
 
 [node name="MainUi" type="Control"]
 layout_mode = 3
@@ -35,3 +37,31 @@ nine_patch_stretch = true
 texture_under = ExtResource("3_4cpe4")
 texture_progress = ExtResource("3_4cpe4")
 tint_under = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="LeftSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4cpe4")
+
+[node name="LevelProgression" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 100000.0
+step = 1.0
+show_percentage = false
+
+[node name="RightSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4cpe4")

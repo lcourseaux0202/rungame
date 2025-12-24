@@ -1,5 +1,6 @@
-class_name Camera extends Camera2D
+class_name CameraMusic extends Camera2D
 
+@onready var background_music: AudioStreamPlayer2D = $BackgroundMusic
 @onready var zooming_on_player : bool = false
 @onready var base_zoom : Vector2 = self.zoom
 @onready var base_offset : Vector2 = self.offset
@@ -19,6 +20,7 @@ func _process(_delta: float) -> void:
 	else:
 		offset = lerp(offset, base_offset, 0.01)
 
+
 func _zoom_on_player(player : Player) -> void:
 	var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
@@ -28,3 +30,7 @@ func _zoom_on_player(player : Player) -> void:
 	else:
 		zooming_on_player = false
 		tween.tween_property(self, "zoom", base_zoom, 0.5)
+		
+func pitch_audio_with_level_completion(completion : float = 0.5) -> void:
+	var pitch = (completion - 0.5) * 1.5
+	background_music.pitch_scale = pitch

@@ -4,10 +4,13 @@ const XP_GAIN = 10
 @onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var collect_audio: AudioStreamPlayer2D = $CollectAudio
 
+func _ready() -> void:
+	modulate = Settings.aura_color
+
 func _on_body_entered(body: Node2D) -> void:
 	var player : Player = body as Player
 	player.xp += XP_GAIN
-	player.boost_stock += player.boost_per_xp
+	player.boost_stock = clamp(player.boost_stock + player.boost_per_xp, 0, 100)
 	
 	EventBus.boost_value_changed.emit(player.boost_stock, player.boost_stock >= player.stock_needed_for_boost)
 	

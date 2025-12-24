@@ -1,7 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://pqfdxijpc6fk"]
+[gd_scene load_steps=8 format=3 uid="uid://pqfdxijpc6fk"]
 
 [ext_resource type="Script" uid="uid://yfxivfx8bx6n" path="res://Scripts/Game/Sections/BaseSection.gd" id="1_3j7c1"]
 [ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/TileSet.png" id="2_1jfvo"]
+
+[sub_resource type="Shader" id="Shader_3j7c1"]
+code = "shader_type canvas_item;
+
+// On récupère la position globale via un \"varying\"
+varying vec2 world_pos;
+
+void vertex() {
+    // Calcule la position dans le monde (global_position)
+    world_pos = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+}
+
+void fragment() {
+    vec4 tex_color = texture(TEXTURE, UV);
+    
+    // Si la position Y globale est supérieure à 0
+    if (world_pos.y > 0.0) {
+        // On multiplie la couleur par du noir, tout en gardant l'alpha original
+        COLOR = vec4(0.0, 0.0, 0.0, tex_color.a);
+    } else {
+        COLOR = tex_color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bj2h1"]
+shader = SubResource("Shader_3j7c1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xypq"]
 texture = ExtResource("2_1jfvo")
@@ -46,6 +72,7 @@ sources/0 = SubResource("TileSetAtlasSource_6xypq")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3j7c1"]
 
 [node name="BaseSection" type="Node2D"]
+material = SubResource("ShaderMaterial_bj2h1")
 script = ExtResource("1_3j7c1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Obstacles"]]

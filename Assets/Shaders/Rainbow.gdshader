@@ -7,10 +7,10 @@ uniform bool is_full = false;
 
 void fragment() {
     vec4 tex_color = texture(TEXTURE, UV);
-    
+
     float hue = UV.x + TIME * 0.5;
     vec3 rainbow = 0.5 + 0.5 * cos(6.28318 * (vec3(hue) + vec3(0.0, 0.33, 0.67)));
-    
+
     if (COLOR.r > 0.5) {
         if (is_full) {
             COLOR = vec4(rainbow, tex_color.a);

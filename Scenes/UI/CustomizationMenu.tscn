@@ -1,0 +1,285 @@
+[gd_scene load_steps=26 format=3 uid="uid://dr4hyxplgk1i3"]
+
+[ext_resource type="Script" uid="uid://uxenlhbvc2mi" path="res://Scripts/UI/CharacterPersonalizationMenu.gd" id="1_y53fa"]
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_doilu"]
+[ext_resource type="Shader" uid="uid://bt2bvnojqjx08" path="res://Assets/Shaders/WhiteGlow.gdshader" id="3_tuw86"]
+[ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/PlayerSheet.png" id="4_yyt8i"]
+[ext_resource type="Script" uid="uid://b4tsmsmhacccc" path="res://Scripts/UI/AnimatedTextureRect.gd" id="5_p0hmq"]
+[ext_resource type="Texture2D" uid="uid://dqp2huygukycd" path="res://Assets/Sprites/Aura.png" id="6_ns7u1"]
+[ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/TileSet.png" id="7_uunkj"]
+[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/Rail.png" id="8_l8o3i"]
+[ext_resource type="PackedScene" uid="uid://ckxxk2n0alobo" path="res://Scenes/UI/ColorPickerButtonGroup.tscn" id="9_mu8rh"]
+[ext_resource type="Texture2D" uid="uid://c2hcx5ijcprtv" path="res://Assets/Sprites/PreviousButton.png" id="10_wbi6u"]
+[ext_resource type="Texture2D" uid="uid://dwvsuouocv0ni" path="res://Assets/Sprites/NextButton.png" id="11_dumej"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jw4so"]
+font = ExtResource("2_doilu")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukgio"]
+font = ExtResource("2_doilu")
+font_size = 24
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxqth"]
+resource_local_to_scene = true
+shader = ExtResource("3_tuw86")
+shader_parameter/line_color = Color(0.187176, 0.187176, 0.187176, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu6sa"]
+atlas = ExtResource("4_yyt8i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kbm5"]
+atlas = ExtResource("4_yyt8i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbk70"]
+atlas = ExtResource("4_yyt8i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw4so"]
+atlas = ExtResource("4_yyt8i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ukgio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kbm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu6sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbk70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw4so")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukgio"]
+shader = ExtResource("3_tuw86")
+shader_parameter/line_color = Color(0.188235, 0.188235, 0.188235, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxqth"]
+atlas = ExtResource("6_ns7u1")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukgio"]
+atlas = ExtResource("6_ns7u1")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m003h"]
+atlas = ExtResource("6_ns7u1")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gygn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukgio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxqth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m003h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gygn0"]
+
+[node name="CustomizationMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y53fa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LabelTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.0
+offset_top = 39.0
+offset_right = 281.0
+offset_bottom = 109.0
+grow_horizontal = 2
+text = "Personnalisation"
+label_settings = SubResource("LabelSettings_jw4so")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -69.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 33
+columns = 4
+
+[node name="LabelCharacterColor" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Couleur du personnage"
+label_settings = SubResource("LabelSettings_ukgio")
+
+[node name="LabelAuraColor" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Couleur de l'aura"
+label_settings = SubResource("LabelSettings_ukgio")
+
+[node name="LabelWorldColor" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Couleur du monde"
+label_settings = SubResource("LabelSettings_ukgio")
+
+[node name="LabelRailColor" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Couleur des rails"
+label_settings = SubResource("LabelSettings_ukgio")
+
+[node name="CharacterAnimation" type="TextureRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_vxqth")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_mu6sa")
+stretch_mode = 5
+script = ExtResource("5_p0hmq")
+sprites = SubResource("SpriteFrames_ukgio")
+frame = 1
+autoplay = true
+playing = true
+
+[node name="AuraAnimation" type="TextureRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_ukgio")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_vxqth")
+stretch_mode = 5
+script = ExtResource("5_p0hmq")
+sprites = SubResource("SpriteFrames_gygn0")
+frame = 1
+playing = true
+metadata/_custom_type_script = "uid://b4tsmsmhacccc"
+
+[node name="WorldPreview" type="TextureRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_ukgio")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_uunkj")
+stretch_mode = 5
+
+[node name="RailPreview" type="TextureRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_ukgio")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_l8o3i")
+stretch_mode = 5
+
+[node name="CharacterColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
+layout_mode = 2
+size_flags_horizontal = 4
+left_button_icon = ExtResource("10_wbi6u")
+right_button_icon = ExtResource("11_dumej")
+preview = false
+step = 0.05
+
+[node name="AuraColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
+layout_mode = 2
+size_flags_horizontal = 4
+left_button_icon = ExtResource("10_wbi6u")
+right_button_icon = ExtResource("11_dumej")
+preview = false
+step = 0.05
+
+[node name="WorldColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
+layout_mode = 2
+size_flags_horizontal = 4
+left_button_icon = ExtResource("10_wbi6u")
+right_button_icon = ExtResource("11_dumej")
+preview = false
+step = 0.05
+
+[node name="RailColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
+layout_mode = 2
+size_flags_horizontal = 4
+left_button_icon = ExtResource("10_wbi6u")
+right_button_icon = ExtResource("11_dumej")
+preview = false
+step = 0.05
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_doilu")
+theme_override_font_sizes/font_size = 28
+text = "Retour à l'écran titre"
+flat = true
+
+[node name="LeftSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gygn0")
+
+[node name="RandomButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_doilu")
+theme_override_font_sizes/font_size = 28
+text = "Couleurs aléatoires"
+flat = true
+
+[node name="RightSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gygn0")
+
+[node name="ResetButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_doilu")
+theme_override_font_sizes/font_size = 28
+text = "Réinitialiser les les couleurs"
+flat = true
