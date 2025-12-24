@@ -21,6 +21,8 @@ script = ExtResource("1_3h2u2")
 sections = Array[PackedScene]([ExtResource("2_jf0ra"), ExtResource("2_xxgs8"), ExtResource("3_wbain"), ExtResource("4_m1o7v"), ExtResource("5_3586x"), ExtResource("6_ti1oi"), ExtResource("8_bsqcq"), ExtResource("9_jf0ra"), ExtResource("10_fg52j"), ExtResource("11_6581v"), ExtResource("12_6hht6")])
 sectionNumber = 5
 
+[node name="SectionsContainer" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_v36fd")]
 
 [node name="Camera" parent="." instance=ExtResource("3_weapr")]

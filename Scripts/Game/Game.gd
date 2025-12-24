@@ -6,6 +6,7 @@ extends Node2D
 @onready var camera: Camera2D = $Camera
 @onready var player: Player = $Player
 @onready var main_ui: MainUI = $Camera/CanvasLayer/MainUi
+@onready var sections_container: Node2D = $SectionsContainer
 
 
 var next_section_marker : Marker2D = null
@@ -35,7 +36,7 @@ func _place_section(new_section : Section) -> void:
 	else:
 		new_section.global_position = Vector2.ZERO
 	
-	add_child(new_section)
+	sections_container.add_child(new_section)
 	
 	next_section_marker = new_section.next_section_position_marker
 	new_section.create_new_section.connect(_place_random_section)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://bn44ljknsb6wq"]
+[gd_scene load_steps=6 format=4 uid="uid://bn44ljknsb6wq"]
 
 [ext_resource type="PackedScene" uid="uid://pqfdxijpc6fk" path="res://Scenes/Game/Sections/BaseSection.tscn" id="1_0tg5j"]
 [ext_resource type="PackedScene" uid="uid://b8nxtxmut7xc5" path="res://Scenes/Rails/ShortRail.tscn" id="2_0tg5j"]
 [ext_resource type="PackedScene" path="res://Scenes/XpOrbs/XpOrbsSquare3.tscn" id="3_ae2je"]
+[ext_resource type="PackedScene" uid="uid://cc4h6rmo1whot" path="res://Scenes/Rails/LongRail.tscn" id="3_tuq8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5j0qm"]
 size = Vector2(20, 458)
@@ -22,11 +23,14 @@ position = Vector2(1856, 0)
 position = Vector2(0, -219)
 shape = SubResource("RectangleShape2D_5j0qm")
 
-[node name="ShortRail" parent="RailsContainer" index="0" instance=ExtResource("2_0tg5j")]
-position = Vector2(384, -96)
+[node name="ShortRail2" parent="RailsContainer" index="0" instance=ExtResource("2_0tg5j")]
+position = Vector2(1344, -64)
 
-[node name="ShortRail2" parent="RailsContainer" index="1" instance=ExtResource("2_0tg5j")]
-position = Vector2(1216, -96)
+[node name="LongRail" parent="RailsContainer" index="1" instance=ExtResource("3_tuq8n")]
+position = Vector2(256, -64)
 
 [node name="XpOrbsSquare3" parent="XpOrbsContainer" index="0" instance=ExtResource("3_ae2je")]
-position = Vector2(968, -200)
+position = Vector2(1088, -144)
+
+[node name="XpOrbsSquare4" parent="XpOrbsContainer" index="1" instance=ExtResource("3_ae2je")]
+position = Vector2(1160, -144)

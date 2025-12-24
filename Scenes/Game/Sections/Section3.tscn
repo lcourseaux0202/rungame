@@ -26,4 +26,4 @@ shape = SubResource("RectangleShape2D_5j0qm")
 position = Vector2(0, -192)
 
 [node name="XpOrbsLine5" parent="XpOrbsContainer" index="0" instance=ExtResource("3_5fneo")]
-position = Vector2(1104, -152)
+position = Vector2(1088, -96)
