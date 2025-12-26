@@ -33,6 +33,7 @@ var boost_tween : Tween
 @onready var mega_boost_audio: AudioStreamPlayer2D = $Audios/MegaBoostAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $Audios/FootstepAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audios/SlideAudio
+@onready var full_boost_audio: AudioStreamPlayer2D = $Audios/FullBoostAudio
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var aura: AnimatedSprite2D = $AuraAnimation
 @onready var obstacle_detector: Area2D = $ObstacleDetector
@@ -63,8 +64,12 @@ func _ready() -> void:
 			sprite.modulate = character_color
 		if Settings.aura_color:
 			aura.modulate = Settings.aura_color
+			var mat = boost_bar.material as ShaderMaterial
+			mat.set_shader_parameter("can_boost_color", Settings.aura_color)
 		else : 
 			aura.modulate = aura_color
+			var mat = boost_bar.material as ShaderMaterial
+			mat.set_shader_parameter("can_boost_color", aura_color)
 	else :
 		sprite.modulate = Color(randf_range(0.2,1),randf_range(0.2,1),randf_range(0.2,1))
 		aura.modulate = Color(randf_range(0.2,1),randf_range(0.2,1),randf_range(0.2,1))
@@ -78,6 +83,8 @@ func _process(delta: float) -> void:
 	speed_label.text = str(int(speed / 10)) + " Km/h"
 
 func update_boost_bar(boost_value : float):
+	if boost_value == boost_bar.max_value and boost_value != boost_bar.value:
+		full_boost_audio.play()
 	if boost_value < boost_bar.value:
 		if boost_tween:
 			boost_tween.kill()

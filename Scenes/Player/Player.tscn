@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://du523sab55bjb"]
+[gd_scene load_steps=36 format=3 uid="uid://du523sab55bjb"]
 
 [ext_resource type="Script" uid="uid://cr6nj02y2ice1" path="res://Scripts/Player/Player.gd" id="1_ji083"]
 [ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/PlayerSheet.png" id="2_0kmp4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b6r46kvq7u43c" path="res://Scripts/Player/States/Jumping.gd" id="6_esmjy"]
 [ext_resource type="Script" uid="uid://da1iub5fsqlxi" path="res://Scripts/Player/States/Falling.gd" id="7_6tu5v"]
 [ext_resource type="AudioStream" uid="uid://bdscs646bp37q" path="res://Assets/SFX/Slide.wav" id="7_esmjy"]
+[ext_resource type="AudioStream" uid="uid://cnul5ebcwjexq" path="res://Assets/SFX/FullBoost.wav" id="8_1e6p3"]
 [ext_resource type="Script" uid="uid://daypxasmdawdp" path="res://Scripts/Player/States/Sliding.gd" id="8_spxdj"]
 [ext_resource type="Script" uid="uid://wbd0kxuyjb07" path="res://Scripts/Player/States/Recovering.gd" id="9_0objx"]
 [ext_resource type="Script" uid="uid://bpfs4urg8b033" path="res://Scripts/Player/States/Boosting.gd" id="10_w71ue"]
@@ -137,8 +138,8 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1e6p3"]
 shader = ExtResource("16_w71ue")
-shader_parameter/can_boost_color = Color(0, 1, 1, 1)
-shader_parameter/no_boost_color = Color(0.351563, 0.351563, 0.351563, 1)
+shader_parameter/can_boost_color = Color(1, 1, 1, 1)
+shader_parameter/no_boost_color = Color(0.3, 0.3, 0.3, 1)
 shader_parameter/can_boost = false
 shader_parameter/is_full = false
 
@@ -218,6 +219,12 @@ volume_db = -15.0
 pitch_scale = 0.9
 bus = &"SFX"
 
+[node name="FullBoostAudio" type="AudioStreamPlayer2D" parent="Audios"]
+position = Vector2(-48, -72)
+stream = ExtResource("8_1e6p3")
+volume_db = -10.0
+bus = &"SFX"
+
 [node name="AI" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="AI"]
@@ -271,6 +278,7 @@ grow_vertical = 2
 [node name="BoostBar" type="TextureProgressBar" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_1e6p3")
 layout_mode = 2
+value = 50.0
 fill_mode = 4
 texture_under = ExtResource("16_0objx")
 texture_progress = ExtResource("17_w71ue")

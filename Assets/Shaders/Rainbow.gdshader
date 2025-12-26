@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform vec4 can_boost_color : source_color = vec4(0.0, 1.0, 0.5, 1.0);
-uniform vec4 no_boost_color : source_color = vec4(1.0, 0.2, 0.2, 1.0);
+uniform vec4 can_boost_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 no_boost_color : source_color = vec4(0.3, 0.3, 0.3, 1.0);
 uniform bool can_boost = false;
 uniform bool is_full = false;
 
