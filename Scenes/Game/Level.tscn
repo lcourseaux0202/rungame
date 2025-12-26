@@ -1,0 +1,26 @@
+[gd_scene load_steps=14 format=3 uid="uid://s7he8wa8g2yy"]
+
+[ext_resource type="Script" uid="uid://g0j6mtyhf2kk" path="res://Scripts/Game/Level.gd" id="1_weoc3"]
+[ext_resource type="PackedScene" uid="uid://q3du831qlygd" path="res://Scenes/Game/Sections/Section0.tscn" id="2_fc4hl"]
+[ext_resource type="PackedScene" uid="uid://du523sab55bjb" path="res://Scenes/Player/Player.tscn" id="3_1cmp4"]
+[ext_resource type="PackedScene" uid="uid://kn6a5b46a67v" path="res://Scenes/Game/Sections/Section1.tscn" id="3_o5n1w"]
+[ext_resource type="PackedScene" uid="uid://biewf3kqf7vgm" path="res://Scenes/Game/Sections/Section2.tscn" id="4_34ogg"]
+[ext_resource type="PackedScene" uid="uid://cph3pojxl3yt7" path="res://Scenes/Game/Sections/Section3.tscn" id="5_u26js"]
+[ext_resource type="PackedScene" uid="uid://bn44ljknsb6wq" path="res://Scenes/Game/Sections/Section4.tscn" id="6_i2q73"]
+[ext_resource type="PackedScene" uid="uid://dyitb3ceem42v" path="res://Scenes/Game/Sections/Section5.tscn" id="7_4s708"]
+[ext_resource type="PackedScene" uid="uid://bdm4lf01micbq" path="res://Scenes/Game/Sections/Section6.tscn" id="8_0q1sm"]
+[ext_resource type="PackedScene" uid="uid://wvixh5xp5o0u" path="res://Scenes/Game/Sections/Section7.tscn" id="9_i4nkc"]
+[ext_resource type="PackedScene" uid="uid://df1srye5odc08" path="res://Scenes/Game/Sections/Section8.tscn" id="10_q51t0"]
+[ext_resource type="PackedScene" uid="uid://c6d2a35wtojcy" path="res://Scenes/Game/Sections/Section9.tscn" id="11_edprt"]
+[ext_resource type="PackedScene" uid="uid://cfdq8vp58h606" path="res://Scenes/Game/Sections/Section10.tscn" id="12_22vck"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_weoc3")
+sections = Array[PackedScene]([ExtResource("2_fc4hl"), ExtResource("3_o5n1w"), ExtResource("4_34ogg"), ExtResource("5_u26js"), ExtResource("6_i2q73"), ExtResource("7_4s708"), ExtResource("8_0q1sm"), ExtResource("9_i4nkc"), ExtResource("10_q51t0"), ExtResource("11_edprt"), ExtResource("12_22vck")])
+sectionNumber = 10
+
+[node name="SectionsContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_1cmp4")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

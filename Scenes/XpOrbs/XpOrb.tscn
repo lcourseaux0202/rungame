@@ -36,13 +36,12 @@ random_volume_offset_db = 3.0
 streams_count = 1
 stream_0/stream = ExtResource("3_3ivko")
 
-[node name="XpOrb" type="Area2D"]
+[node name="XpOrb" type="Area2D" groups=["Orbs"]]
 collision_layer = 32
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_tr2m2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_ifxuk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

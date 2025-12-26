@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckxxk2n0alobo"]
+[gd_scene load_steps=9 format=3 uid="uid://ckxxk2n0alobo"]
 
 [ext_resource type="Script" uid="uid://di03qrvh57f3h" path="res://Scripts/UI/ColorPickerButtonGroup.gd" id="1_nnptb"]
-[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="2_uv4pu"]
+[ext_resource type="Texture2D" uid="uid://c2hcx5ijcprtv" path="res://Assets/Sprites/PreviousButton.png" id="2_uv4pu"]
+[ext_resource type="Texture2D" uid="uid://dwvsuouocv0ni" path="res://Assets/Sprites/NextButton.png" id="3_c3c7w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a05s"]
 
@@ -24,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnptb")
 left_button_icon = ExtResource("2_uv4pu")
-right_button_icon = ExtResource("2_uv4pu")
+right_button_icon = ExtResource("3_c3c7w")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -70,5 +71,5 @@ custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ugmyl")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ualm4")
-icon = ExtResource("2_uv4pu")
+icon = ExtResource("3_c3c7w")
 flat = true

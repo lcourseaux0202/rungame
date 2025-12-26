@@ -20,9 +20,9 @@ func physics_update(delta: float) -> void:
 		finished.emit(RECOVERING)
 	elif player.velocity.y >= 0:
 		finished.emit(FALLING, {"n_jump" : n_jump})
-	elif Input.is_action_just_pressed("ui_up") and n_jump < player.jump_number:
+	elif Input.is_action_just_pressed(player.input_up) and n_jump < player.jump_number:
 		finished.emit(JUMPING, {"n_jump" : n_jump + 1})
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action("ui_down"):
+	if event.is_action(player.input_down):
 		player.velocity.y = player.fast_fall_power

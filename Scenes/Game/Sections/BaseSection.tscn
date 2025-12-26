@@ -16,7 +16,7 @@ void vertex() {
 
 void fragment() {
     vec4 tex_color = texture(TEXTURE, UV);
-    
+
     // Si la position Y globale est supérieure à 0
     if (world_pos.y > 0.0) {
         // On multiplie la couleur par du noir, tout en gardant l'alpha original

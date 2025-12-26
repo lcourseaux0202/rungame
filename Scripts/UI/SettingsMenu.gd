@@ -8,16 +8,20 @@ class_name SettingsMenu extends Control
 @onready var back_button: Button = %BackButton
 @onready var back_to_menu_button: Button = %BackToMenuButton
 
-const VOLUME_MODIFIFACTOR := 50
+const MAX_VALUE = 100.0 
 
 func _ready() -> void:
 	for resolution in Settings.resolutions.keys():
 		resolution_options.add_item(resolution)
 		
 	fullscreen_checkbox.button_pressed = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
-	master_slider.value = master_slider.max_value
-	music_slider.value = music_slider.max_value
-	sfx_slider.value = sfx_slider.max_value
+	
+	var master_vol = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
+	var music_vol = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+	var sfx_vol = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	master_slider.value = master_vol * master_slider.max_value
+	music_slider.value = music_vol * music_slider.max_value
+	sfx_slider.value = sfx_vol * sfx_slider.max_value
 	
 	resolution_options.item_selected.connect(_change_resolution)
 	fullscreen_checkbox.toggled.connect(_toggle_fullscreen)
@@ -61,13 +65,28 @@ func _toggle_fullscreen(toggled_on: bool) -> void:
 		resolution_options.disabled = false
 		
 func _change_master_volume(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, linear_to_db(value / VOLUME_MODIFIFACTOR))
+	if value <= 0:
+		AudioServer.set_bus_mute(0, true)
+	else:
+		AudioServer.set_bus_mute(0, false)
+		var db_val = linear_to_db(value / MAX_VALUE)
+		AudioServer.set_bus_volume_db(0, db_val)
 
 func _change_music_volume(value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value / VOLUME_MODIFIFACTOR))
+	var bus_idx = AudioServer.get_bus_index("Music")
+	if value <= 0:
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		AudioServer.set_bus_mute(bus_idx, false)
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
 
 func _change_sfx_volume(value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value / VOLUME_MODIFIFACTOR))
+	var bus_idx = AudioServer.get_bus_index("SFX")
+	if value <= 0:
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		AudioServer.set_bus_mute(bus_idx, false)
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
 
 func open_menu(mode : int = 1):
 	back_to_menu_button.visible = (mode == 1)

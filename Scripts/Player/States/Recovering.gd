@@ -13,6 +13,6 @@ func physics_update(delta: float) -> void:
 	
 	if not player.obstacle_encountered:
 		finished.emit(RUNNING)
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed(player.input_up):
 		finished.emit(JUMPING)
 		

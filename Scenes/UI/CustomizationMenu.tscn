@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dr4hyxplgk1i3"]
+[gd_scene load_steps=24 format=3 uid="uid://dr4hyxplgk1i3"]
 
 [ext_resource type="Script" uid="uid://uxenlhbvc2mi" path="res://Scripts/UI/CharacterPersonalizationMenu.gd" id="1_y53fa"]
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_doilu"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/TileSet.png" id="7_uunkj"]
 [ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/Rail.png" id="8_l8o3i"]
 [ext_resource type="PackedScene" uid="uid://ckxxk2n0alobo" path="res://Scenes/UI/ColorPickerButtonGroup.tscn" id="9_mu8rh"]
-[ext_resource type="Texture2D" uid="uid://c2hcx5ijcprtv" path="res://Assets/Sprites/PreviousButton.png" id="10_wbi6u"]
-[ext_resource type="Texture2D" uid="uid://dwvsuouocv0ni" path="res://Assets/Sprites/NextButton.png" id="11_dumej"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jw4so"]
 font = ExtResource("2_doilu")
@@ -26,17 +24,17 @@ shader = ExtResource("3_tuw86")
 shader_parameter/line_color = Color(0.187176, 0.187176, 0.187176, 1)
 shader_parameter/line_thickness = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mu6sa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbk70"]
 atlas = ExtResource("4_yyt8i")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kbm5"]
 atlas = ExtResource("4_yyt8i")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbk70"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu6sa"]
 atlas = ExtResource("4_yyt8i")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jw4so"]
 atlas = ExtResource("4_yyt8i")
@@ -176,11 +174,10 @@ label_settings = SubResource("LabelSettings_ukgio")
 material = SubResource("ShaderMaterial_vxqth")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_mu6sa")
+texture = SubResource("AtlasTexture_mbk70")
 stretch_mode = 5
 script = ExtResource("5_p0hmq")
 sprites = SubResource("SpriteFrames_ukgio")
-frame = 1
 autoplay = true
 playing = true
 
@@ -213,32 +210,24 @@ stretch_mode = 5
 [node name="CharacterColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
 layout_mode = 2
 size_flags_horizontal = 4
-left_button_icon = ExtResource("10_wbi6u")
-right_button_icon = ExtResource("11_dumej")
 preview = false
 step = 0.05
 
 [node name="AuraColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
 layout_mode = 2
 size_flags_horizontal = 4
-left_button_icon = ExtResource("10_wbi6u")
-right_button_icon = ExtResource("11_dumej")
 preview = false
 step = 0.05
 
 [node name="WorldColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
 layout_mode = 2
 size_flags_horizontal = 4
-left_button_icon = ExtResource("10_wbi6u")
-right_button_icon = ExtResource("11_dumej")
 preview = false
 step = 0.05
 
 [node name="RailColor" parent="VBoxContainer" instance=ExtResource("9_mu8rh")]
 layout_mode = 2
 size_flags_horizontal = 4
-left_button_icon = ExtResource("10_wbi6u")
-right_button_icon = ExtResource("11_dumej")
 preview = false
 step = 0.05
 

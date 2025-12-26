@@ -6,13 +6,16 @@ class_name Section extends Node2D
 
 signal create_new_section()
 
+var section_triggered := false 
+
 func _ready() -> void:
 	if Settings.world_color:
 		tile_map.modulate = Settings.world_color
 	next_section_area.body_entered.connect(_on_body_entered_next_section_area)
 	
 func _on_body_entered_next_section_area(body):
-	if body is Player:
+	if body is Player and not section_triggered:
+		section_triggered = true
 		call_deferred("_emit_create_section")
 
 func _emit_create_section():

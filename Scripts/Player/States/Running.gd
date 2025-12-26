@@ -14,13 +14,17 @@ func physics_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 	
-	if player.obstacle_encountered:
+	if player.auto and player.ray_cast_2d.is_colliding():
+		finished.emit(JUMPING)
+	elif player.auto and player.boost_stock >= 100:
+		finished.emit(BOOSTING)
+	elif player.obstacle_encountered:
 		finished.emit(RECOVERING)
 	elif player.on_rail:
 		finished.emit(SLIDING)
 	elif not player.is_on_floor():
 		finished.emit(FALLING)
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed(player.input_up):
 		finished.emit(JUMPING)
-	elif Input.is_action_just_pressed("ui_right") and player.boost_stock >= player.stock_needed_for_boost:
+	elif Input.is_action_just_pressed(player.input_right) and player.boost_stock >= player.stock_needed_for_boost:
 		finished.emit(BOOSTING)

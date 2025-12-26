@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3t03r7ksnbl6"]
+[gd_scene load_steps=20 format=3 uid="uid://c3t03r7ksnbl6"]
 
 [ext_resource type="Script" uid="uid://xnxnilj0annk" path="res://Scripts/Game/Game.gd" id="1_3h2u2"]
 [ext_resource type="PackedScene" uid="uid://du523sab55bjb" path="res://Scenes/Player/Player.tscn" id="1_v36fd"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="13_6581v"]
 [ext_resource type="PackedScene" uid="uid://beeawe0b33fb1" path="res://Scenes/UI/UpgradeSelectMenu.tscn" id="16_fg52j"]
 [ext_resource type="PackedScene" uid="uid://beg65mxmwr3sa" path="res://Scenes/UI/SettingsMenu.tscn" id="18_6hht6"]
+[ext_resource type="PackedScene" uid="uid://y1ew2hgm5smv" path="res://Scenes/UI/LoadingScreen.tscn" id="19_kjp6r"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3h2u2")
@@ -41,10 +42,28 @@ texture = ExtResource("13_6581v")
 
 [node name="SectionsContainer" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_v36fd")]
+[node name="PlayersContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
+
+[node name="Player2" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
+character_color = Color(0, 1, 1, 1)
+auto = true
+player_id = 2
+
+[node name="Player3" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
+character_color = Color(1, 0, 1, 1)
+auto = true
+player_id = 2
+
+[node name="Player4" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
+character_color = Color(1, 1, 0, 1)
+auto = true
+player_id = 2
 
 [node name="Camera" parent="." instance=ExtResource("3_weapr")]
 offset = Vector2(500, -170)
+limit_left = -500
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
 
@@ -55,3 +74,6 @@ visible = false
 
 [node name="SettingsMenu" parent="Camera/CanvasLayer" instance=ExtResource("18_6hht6")]
 visible = false
+
+[node name="LoadingScreen" parent="Camera/CanvasLayer" instance=ExtResource("19_kjp6r")]
+metadata/_edit_use_anchors_ = true

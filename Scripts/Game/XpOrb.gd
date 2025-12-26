@@ -1,21 +1,33 @@
 class_name XpOrb extends Area2D
 
-const XP_GAIN = 10
 @onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var collect_audio: AudioStreamPlayer2D = $CollectAudio
 
 func _ready() -> void:
 	modulate = Settings.aura_color
 
-func _on_body_entered(body: Node2D) -> void:
-	var player : Player = body as Player
-	player.xp += XP_GAIN
-	player.boost_stock = clamp(player.boost_stock + player.boost_per_xp, 0, 100)
+func make_disappear(player: Player) -> void:
+	set_deferred("monitoring", false)
+	set_collision_layer_value(5,false)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	
-	EventBus.boost_value_changed.emit(player.boost_stock, player.boost_stock >= player.stock_needed_for_boost)
+	var up_pos = global_position + Vector2(0, -50)
+	tween.tween_property(self, "global_position", up_pos, 0.2)
 	
-	collect_audio.play()
+	var start_pos = up_pos
+	tween.tween_method(
+		func(lerp_val): global_position = start_pos.lerp(player.sprite.global_position, lerp_val),
+		0.0, 1.0, 0.3
+	)
 	
-	var tween : Tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "modulate", Color(1,1,1,0), 0.2)
-	tween.tween_property(self, "global_position", Vector2(global_position.x, global_position.y - 20), 0.2)
+	await tween.finished
+	
+	player.boost_stock = min(player.boost_stock + player.boost_per_xp, 100.0)
+	player.update_boost_bar(player.boost_stock)
+	
+	if collect_audio:
+		collect_audio.play()
+		visible = false
+		await collect_audio.finished
+	
+	queue_free()

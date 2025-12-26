@@ -1,7 +1,16 @@
 extends Node
 
 var max_sections = 100
-var level_length = 100000
+var level_length = 50000
+var xp_gain_per_orb = 10
+
+enum GAMEMODE{
+	SOLO,
+	MULTIPLAYER
+}
+
+var gamemode : GAMEMODE = GAMEMODE.SOLO
+var number_of_players = 2
 
 const CHARACTER_COLOR : Color = Color.WHITE
 const AURA_COLOR : Color = Color.AQUA

@@ -13,9 +13,9 @@ dest_files=["res://.godot/imported/Jersey10-Regular.ttf-85d2fd279e92b6e19c30d08c
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
-disable_embedded_bitmaps=true
+disable_embedded_bitmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -29,7 +29,12 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "Nouvelle configuration",
+"size": Vector2i(16, 0)
+}]
 language_support={}
 script_support={}
 opentype_features={}

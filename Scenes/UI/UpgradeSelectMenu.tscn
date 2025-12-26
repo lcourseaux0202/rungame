@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://beeawe0b33fb1"]
+[gd_scene load_steps=6 format=3 uid="uid://beeawe0b33fb1"]
 
 [ext_resource type="Script" uid="uid://bjsodxv4vi63u" path="res://Scripts/UI/UpgradeSelectMenu.gd" id="1_d4ckb"]
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_qpesn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_teual"]
+font = ExtResource("2_qpesn")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_0supn"]
+font = ExtResource("2_qpesn")
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpesn"]
 
 [node name="UpgradeSelectMenu" type="Control"]
 process_mode = 3
@@ -21,17 +32,55 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ContinueButton" type="Button" parent="."]
+[node name="LabelTitle" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -231.5
+offset_top = 22.0
+offset_right = 231.5
+offset_bottom = 74.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "Reprendre"
+text = "Choisissez une amélioration"
+label_settings = SubResource("LabelSettings_teual")
+
+[node name="LabelOrbStock" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 108.0
+offset_right = 114.0
+offset_bottom = 143.0
+text = "Orbes : 0"
+label_settings = SubResource("LabelSettings_0supn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qpesn")
+theme_override_font_sizes/font_size = 32
+text = "Passer"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qpesn")
+
+[node name="RerollButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qpesn")
+theme_override_font_sizes/font_size = 32
+text = "Nouveau tirage (Prix)"
+
+[node name="CardsContainer" type="Node2D" parent="."]
+
+[node name="SelectedCardContainer" type="Node2D" parent="."]

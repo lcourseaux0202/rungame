@@ -22,4 +22,4 @@ position = Vector2(0, -151)
 shape = SubResource("RectangleShape2D_bgv3f")
 
 [node name="LongRail" parent="RailsContainer" index="0" instance=ExtResource("2_cx8s1")]
-position = Vector2(2432, -224)
+position = Vector2(2360, -224)
