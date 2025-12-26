@@ -19,9 +19,7 @@ func _ready() -> void:
 	custom_button.pressed.connect(_custom_game)
 	settings_button.pressed.connect(_settings_menu)
 	quit_button.pressed.connect(_quit_game)
-	
-func _process(delta: float) -> void:
-	title_label.modulate = Settings.character_color
+
 
 
 func _start_game() -> void:

@@ -2,15 +2,16 @@ class_name XpOrb extends Area2D
 
 @onready var particles: GPUParticles2D = $GPUParticles2D
 @onready var collect_audio: AudioStreamPlayer2D = $CollectAudio
+@onready var collision: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
-	modulate = Settings.aura_color
+	modulate = Color.AQUA
 
 func make_disappear(player: Player) -> void:
 	set_deferred("monitoring", false)
-	set_collision_layer_value(5,false)
-	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	collision.set_deferred("disabled", true)
 	
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	var up_pos = global_position + Vector2(0, -50)
 	tween.tween_property(self, "global_position", up_pos, 0.2)
 	

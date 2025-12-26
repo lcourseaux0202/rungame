@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://nkel5ecia5ng"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_fv521"]
+
+[resource]
+script = ExtResource("1_fv521")
+skin_name = "Pastèque"
+character_color = Color(1, 0.4, 0.4, 1)
+aura_color = Color(0.219608, 0.72549, 0.109804, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

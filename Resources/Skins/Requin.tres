@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://wwouvbgf05rq"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_ct7ct"]
+
+[resource]
+script = ExtResource("1_ct7ct")
+skin_name = "Requin"
+character_color = Color(0.588235, 0.717647, 0.752941, 1)
+aura_color = Color(0.854902, 0.917647, 0.917647, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

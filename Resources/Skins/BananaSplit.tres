@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://bclsh4pojap42"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_wiapo"]
+
+[resource]
+script = ExtResource("1_wiapo")
+skin_name = "BananaSplit"
+character_color = Color(1, 0.964706, 0.560784, 1)
+aura_color = Color(0.494118, 0.247059, 0.0705882, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

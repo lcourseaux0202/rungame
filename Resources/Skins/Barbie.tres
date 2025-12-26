@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://b8gm6hxhdnlhx"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_7fi32"]
+
+[resource]
+script = ExtResource("1_7fi32")
+skin_name = "Barbie"
+character_color = Color(0.94902, 0.603922, 0.847059, 1)
+aura_color = Color(0.941176, 0.223529, 0.694118, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

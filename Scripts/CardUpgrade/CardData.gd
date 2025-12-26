@@ -1,6 +1,6 @@
 extends Resource
 
-class_name CardData # Donne un nom à la classe pour la retrouver dans l'éditeur
+class_name CardData 
 
 @export var card_name: String = "Card name"
 @export_multiline var description: String = ""

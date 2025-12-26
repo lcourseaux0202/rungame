@@ -17,10 +17,10 @@ class_name Player extends CharacterBody2D
 @export var stock_needed_for_boost := 30.0
 @export_range(1,10) var jump_number := 2
 @export_range(0.0,10.0) var min_animation_speed_scale := 0.6
-@export_color_no_alpha var character_color := Color.WHITE
-@export_color_no_alpha var aura_color := Color.WHITE
 @export var auto := false
 
+
+var skin : SkinData = null
 var speed = base_speed
 var boost_stock = 0
 var xp : int = 0
@@ -53,27 +53,26 @@ var input_down: String
 @export var player_id := 1
 
 func _ready() -> void:
+	var mat = boost_bar.material.duplicate()
+	boost_bar.material = mat
 	add_to_group("Players")
 	input_up = "JumpP%d" % player_id
 	input_right = "BoostP%d" % player_id
 	input_down = "FastFallP%d" % player_id
-	if not auto :
-		if Settings.character_color:
-			sprite.modulate = Settings.character_color
-		else : 
-			sprite.modulate = character_color
-		if Settings.aura_color:
-			aura.modulate = Settings.aura_color
-			var mat = boost_bar.material as ShaderMaterial
-			mat.set_shader_parameter("can_boost_color", Settings.aura_color)
-		else : 
-			aura.modulate = aura_color
-			var mat = boost_bar.material as ShaderMaterial
-			mat.set_shader_parameter("can_boost_color", aura_color)
+	
+	
+	if Settings.selected_skins[player_id] != null :
+		skin = Settings.selected_skins[player_id]
 	else :
-		sprite.modulate = Color(randf_range(0.2,1),randf_range(0.2,1),randf_range(0.2,1))
-		aura.modulate = Color(randf_range(0.2,1),randf_range(0.2,1),randf_range(0.2,1))
+		skin = load(Settings.default_skin)
 		
+	sprite.modulate = skin.character_color
+	aura.modulate = skin.aura_color
+	mat = boost_bar.material as ShaderMaterial
+	mat.set_shader_parameter("can_boost_color", skin.aura_color)
+	if skin.additional_effect:
+		sprite.material = skin.additional_effect
+	
 	var layer_cible = (player_id - 1) + 2
 	boost_bar.visibility_layer = (1 << (layer_cible - 1))
 	speed_label.visibility_layer = (1 << (layer_cible - 1))

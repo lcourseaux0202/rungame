@@ -47,17 +47,14 @@ texture = ExtResource("13_6581v")
 [node name="Player" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
 
 [node name="Player2" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
-character_color = Color(0, 1, 1, 1)
 auto = true
 player_id = 2
 
 [node name="Player3" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
-character_color = Color(1, 0, 1, 1)
 auto = true
 player_id = 2
 
 [node name="Player4" parent="PlayersContainer" instance=ExtResource("1_v36fd")]
-character_color = Color(1, 1, 0, 1)
 auto = true
 player_id = 2
 

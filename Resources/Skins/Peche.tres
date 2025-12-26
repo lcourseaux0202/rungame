@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://mylvirsrc6r6"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_o1pci"]
+
+[resource]
+script = ExtResource("1_o1pci")
+skin_name = "Pêche"
+character_color = Color(0.964706, 0.631373, 0.572549, 1)
+aura_color = Color(0.964706, 0.811765, 0.572549, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

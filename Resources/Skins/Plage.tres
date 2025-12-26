@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://bluxym4pt5id1"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_uru03"]
+
+[resource]
+script = ExtResource("1_uru03")
+skin_name = "Plage"
+character_color = Color(0.992157, 0.847059, 0.709804, 1)
+aura_color = Color(0.50867, 0.871783, 1, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

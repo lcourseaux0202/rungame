@@ -14,7 +14,7 @@ var players : Array[Player]
 var player_cameras : Array[PlayerCamera]
 var restarting := false
 const MAX_BOOST_STOCK_HELP = 90
-const BOOST_HELP_GENERATION = 10
+const BOOST_HELP_GENERATION = 0
 
 func _ready() -> void:
 	_add_new_player_viewport(null, 0)
@@ -61,7 +61,6 @@ func _add_new_player_viewport(new_player_node : Player, index : int) -> void:
 	
 	var layer_commun = 1 << 0
 	var layer_prive = 1 << (index + 2 - 1)
-	print(layer_prive)
 	new_subviewport.canvas_cull_mask = layer_commun | layer_prive
 	
 	if first_subviewport:
@@ -113,8 +112,8 @@ func _boost_worst_player(delta : float) -> void :
 	for player : Player in players:
 		if player.global_position.x < worst_player.global_position.x :
 			worst_player = player
-	if worst_player.boost_stock < 90 :
-		worst_player.boost_stock = min(worst_player.boost_stock + (worst_player.boost_generation * delta / 10), 100.0)
+	if worst_player.boost_stock < MAX_BOOST_STOCK_HELP and BOOST_HELP_GENERATION > 0 :
+		worst_player.boost_stock = min(worst_player.boost_stock + (worst_player.boost_generation * delta / BOOST_HELP_GENERATION), 100.0)
 		worst_player.update_boost_bar(worst_player.boost_stock)
 
 func _get_players_ordered_by_position() -> Array[Player]:

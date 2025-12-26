@@ -9,18 +9,22 @@ enum GAMEMODE{
 	MULTIPLAYER
 }
 
+var selected_skins = {
+	1 : null,
+	2 : null,
+	3 : null,
+	4 : null,
+}
+var default_skin := "res://Resources/Skins/Glacier.tres"
+
 var gamemode : GAMEMODE = GAMEMODE.SOLO
 var number_of_players = 2
 
-const CHARACTER_COLOR : Color = Color.WHITE
-const AURA_COLOR : Color = Color.AQUA
-const WORLD_COLOR : Color = Color.WHITE
-const RAIL_COLOR : Color = Color.AQUA
+const DEFAULT_WORLD_COLOR : Color = Color.WHITE
+const DEFAULT_RAIL_COLOR : Color = Color.AQUA
 
-var character_color : Color = CHARACTER_COLOR
-var aura_color : Color = AURA_COLOR
-var world_color : Color = WORLD_COLOR
-var rail_color : Color = RAIL_COLOR
+var world_color : Color = DEFAULT_WORLD_COLOR
+var rail_color : Color = DEFAULT_RAIL_COLOR
 
 
 var resolutions = {

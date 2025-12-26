@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://c3ivvm2udokaf"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_e4l0s"]
+
+[resource]
+script = ExtResource("1_e4l0s")
+skin_name = "Volcan"
+character_color = Color(0.192157, 0.0235294, 0, 1)
+aura_color = Color(0.941176, 0.4, 0.145098, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

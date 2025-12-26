@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://bqhoc0efkclqo"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_qdbk7"]
+
+[resource]
+script = ExtResource("1_qdbk7")
+skin_name = "Sakura"
+character_color = Color(0.337255, 0.129412, 0.207843, 1)
+aura_color = Color(0.913725, 0.694118, 0.803922, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

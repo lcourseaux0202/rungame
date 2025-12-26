@@ -278,7 +278,6 @@ grow_vertical = 2
 [node name="BoostBar" type="TextureProgressBar" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_1e6p3")
 layout_mode = 2
-value = 50.0
 fill_mode = 4
 texture_under = ExtResource("16_0objx")
 texture_progress = ExtResource("17_w71ue")

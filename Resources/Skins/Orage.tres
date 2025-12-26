@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://d3pra7hq10nm3"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_kq20l"]
+
+[resource]
+script = ExtResource("1_kq20l")
+skin_name = "Orage"
+character_color = Color(0.257313, 0.113014, 0.408819, 1)
+aura_color = Color(1, 0.988235, 0, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

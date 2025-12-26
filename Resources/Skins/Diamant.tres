@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://6bpagtgh48pf"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_0q4i6"]
+
+[resource]
+script = ExtResource("1_0q4i6")
+skin_name = "Diamant"
+character_color = Color(0.85098, 0.921569, 0.956863, 1)
+aura_color = Color(0.721569, 0.847059, 0.905882, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

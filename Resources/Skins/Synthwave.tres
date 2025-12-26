@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://cfcniaodgo06i"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_x2dxm"]
+
+[resource]
+script = ExtResource("1_x2dxm")
+skin_name = "Synthwave"
+character_color = Color(0.239216, 0.0627451, 0.317647, 1)
+aura_color = Color(0.996078, 0.364706, 0.498039, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

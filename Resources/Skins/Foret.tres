@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkinData" load_steps=2 format=3 uid="uid://dfhin0hh78ofl"]
+
+[ext_resource type="Script" uid="uid://c5ghrxks8ve8k" path="res://Scripts/Player/SkinData.gd" id="1_v2ds7"]
+
+[resource]
+script = ExtResource("1_v2ds7")
+skin_name = "Forêt"
+character_color = Color(0.647059, 0.388235, 0.235294, 1)
+aura_color = Color(0.372549, 0.388235, 0.266667, 1)
+metadata/_custom_type_script = "uid://c5ghrxks8ve8k"
