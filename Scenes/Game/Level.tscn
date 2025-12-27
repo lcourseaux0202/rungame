@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://s7he8wa8g2yy"]
+[gd_scene load_steps=15 format=3 uid="uid://s7he8wa8g2yy"]
 
 [ext_resource type="Script" uid="uid://g0j6mtyhf2kk" path="res://Scripts/Game/Level.gd" id="1_weoc3"]
 [ext_resource type="PackedScene" uid="uid://q3du831qlygd" path="res://Scenes/Game/Sections/Section0.tscn" id="2_fc4hl"]
@@ -13,11 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://df1srye5odc08" path="res://Scenes/Game/Sections/Section8.tscn" id="10_q51t0"]
 [ext_resource type="PackedScene" uid="uid://c6d2a35wtojcy" path="res://Scenes/Game/Sections/Section9.tscn" id="11_edprt"]
 [ext_resource type="PackedScene" uid="uid://cfdq8vp58h606" path="res://Scenes/Game/Sections/Section10.tscn" id="12_22vck"]
+[ext_resource type="Texture2D" uid="uid://dh1y3sra12csv" path="res://Assets/Sprites/FinishLine.png" id="13_l3r08"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_weoc3")
 sections = Array[PackedScene]([ExtResource("2_fc4hl"), ExtResource("3_o5n1w"), ExtResource("4_34ogg"), ExtResource("5_u26js"), ExtResource("6_i2q73"), ExtResource("7_4s708"), ExtResource("8_0q1sm"), ExtResource("9_i4nkc"), ExtResource("10_q51t0"), ExtResource("11_edprt"), ExtResource("12_22vck")])
 sectionNumber = 10
+
+[node name="FinishLine" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="FinishLine"]
+position = Vector2(0, -512)
+texture = ExtResource("13_l3r08")
 
 [node name="SectionsContainer" type="Node2D" parent="."]
 

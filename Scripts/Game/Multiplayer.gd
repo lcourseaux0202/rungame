@@ -96,6 +96,8 @@ func _trigger_restart_sequence() -> void :
 		player.global_position.x = 50 * position_buffer
 		position_buffer += 1
 		player.speed = player.base_speed
+		player.boost_stock = 0
+		player.update_boost_bar(0)
 	for camera in player_cameras:
 		camera.global_position.x = 0
 	restarting = false

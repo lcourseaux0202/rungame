@@ -39,13 +39,6 @@ func _load_skins():
 				skins_pool.append(load(path + file_name))
 			file_name = dir.get_next()
 
-func _change_character_color(new_color : Color) -> void:
-	skin_cursor += 1
-	var current_skin : SkinData = skins_pool[skin_cursor]
-
-func _change_aura_color(new_color : Color) -> void:
-	pass
-
 func _change_world_color(new_color : Color) -> void:
 	world_preview.modulate = new_color
 	Settings.world_color = new_color

@@ -20,6 +20,7 @@ var tween : Tween
 
 func _ready() -> void:
 	label_orb_stock.hide()
+	reroll_button.hide()
 	continue_button.pressed.connect(_continue_pressed)
 	reroll_button.pressed.connect(_reroll_pressed)
 	load_all_cards()
@@ -83,6 +84,7 @@ func reveal(mode : Settings.GAMEMODE) -> void:
 	if mode == Settings.GAMEMODE.SOLO:
 		label_orb_stock.show()
 		label_orb_stock.text = "Orbes : " + str(current_receiver.xp)
+		reroll_button.show()
 	get_tree().paused = true
 
 func _draw_cards() -> void:

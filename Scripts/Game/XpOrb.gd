@@ -8,6 +8,7 @@ func _ready() -> void:
 	modulate = Color.AQUA
 
 func make_disappear(player: Player) -> void:
+	duplicate()
 	set_deferred("monitoring", false)
 	collision.set_deferred("disabled", true)
 	
@@ -18,7 +19,7 @@ func make_disappear(player: Player) -> void:
 	var start_pos = up_pos
 	tween.tween_method(
 		func(lerp_val): global_position = start_pos.lerp(player.sprite.global_position, lerp_val),
-		0.0, 1.0, 0.3
+		0.0, 1.0, 0.5
 	)
 	
 	await tween.finished

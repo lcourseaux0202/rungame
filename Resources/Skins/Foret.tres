@@ -6,5 +6,5 @@
 script = ExtResource("1_v2ds7")
 skin_name = "Forêt"
 character_color = Color(0.647059, 0.388235, 0.235294, 1)
-aura_color = Color(0.372549, 0.388235, 0.266667, 1)
+aura_color = Color(0.271839, 0.526616, 0.287792, 1)
 metadata/_custom_type_script = "uid://c5ghrxks8ve8k"

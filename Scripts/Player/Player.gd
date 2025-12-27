@@ -60,6 +60,7 @@ func _ready() -> void:
 	input_right = "BoostP%d" % player_id
 	input_down = "FastFallP%d" % player_id
 	
+	global_position.x -= player_id * 10
 	
 	if Settings.selected_skins[player_id] != null :
 		skin = Settings.selected_skins[player_id]

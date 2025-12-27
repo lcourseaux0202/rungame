@@ -4,12 +4,14 @@ class_name Level extends Node2D
 @export_range(1,50,1) var sectionNumber : int = 50
 
 @onready var sections_container: Node2D = $SectionsContainer
+@onready var finish_line: Node2D = $FinishLine
 
 var next_section_marker : Marker2D = null
 var sections_queue : Array[Section]
 
 
 func _ready() -> void:
+	finish_line.global_position = Vector2(Settings.level_length, 0)
 	for schema in sections:
 		var temp_instance = schema.instantiate()
 		add_child(temp_instance)
