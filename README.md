@@ -1,25 +1,46 @@
 # Rungame
 
-Un projet personnel de jeu de course 2D développé avec **Godot Engine**. Ce projet a été conçu dans un but d'apprentissage pour explorer les fonctionnalités du moteur et la logique du Game Design.
+Un projet personnel de jeu de course 2D développé avec **Godot Engine**. Ce projet a été conçu en premier lieu dans un but d'apprentissage pour explorer les fonctionnalités du moteur et la logique du Game Design.
+Désormais ce projet est devenu mon passe-temps et pourquoi pas un futur jeu commercialisé.
 
 ## Concept du Jeu
-Le joueur contrôle un stickman et doit survivre le plus longtemps possible sur une piste infinie. 
-* **Gameplay :** Éviter les obstacles qui apparaissent de manière aléatoire.
-* **Difficulté :** La génération procédurale assure une expérience différente à chaque partie.
+Le joueur contrôle un petit stickman qui court à toute allure à travers des niveaux générés aléatoirement. 
+A la fin de chacun d'entre eux, il pourra acheter des améliorations aux moyens d'orbes récupérées dans les niveaux parcourus.
 
-## État du Projet & Apprentissages
-Ce projet m'a permis d'apprendre :
-- Le concept des noeuds et des scènes.
-- Le langage **GDScript**.
-- L'utilisation des **signaux** pour la communication entre objets.
-- La logique de **génération aléatoire** (spawning d'obstacles).
-- La gestion des collisions.
+Un mode multijoueur est aussi à disposition, prenant en charge 2 joueurs pour l'instant, dans lequel les deux joueurs s'affrontent pour déterminer qui est le plus rapide. 
+Pareil, à la fin de chacun des niveaux, les joueurs peuvent choisir à tour de rôle une carte d'amélioration (le perdant choisit en premier).
+
+## Contrôles
+
+Joueur 1 :
+- ↑ : Sauter
+- → : Booster
+- ↓ : Chute rapide
+
+Joueur 2 :
+- Z : Sauter
+- D : Booster
+- S : Chute rapide
 
 ## Roadmap
-Le développement se poursuit avec deux objectifs majeurs :
+Le développement se poursuit avec ces objectifs majeurs :
 
-1.  **Refactoring (State Machine) :** Réécriture du code de déplacement du personnage. L'objectif est d'intégrer une *Machine à États Finis* (Idle, Move, Crash, etc.) pour rendre le code plus modulaire et facile à déboguer.
-2.  **Multijoueur Local :** Ajout d'un mode 2 joueurs sur le même écran (Split-screen ou écran partagé) pour augmenter la compétitivité.
+1. Augmentation de la taille du contenu :
+   - plus de skins (13 terminés / 28 prévus actuellement)
+   - plus de sections de niveaux (10 terminées / ~100 voulues)
+   - plus de cartes d'améliorations (18 terminées / 35 prévues actuellement)
+
+2. Ajout d'une **Jukebox** pour laisser au joueur le choix complet de sa playlist en jeu
+
+3. Ajout d'un mode multijoueur en LAN
+
+4. Ajout de contrôles manettes, avec une interface complètement adaptée à ce support et un menu de configuration des touches
+
+5. Refonte des menus
+
+6. Intégration d'effets sonores et musiques faits par moi-même (actuellement tous les sons proviennent d'Internet)
+
+7. Trouvé un meilleur nom pour le jeu (parce que *Rungame*... on souffle quoi)
 
 ## Installation
 1. Clonez le dépôt :
