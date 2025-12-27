@@ -5,7 +5,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.animation_player.play("AirAnimation")
 
 func physics_update(delta: float) -> void:
-	player.boost_stock = min(player.boost_stock + player.boost_generation * delta, 100.0)
+	player.boost_stock = clamp(player.boost_stock + player.boost_generation * delta,0, player.max_boost)
 	player.update_boost_bar(player.boost_stock)
 	
 	if(player.speed > player.max_speed):

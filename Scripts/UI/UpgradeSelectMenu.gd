@@ -12,7 +12,6 @@ var displayed_cards_number := 2
 var receivers : Array[Player]
 var current_receiver: Player
 var current_receiver_index := 0
-
 var base_reroll_price := 50
 var gamemode : Settings.GAMEMODE
 var reroll_price

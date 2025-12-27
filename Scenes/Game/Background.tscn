@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpd1r0edd5s5d"]
 
 [ext_resource type="Script" uid="uid://bt3sosyvicj55" path="res://Scripts/Game/Background.gd" id="1_ty1ej"]
-[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="1_x47xs"]
+[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/Others/White.png" id="1_x47xs"]
 
 [node name="Parallax2D" type="Parallax2D"]
 scroll_offset = Vector2(-100, 0)

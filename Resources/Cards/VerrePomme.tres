@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dv6sojhuh7spa"]
+
+[ext_resource type="Texture2D" uid="uid://etxqgx2fs7lg" path="res://Assets/Sprites/CardsIllustration/VerrePomme.png" id="1_3i1k3"]
+[ext_resource type="Script" uid="uid://c7wvij1ipayvb" path="res://Scripts/CardUpgrade/CardData.gd" id="2_f7d42"]
+
+[resource]
+script = ExtResource("2_f7d42")
+card_name = "Jus de pomme"
+description = "Boost max. ++
+Accélération -
+"
+illustration = ExtResource("1_3i1k3")
+rarity_weight = 5
+base_speed_modifier = 0
+max_speed_modifier = 0
+acceleration_modifier = -40
+deceleration_modifier = 0
+boost_deceleration_modifier = 0
+rail_deceleration_modifier = 0
+boost_factor_modifier = 0.0
+mega_boost_factor_modifier = 0.0
+boost_generation_modifier = 0
+boost_per_xp_modifier = 0.0
+stock_needed_for_boost_modifier = 0
+jump_number_modifier = 0
+max_boost_modifier = 25
+price = 115
+metadata/_custom_type_script = "uid://c7wvij1ipayvb"

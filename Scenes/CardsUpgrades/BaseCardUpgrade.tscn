@@ -2,10 +2,10 @@
 
 [ext_resource type="Shader" uid="uid://bfnkig0y675yk" path="res://Assets/Shaders/Highlight.gdshader" id="1_02sda"]
 [ext_resource type="Script" uid="uid://dat074f4si3o5" path="res://Scripts/CardUpgrade/CardUpgrade.gd" id="1_7bhny"]
-[ext_resource type="Texture2D" uid="uid://bcqsexthxqpr4" path="res://Assets/Sprites/EmptyCard.png" id="2_s3sn0"]
-[ext_resource type="Texture2D" uid="uid://b8jp2p7gxl3n6" path="res://Assets/Sprites/EmptyIllustration.png" id="3_6owur"]
+[ext_resource type="Texture2D" uid="uid://bcqsexthxqpr4" path="res://Assets/Sprites/CardsIllustration/EmptyCard.png" id="2_s3sn0"]
+[ext_resource type="Texture2D" uid="uid://b8jp2p7gxl3n6" path="res://Assets/Sprites/CardsIllustration/EmptyIllustration.png" id="3_6owur"]
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="4_02sda"]
-[ext_resource type="Texture2D" uid="uid://c1t34sy7j6ej1" path="res://Assets/Sprites/CardSurface.png" id="6_un5js"]
+[ext_resource type="Texture2D" uid="uid://c1t34sy7j6ej1" path="res://Assets/Sprites/CardsIllustration/CardSurface.png" id="6_un5js"]
 [ext_resource type="AudioStream" uid="uid://c7xpjt2h7h5oh" path="res://Assets/SFX/Whoosh.mp3" id="7_al0h4"]
 [ext_resource type="AudioStream" uid="uid://dkj4li362qbf8" path="res://Assets/SFX/Purchase.mp3" id="8_b2061"]
 [ext_resource type="AudioStream" uid="uid://inik8ykppo4j" path="res://Assets/SFX/Error.mp3" id="8_ru44a"]

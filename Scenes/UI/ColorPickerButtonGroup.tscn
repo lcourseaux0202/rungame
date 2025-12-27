@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://ckxxk2n0alobo"]
 
 [ext_resource type="Script" uid="uid://di03qrvh57f3h" path="res://Scripts/UI/ColorPickerButtonGroup.gd" id="1_nnptb"]
-[ext_resource type="Texture2D" uid="uid://c2hcx5ijcprtv" path="res://Assets/Sprites/PreviousButton.png" id="2_uv4pu"]
-[ext_resource type="Texture2D" uid="uid://dwvsuouocv0ni" path="res://Assets/Sprites/NextButton.png" id="3_c3c7w"]
+[ext_resource type="Texture2D" uid="uid://c2hcx5ijcprtv" path="res://Assets/Sprites/Others/PreviousButton.png" id="2_uv4pu"]
+[ext_resource type="Texture2D" uid="uid://dwvsuouocv0ni" path="res://Assets/Sprites/Others/NextButton.png" id="3_c3c7w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a05s"]
 

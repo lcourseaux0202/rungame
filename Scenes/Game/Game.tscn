@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://df1srye5odc08" path="res://Scenes/Game/Sections/Section8.tscn" id="10_fg52j"]
 [ext_resource type="PackedScene" uid="uid://c6d2a35wtojcy" path="res://Scenes/Game/Sections/Section9.tscn" id="11_6581v"]
 [ext_resource type="PackedScene" uid="uid://cfdq8vp58h606" path="res://Scenes/Game/Sections/Section10.tscn" id="12_6hht6"]
-[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="13_6581v"]
+[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/Others/White.png" id="13_6581v"]
 [ext_resource type="PackedScene" uid="uid://beeawe0b33fb1" path="res://Scenes/UI/UpgradeSelectMenu.tscn" id="16_fg52j"]
 [ext_resource type="PackedScene" uid="uid://beg65mxmwr3sa" path="res://Scenes/UI/SettingsMenu.tscn" id="18_6hht6"]
 [ext_resource type="PackedScene" uid="uid://y1ew2hgm5smv" path="res://Scenes/UI/LoadingScreen.tscn" id="19_kjp6r"]

@@ -10,22 +10,24 @@ class_name Player extends CharacterBody2D
 @export var gravity := 3000.0
 @export var jump_impulse := 800.0
 @export var fast_fall_power := 1000.0
-@export_range(1.0,3.0) var boost_factor := 1.2
+@export_range(1.0,3.0) var boost_factor := 1.15
 @export_range(1.0,3.0) var mega_boost_factor := 1.6
 @export var boost_generation := 100.0
 @export var boost_per_xp := 1.0
 @export var stock_needed_for_boost := 30.0
+@export var max_boost := 100
 @export_range(1,10) var jump_number := 2
 @export_range(0.0,10.0) var min_animation_speed_scale := 0.6
 @export var auto := false
 
-
+### Utils ###
 var skin : SkinData = null
 var speed = base_speed
 var boost_stock = 0
 var xp : int = 0
-var xp_gain = 10
-var boost_tween : Tween 
+var xp_gain = Settings.xp_gain_per_orb
+var on_rail : bool = false
+var obstacle_encountered : bool = false
 
 ### Components ###
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -33,18 +35,12 @@ var boost_tween : Tween
 @onready var mega_boost_audio: AudioStreamPlayer2D = $Audios/MegaBoostAudio
 @onready var footstep_audio: AudioStreamPlayer2D = $Audios/FootstepAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audios/SlideAudio
-@onready var full_boost_audio: AudioStreamPlayer2D = $Audios/FullBoostAudio
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var aura: AnimatedSprite2D = $AuraAnimation
 @onready var obstacle_detector: Area2D = $ObstacleDetector
 @onready var speed_label: Label = $HBoxContainer/SpeedLabel
-@onready var boost_bar: TextureProgressBar = $HBoxContainer/BoostBar
+@onready var boost_bar: BoostBar = $HBoxContainer/BoostBar
 @onready var ray_cast_2d: RayCast2D = $AI/RayCast2D
-
-
-### State machine utils ###
-var on_rail : bool = false
-var obstacle_encountered : bool = false
 
 ### Multiplayer ###
 var input_up: String
@@ -53,8 +49,6 @@ var input_down: String
 @export var player_id := 1
 
 func _ready() -> void:
-	var mat = boost_bar.material.duplicate()
-	boost_bar.material = mat
 	add_to_group("Players")
 	input_up = "JumpP%d" % player_id
 	input_right = "BoostP%d" % player_id
@@ -69,10 +63,10 @@ func _ready() -> void:
 		
 	sprite.modulate = skin.character_color
 	aura.modulate = skin.aura_color
-	mat = boost_bar.material as ShaderMaterial
-	mat.set_shader_parameter("can_boost_color", skin.aura_color)
 	if skin.additional_effect:
 		sprite.material = skin.additional_effect
+	
+	boost_bar.set_bars_colors(skin)
 	
 	var layer_cible = (player_id - 1) + 2
 	boost_bar.visibility_layer = (1 << (layer_cible - 1))
@@ -83,25 +77,7 @@ func _process(delta: float) -> void:
 	speed_label.text = str(int(speed / 10)) + " Km/h"
 
 func update_boost_bar(boost_value : float):
-	if boost_value == boost_bar.max_value and boost_value != boost_bar.value:
-		full_boost_audio.play()
-	if boost_value < boost_bar.value:
-		if boost_tween:
-			boost_tween.kill()
-		
-		boost_tween = create_tween()
-		boost_tween.tween_property(boost_bar, "value", boost_value, 0.5)\
-			.set_trans(Tween.TRANS_SINE)\
-			.set_ease(Tween.EASE_OUT)
-		
-	else:
-		if boost_tween and boost_tween.is_running():
-			boost_tween.kill()
-		boost_bar.value = boost_value
-		
-	var mat = boost_bar.material as ShaderMaterial
-	mat.set_shader_parameter("can_boost", (boost_value >= stock_needed_for_boost))
-	mat.set_shader_parameter("is_full", (boost_value >= boost_bar.max_value))
+	boost_bar.update_value(boost_value, stock_needed_for_boost, max_boost)
 
 func _on_rail_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Rails"):
@@ -129,3 +105,4 @@ func _on_orb_magnet_area_entered(area: Area2D) -> void:
 
 func _play_footstep_audio():
 	footstep_audio.play()
+	

@@ -21,9 +21,10 @@ var rail_deceleration_modifier := 0
 var boost_factor_modifier := 0
 var mega_boost_factor_modifier := 0
 var boost_generation_modifier := 0
-var boost_per_xp_modifier := 0
+var boost_per_xp_modifier := 0.0
 var stock_needed_for_boost_modifier := 0
 var jump_number_modifier := 0
+var max_boost_modifier := 0
 var price := 0
 
 @onready var base_scale := self.scale
@@ -80,15 +81,18 @@ func load_card(data : CardData, show_price : bool):
 	card_name.text = data.card_name
 	card_description.text = data.description
 	rarity_weight = data.rarity_weight
+	
+	if data.illustration:
+		card_illustration.texture = data.illustration
 		
-	if rarity_weight >= 10:
+	if rarity_weight >= 13:
 		card_layout.modulate = Color.BEIGE
-	elif rarity_weight >= 8:
-		card_layout.modulate = Color.LIME_GREEN
-	elif rarity_weight >= 5:
-		card_layout.modulate = Color.ROYAL_BLUE
-	elif rarity_weight >= 3:
-		card_layout.modulate = Color.BLUE_VIOLET
+	elif rarity_weight >= 7:
+		card_layout.modulate = Color.LIGHT_GREEN
+	elif rarity_weight >= 4:
+		card_layout.modulate = Color.DODGER_BLUE
+	elif rarity_weight >= 2:
+		card_layout.modulate = Color.MAGENTA
 	else :
 		card_layout.modulate = Color.GOLD
 	
@@ -104,6 +108,7 @@ func load_card(data : CardData, show_price : bool):
 	boost_per_xp_modifier = data.boost_per_xp_modifier
 	stock_needed_for_boost_modifier = data.stock_needed_for_boost_modifier
 	jump_number_modifier = data.jump_number_modifier
+	max_boost_modifier = data.max_boost_modifier
 	
 	await animation.animation_finished
 
@@ -134,6 +139,7 @@ func apply_modifier_on_player(receiver : Player):
 	receiver.boost_per_xp += boost_per_xp_modifier
 	receiver.stock_needed_for_boost += stock_needed_for_boost_modifier
 	receiver.jump_number += jump_number_modifier
+	receiver.max_boost += max_boost_modifier
 	
 	receiver.xp -= price
 	

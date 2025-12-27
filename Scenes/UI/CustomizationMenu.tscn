@@ -4,8 +4,8 @@
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_doilu"]
 [ext_resource type="PackedScene" uid="uid://dpp1p4ojueecq" path="res://Scenes/UI/SkinSelector.tscn" id="3_7gg45"]
 [ext_resource type="Shader" uid="uid://bt2bvnojqjx08" path="res://Assets/Shaders/WhiteGlow.gdshader" id="3_tuw86"]
-[ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/TileSet.png" id="7_uunkj"]
-[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/Rail.png" id="8_l8o3i"]
+[ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/World/TileSet.png" id="7_uunkj"]
+[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/World/Rail.png" id="8_l8o3i"]
 [ext_resource type="PackedScene" uid="uid://ckxxk2n0alobo" path="res://Scenes/UI/ColorPickerButtonGroup.tscn" id="9_mu8rh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jw4so"]

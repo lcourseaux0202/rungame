@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.animation_player.play("RunAnimation")
-	player.speed = player.base_speed
+	player.speed = min(player.base_speed, player.max_speed)
 	player.set_collision_mask_value(2, false)
 
 func physics_update(delta: float) -> void:

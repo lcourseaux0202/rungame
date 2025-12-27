@@ -1,9 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://du523sab55bjb"]
+[gd_scene load_steps=32 format=3 uid="uid://du523sab55bjb"]
 
 [ext_resource type="Script" uid="uid://cr6nj02y2ice1" path="res://Scripts/Player/Player.gd" id="1_ji083"]
-[ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/PlayerSheet.png" id="2_0kmp4"]
+[ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/Player/PlayerSheet.png" id="2_0kmp4"]
 [ext_resource type="AudioStream" uid="uid://7m6drx8srcsi" path="res://Assets/SFX/MegaBoost.wav" id="3_0kmp4"]
-[ext_resource type="Texture2D" uid="uid://dqp2huygukycd" path="res://Assets/Sprites/Aura.png" id="3_0u84n"]
+[ext_resource type="Texture2D" uid="uid://dqp2huygukycd" path="res://Assets/Sprites/Player/Aura.png" id="3_0u84n"]
 [ext_resource type="AudioStream" uid="uid://1o4xc3paei4f" path="res://Assets/SFX/Boost.wav" id="3_epg6k"]
 [ext_resource type="Script" uid="uid://cialqfn8wbskh" path="res://Scripts/StateMachine/StateMachine.gd" id="3_i5acl"]
 [ext_resource type="Script" uid="uid://b1gvbpaslc7ab" path="res://Scripts/Player/States/Idle.gd" id="4_epg6k"]
@@ -12,14 +12,11 @@
 [ext_resource type="Script" uid="uid://b6r46kvq7u43c" path="res://Scripts/Player/States/Jumping.gd" id="6_esmjy"]
 [ext_resource type="Script" uid="uid://da1iub5fsqlxi" path="res://Scripts/Player/States/Falling.gd" id="7_6tu5v"]
 [ext_resource type="AudioStream" uid="uid://bdscs646bp37q" path="res://Assets/SFX/Slide.wav" id="7_esmjy"]
-[ext_resource type="AudioStream" uid="uid://cnul5ebcwjexq" path="res://Assets/SFX/FullBoost.wav" id="8_1e6p3"]
 [ext_resource type="Script" uid="uid://daypxasmdawdp" path="res://Scripts/Player/States/Sliding.gd" id="8_spxdj"]
 [ext_resource type="Script" uid="uid://wbd0kxuyjb07" path="res://Scripts/Player/States/Recovering.gd" id="9_0objx"]
 [ext_resource type="Script" uid="uid://bpfs4urg8b033" path="res://Scripts/Player/States/Boosting.gd" id="10_w71ue"]
-[ext_resource type="Texture2D" uid="uid://bbm2tuu76q74k" path="res://Assets/Sprites/GaugeBackground.png" id="16_0objx"]
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="16_6tu5v"]
-[ext_resource type="Shader" uid="uid://c03nohjd3t80e" path="res://Assets/Shaders/Rainbow.gdshader" id="16_w71ue"]
-[ext_resource type="Texture2D" uid="uid://cdn7p8yadax3u" path="res://Assets/Sprites/GaugeProgress.png" id="17_w71ue"]
+[ext_resource type="PackedScene" uid="uid://c7ar5m3koxa66" path="res://Scenes/Player/BoostBar.tscn" id="16_spxdj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epg6k"]
 atlas = ExtResource("3_0u84n")
@@ -136,13 +133,6 @@ _data = {
 &"RunAnimation": SubResource("Animation_u2myq")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1e6p3"]
-shader = ExtResource("16_w71ue")
-shader_parameter/can_boost_color = Color(1, 1, 1, 1)
-shader_parameter/no_boost_color = Color(0.3, 0.3, 0.3, 1)
-shader_parameter/can_boost = false
-shader_parameter/is_full = false
-
 [sub_resource type="LabelSettings" id="LabelSettings_spxdj"]
 font = ExtResource("16_6tu5v")
 font_size = 24
@@ -219,12 +209,6 @@ volume_db = -15.0
 pitch_scale = 0.9
 bus = &"SFX"
 
-[node name="FullBoostAudio" type="AudioStreamPlayer2D" parent="Audios"]
-position = Vector2(-48, -72)
-stream = ExtResource("8_1e6p3")
-volume_db = -10.0
-bus = &"SFX"
-
 [node name="AI" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="AI"]
@@ -274,13 +258,10 @@ offset_right = 53.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
-[node name="BoostBar" type="TextureProgressBar" parent="HBoxContainer"]
-material = SubResource("ShaderMaterial_1e6p3")
+[node name="BoostBar" parent="HBoxContainer" instance=ExtResource("16_spxdj")]
 layout_mode = 2
-fill_mode = 4
-texture_under = ExtResource("16_0objx")
-texture_progress = ExtResource("17_w71ue")
 
 [node name="SpeedLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2

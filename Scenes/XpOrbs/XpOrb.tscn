@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bm4nb7wif5mng"]
 
 [ext_resource type="Script" uid="uid://5m7f8oche7ul" path="res://Scripts/Game/XpOrb.gd" id="1_tr2m2"]
-[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/White.png" id="2_cj4bm"]
+[ext_resource type="Texture2D" uid="uid://fcj0tuegkq2k" path="res://Assets/Sprites/Others/White.png" id="2_cj4bm"]
 [ext_resource type="AudioStream" uid="uid://civnpefgkarqu" path="res://Assets/SFX/XpCollect.mp3" id="3_3ivko"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifxuk"]

@@ -10,10 +10,11 @@ func enter(previous_state_path: String, data := {}) -> void:
 		player.boost_stock -= 100
 	else:
 		player.boost_audio.play()
-		player.speed = player.max_speed * player.boost_factor
+		player.speed = max(player.speed, player.max_speed) * player.boost_factor
 		player.boost_stock -= player.stock_needed_for_boost
 	
 	player.update_boost_bar(player.boost_stock)
+	EventBus.zoom_on_player.emit(player)
 
 func physics_update(delta: float) -> void:
 	player.animation_player.speed_scale = max(inverse_lerp(player.base_speed, player.max_speed * player.mega_boost_factor, player.speed) * 3, player.min_animation_speed_scale)

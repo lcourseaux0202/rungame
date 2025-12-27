@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://c5ygm6angjet0"]
+
+[ext_resource type="Script" uid="uid://c7wvij1ipayvb" path="res://Scripts/CardUpgrade/CardData.gd" id="1_n06nh"]
+[ext_resource type="Texture2D" uid="uid://dgff4r8vg0h4" path="res://Assets/Sprites/CardsIllustration/BonbonArcEnCiel.png" id="1_snfo8"]
+
+[resource]
+script = ExtResource("1_n06nh")
+card_name = "Bonbon arc-en-ciel"
+description = "Augmente un peu tout"
+illustration = ExtResource("1_snfo8")
+rarity_weight = 3
+base_speed_modifier = 40
+max_speed_modifier = 20
+acceleration_modifier = 30
+deceleration_modifier = -15
+boost_deceleration_modifier = -15
+rail_deceleration_modifier = -15
+boost_factor_modifier = 0.05
+mega_boost_factor_modifier = 0.1
+boost_generation_modifier = 10
+boost_per_xp_modifier = 0.5
+stock_needed_for_boost_modifier = -5
+jump_number_modifier = 0
+max_boost_modifier = 0
+price = 180
+metadata/_custom_type_script = "uid://c7wvij1ipayvb"

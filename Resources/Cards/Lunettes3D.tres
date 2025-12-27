@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dplemdkvvpdt4"]
+
+[ext_resource type="Texture2D" uid="uid://dq6skjh8m1iya" path="res://Assets/Sprites/CardsIllustration/Lunettes3D.png" id="1_kqdtq"]
+[ext_resource type="Script" uid="uid://c7wvij1ipayvb" path="res://Scripts/CardUpgrade/CardData.gd" id="2_sjuvi"]
+
+[resource]
+script = ExtResource("2_sjuvi")
+card_name = "Lunettes 3D"
+description = "Vitesse rail +++
+Accélération ++"
+illustration = ExtResource("1_kqdtq")
+rarity_weight = 5
+base_speed_modifier = 0
+max_speed_modifier = 0
+acceleration_modifier = 30
+deceleration_modifier = 0
+boost_deceleration_modifier = 0
+rail_deceleration_modifier = -20
+boost_factor_modifier = 0.0
+mega_boost_factor_modifier = 0.0
+boost_generation_modifier = 0
+boost_per_xp_modifier = 0
+stock_needed_for_boost_modifier = 0
+jump_number_modifier = 0
+max_boost_modifier = 0
+price = 135
+metadata/_custom_type_script = "uid://c7wvij1ipayvb"

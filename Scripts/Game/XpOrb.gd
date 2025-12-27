@@ -24,7 +24,7 @@ func make_disappear(player: Player) -> void:
 	
 	await tween.finished
 	
-	player.boost_stock = min(player.boost_stock + player.boost_per_xp, 100.0)
+	player.boost_stock = min(player.boost_stock + player.boost_per_xp, player.max_boost)
 	player.update_boost_bar(player.boost_stock)
 	
 	if collect_audio:

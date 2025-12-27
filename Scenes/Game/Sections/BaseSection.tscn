@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://pqfdxijpc6fk"]
 
 [ext_resource type="Script" uid="uid://yfxivfx8bx6n" path="res://Scripts/Game/Sections/BaseSection.gd" id="1_3j7c1"]
-[ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/TileSet.png" id="2_1jfvo"]
+[ext_resource type="Texture2D" uid="uid://cj6alplnvr152" path="res://Assets/Sprites/World/TileSet.png" id="2_1jfvo"]
 
 [sub_resource type="Shader" id="Shader_3j7c1"]
 code = "shader_type canvas_item;

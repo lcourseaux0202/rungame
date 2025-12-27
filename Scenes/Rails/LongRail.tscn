@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc4h6rmo1whot"]
 
 [ext_resource type="PackedScene" uid="uid://dtlcb5fjkeg5r" path="res://Scenes/Rails/BaseRail.tscn" id="1_1njhl"]
-[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/Rail.png" id="2_axj1j"]
+[ext_resource type="Texture2D" uid="uid://bc6ge4br4dryv" path="res://Assets/Sprites/World/Rail.png" id="2_axj1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pv6n"]
 size = Vector2(704, 16)

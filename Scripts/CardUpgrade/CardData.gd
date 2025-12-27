@@ -16,8 +16,9 @@ class_name CardData
 @export var boost_factor_modifier := 0.0
 @export var mega_boost_factor_modifier := 0.0
 @export var boost_generation_modifier := 0
-@export var boost_per_xp_modifier := 0
+@export var boost_per_xp_modifier := 0.0
 @export var stock_needed_for_boost_modifier := 0
 @export var jump_number_modifier := 0
+@export var max_boost_modifier := 0
 
 @export var price := 150
