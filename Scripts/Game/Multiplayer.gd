@@ -49,6 +49,7 @@ func _add_new_player_viewport(new_player_node : Player, index : int) -> void:
 	var new_subviewport_container : SubViewportContainer = SubViewportContainer.new()
 	var new_subviewport : SubViewport = SubViewport.new()
 	new_subviewport_container.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	new_subviewport.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
 	new_subviewport.disable_3d = true
 	new_subviewport.audio_listener_enable_2d = true
 	
