@@ -12,7 +12,7 @@ Vitesse min --"
 illustration = ExtResource("1_f4vry")
 rarity_weight = 9
 base_speed_modifier = -50
-max_speed_modifier = 10
+max_speed_modifier = 20
 acceleration_modifier = -60
 deceleration_modifier = 0
 boost_deceleration_modifier = 0

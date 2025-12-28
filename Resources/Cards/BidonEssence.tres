@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://c25xdgcawdpii"]
+
+[ext_resource type="Texture2D" uid="uid://co2lts6bjmhkm" path="res://Assets/Sprites/CardsIllustration/BidonEssence.png" id="1_d4byb"]
+[ext_resource type="Script" uid="uid://c7wvij1ipayvb" path="res://Scripts/CardUpgrade/CardData.gd" id="1_xfqdh"]
+
+[resource]
+script = ExtResource("1_xfqdh")
+card_name = "Bidon essence"
+description = "Accélération +++++
+Vitesse max +++++"
+illustration = ExtResource("1_d4byb")
+rarity_weight = 1
+base_speed_modifier = 0
+max_speed_modifier = 200
+acceleration_modifier = 10000
+deceleration_modifier = 0
+boost_deceleration_modifier = 0
+rail_deceleration_modifier = 0
+boost_factor_modifier = 0.0
+mega_boost_factor_modifier = 0.0
+boost_generation_modifier = 0
+boost_per_xp_modifier = 0.0
+stock_needed_for_boost_modifier = 0
+jump_number_modifier = 0
+max_boost_modifier = 0
+orb_magnet_radius_modifier = 0
+gravity_modifer = 0
+price = 230
+metadata/_custom_type_script = "uid://c7wvij1ipayvb"

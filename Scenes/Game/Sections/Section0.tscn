@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://q3du831qlygd"]
+[gd_scene load_steps=3 format=4 uid="uid://q3du831qlygd"]
 
 [ext_resource type="PackedScene" uid="uid://pqfdxijpc6fk" path="res://Scenes/Game/Sections/BaseSection.tscn" id="1_pq1n0"]
-[ext_resource type="PackedScene" uid="uid://dn1ns2hgn6rfq" path="res://Scenes/XpOrbs/XpOrbsLine10.tscn" id="2_um5kc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvdj1"]
 size = Vector2(20, 410)
@@ -20,6 +19,3 @@ position = Vector2(1360, 0)
 [node name="CollisionShape2D" parent="NextSectionArea" index="0"]
 position = Vector2(0, -195)
 shape = SubResource("RectangleShape2D_hvdj1")
-
-[node name="XpOrbsLine10" parent="XpOrbsContainer" index="0" instance=ExtResource("2_um5kc")]
-position = Vector2(1082, -16)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqp2huygukycd" path="res://Assets/Sprites/Player/Aura.png" id="3_0u84n"]
 [ext_resource type="AudioStream" uid="uid://1o4xc3paei4f" path="res://Assets/SFX/Boost.wav" id="3_epg6k"]
 [ext_resource type="Script" uid="uid://cialqfn8wbskh" path="res://Scripts/StateMachine/StateMachine.gd" id="3_i5acl"]
+[ext_resource type="PackedScene" uid="uid://c6hnlyoqhgc2h" path="res://Scenes/Player/OrbMagnet.tscn" id="4_0objx"]
 [ext_resource type="Script" uid="uid://b1gvbpaslc7ab" path="res://Scripts/Player/States/Idle.gd" id="4_epg6k"]
 [ext_resource type="Script" uid="uid://dtw64wtrvuiwq" path="res://Scripts/Player/States/Running.gd" id="5_0u84n"]
 [ext_resource type="AudioStream" uid="uid://bc56ojg4ow21c" path="res://Assets/SFX/Footstep.mp3" id="6_0u84n"]
@@ -55,9 +56,6 @@ size = Vector2(20, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h58ff"]
 size = Vector2(3.5, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0objx"]
-radius = 17.0294
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_epg6k"]
 random_pitch = 1.5
@@ -177,13 +175,7 @@ position = Vector2(10, -11)
 shape = SubResource("RectangleShape2D_h58ff")
 debug_color = Color(0.848926, 0.374343, 0, 0.42)
 
-[node name="OrbMagnet" type="Area2D" parent="." groups=["Orbs"]]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbMagnet"]
-position = Vector2(0, -13)
-shape = SubResource("CircleShape2D_0objx")
+[node name="OrbMagnet" parent="." instance=ExtResource("4_0objx")]
 
 [node name="Audios" type="Node2D" parent="."]
 
@@ -274,4 +266,3 @@ label_settings = SubResource("LabelSettings_spxdj")
 [connection signal="body_exited" from="RailDetector" to="." method="_on_rail_detector_body_exited"]
 [connection signal="body_entered" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_entered"]
 [connection signal="body_exited" from="ObstacleDetector" to="." method="_on_obstacle_detector_body_exited"]
-[connection signal="area_entered" from="OrbMagnet" to="." method="_on_orb_magnet_area_entered"]

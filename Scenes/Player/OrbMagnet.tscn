@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6hnlyoqhgc2h"]
+
+[ext_resource type="Script" uid="uid://culmhh7qkfo4m" path="res://Scripts/Player/OrbMagnet.gd" id="1_bvh8s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0objx"]
+radius = 17.0
+
+[node name="OrbMagnet" type="Area2D" groups=["Orbs"]]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_bvh8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_0objx")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

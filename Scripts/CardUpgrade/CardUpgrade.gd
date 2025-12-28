@@ -25,6 +25,8 @@ var boost_per_xp_modifier := 0.0
 var stock_needed_for_boost_modifier := 0
 var jump_number_modifier := 0
 var max_boost_modifier := 0
+var orb_magnet_radius_modifier := 0
+var gravity_modifier := 0
 var price := 0
 
 @onready var base_scale := self.scale
@@ -69,7 +71,7 @@ func _input(event: InputEvent) -> void:
 		pressed.emit(self)
 
 func load_card(data : CardData, show_price : bool):
-	price = (data.price + randi_range(-data.price * 0.1, data.price * 0.1)) * (Settings.level_length / 10000)
+	price = (data.price + randi_range(-data.price * 0.1, data.price * 0.1))
 	if show_price :
 		animation.play("RevealAnimation")
 		price_label.text = str(price)
@@ -109,6 +111,8 @@ func load_card(data : CardData, show_price : bool):
 	stock_needed_for_boost_modifier = data.stock_needed_for_boost_modifier
 	jump_number_modifier = data.jump_number_modifier
 	max_boost_modifier = data.max_boost_modifier
+	orb_magnet_radius_modifier = data.orb_magnet_radius_modifier
+	gravity_modifier = data.gravity_modifer
 	
 	await animation.animation_finished
 
@@ -140,6 +144,8 @@ func apply_modifier_on_player(receiver : Player):
 	receiver.stock_needed_for_boost += stock_needed_for_boost_modifier
 	receiver.jump_number += jump_number_modifier
 	receiver.max_boost += max_boost_modifier
+	receiver.update_orb_magnet_radius(orb_magnet_radius_modifier)
+	receiver.gravity += gravity_modifier
 	
 	receiver.xp -= price
 	

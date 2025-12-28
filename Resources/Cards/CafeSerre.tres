@@ -22,5 +22,6 @@ boost_per_xp_modifier = 100.0
 stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 200
-price = 230
+orb_magnet_radius_modifier = 0
+price = 190
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

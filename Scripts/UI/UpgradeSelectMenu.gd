@@ -12,7 +12,7 @@ var displayed_cards_number := 2
 var receivers : Array[Player]
 var current_receiver: Player
 var current_receiver_index := 0
-var base_reroll_price := 50
+var base_reroll_price := 10
 var gamemode : Settings.GAMEMODE
 var reroll_price
 var tween : Tween
@@ -70,7 +70,7 @@ func _close():
 func reveal(mode : Settings.GAMEMODE) -> void:
 	_remove_all_displayed_cards()
 	gamemode = mode
-	reroll_price = (base_reroll_price + randi_range(-base_reroll_price * 0.1, base_reroll_price * 0.1)) * (Settings.level_length / 10000)
+	reroll_price = (base_reroll_price + randi_range(-base_reroll_price * 0.1, base_reroll_price * 0.1)) 
 	reroll_button.text = "Nouveau tirage (" + str(reroll_price) + ")"
 	modulate.a = 0.0
 	show()

@@ -41,6 +41,7 @@ var obstacle_encountered : bool = false
 @onready var speed_label: Label = $HBoxContainer/SpeedLabel
 @onready var boost_bar: BoostBar = $HBoxContainer/BoostBar
 @onready var ray_cast_2d: RayCast2D = $AI/RayCast2D
+@onready var orb_magnet: OrbMagnet = $OrbMagnet
 
 ### Multiplayer ###
 var input_up: String
@@ -50,6 +51,8 @@ var input_down: String
 
 func _ready() -> void:
 	add_to_group("Players")
+	orb_magnet.orb_detected.connect(_handle_orb_gathering)
+	
 	input_up = "JumpP%d" % player_id
 	input_right = "BoostP%d" % player_id
 	input_down = "FastFallP%d" % player_id
@@ -75,6 +78,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	aura.modulate.a = min(inverse_lerp(max_speed, max_speed*mega_boost_factor, speed),0.5)
 	speed_label.text = str(int(speed / 10)) + " Km/h"
+	speed = min(speed, max_speed*mega_boost_factor)
 
 func update_boost_bar(boost_value : float):
 	boost_bar.update_value(boost_value, stock_needed_for_boost, max_boost)
@@ -97,12 +101,12 @@ func _on_obstacle_detector_body_exited(body: Node2D) -> void:
 		obstacle_encountered = false
 		sprite.modulate.a = 1.0
 		
-func _on_orb_magnet_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Orbs"):
-		var orb : XpOrb = area as XpOrb
-		orb.make_disappear(self)
-		xp += xp_gain
+func _handle_orb_gathering(orb: XpOrb) -> void:
+	orb.make_disappear(self)
+	xp += xp_gain
 
 func _play_footstep_audio():
 	footstep_audio.play()
 	
+func update_orb_magnet_radius(modifier : float):
+	orb_magnet.update_collision_radius(modifier)

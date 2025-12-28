@@ -20,5 +20,7 @@ class_name CardData
 @export var stock_needed_for_boost_modifier := 0
 @export var jump_number_modifier := 0
 @export var max_boost_modifier := 0
+@export var orb_magnet_radius_modifier := 0
+@export var gravity_modifer := 0
 
 @export var price := 150
