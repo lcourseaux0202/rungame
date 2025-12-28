@@ -22,5 +22,6 @@ class_name CardData
 @export var max_boost_modifier := 0
 @export var orb_magnet_radius_modifier := 0
 @export var gravity_modifer := 0
+@export var boost_passive_generation := 0
 
 @export var price := 150

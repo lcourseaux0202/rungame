@@ -27,6 +27,8 @@ var jump_number_modifier := 0
 var max_boost_modifier := 0
 var orb_magnet_radius_modifier := 0
 var gravity_modifier := 0
+var boost_passive_generation := 0
+
 var price := 0
 
 @onready var base_scale := self.scale
@@ -113,6 +115,7 @@ func load_card(data : CardData, show_price : bool):
 	max_boost_modifier = data.max_boost_modifier
 	orb_magnet_radius_modifier = data.orb_magnet_radius_modifier
 	gravity_modifier = data.gravity_modifer
+	boost_passive_generation = data.boost_passive_generation
 	
 	await animation.animation_finished
 
@@ -146,6 +149,7 @@ func apply_modifier_on_player(receiver : Player):
 	receiver.max_boost += max_boost_modifier
 	receiver.update_orb_magnet_radius(orb_magnet_radius_modifier)
 	receiver.gravity += gravity_modifier
+	receiver.boost_passive_generation += boost_passive_generation
 	
 	receiver.xp -= price
 	

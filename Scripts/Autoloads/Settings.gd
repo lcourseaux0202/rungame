@@ -1,7 +1,7 @@
 extends Node
 
 var max_sections = 100
-var level_length = 50000
+var level_length = 20000
 var xp_gain_per_orb = 10
 
 enum GAMEMODE{

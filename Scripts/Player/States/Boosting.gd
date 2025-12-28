@@ -17,6 +17,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	EventBus.zoom_on_player.emit(player)
 
 func physics_update(delta: float) -> void:
+	player.boost_stock = clamp(player.boost_stock + player.boost_passive_generation * delta,0, player.max_boost)
+	player.update_boost_bar(player.boost_stock)
 	player.animation_player.speed_scale = max(inverse_lerp(player.base_speed, player.max_speed * player.mega_boost_factor, player.speed) * 3, player.min_animation_speed_scale)
 	player.speed = player.speed - player.boost_deceleration * delta
 	player.velocity.x = player.speed

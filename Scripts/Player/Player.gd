@@ -16,6 +16,7 @@ class_name Player extends CharacterBody2D
 @export var boost_per_xp := 1.0
 @export var stock_needed_for_boost := 30.0
 @export var max_boost := 100
+@export var boost_passive_generation := 0
 @export_range(1,10) var jump_number := 2
 @export_range(0.0,10.0) var min_animation_speed_scale := 0.6
 @export var auto := false
