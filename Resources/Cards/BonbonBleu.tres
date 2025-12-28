@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_2k7ho")
-card_name = "Bonbon bleu"
+card_name = "Bonbon à l'huître"
 description = "Accélération +"
 illustration = ExtResource("1_rgvl7")
 rarity_weight = 15
@@ -23,5 +23,6 @@ stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 0
 orb_magnet_radius_modifier = 0
-price = 60
+gravity_modifer = 0
+price = 100
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

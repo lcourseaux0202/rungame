@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("2_ixk4b")
 card_name = "Steak étoilé"
-description = "Vitesse max. +"
+description = "Vitesse max. +++"
 illustration = ExtResource("1_5gbal")
 rarity_weight = 3
 base_speed_modifier = 0
-max_speed_modifier = 20
+max_speed_modifier = 60
 acceleration_modifier = 0
 deceleration_modifier = 0
 boost_deceleration_modifier = 0
@@ -22,5 +22,7 @@ boost_per_xp_modifier = 0.0
 stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 0
-price = 170
+orb_magnet_radius_modifier = 0
+gravity_modifer = 0
+price = 400
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

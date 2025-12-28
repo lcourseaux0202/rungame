@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_igf75")
-card_name = "Bonbon rose"
-description = "Vitesse min +"
+card_name = "Bonbon à la crevette"
+description = "Vitesse min. +"
 illustration = ExtResource("1_75fj3")
 rarity_weight = 15
 base_speed_modifier = 40
@@ -22,5 +22,7 @@ boost_per_xp_modifier = 0.0
 stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 0
-price = 60
+orb_magnet_radius_modifier = 0
+gravity_modifer = 0
+price = 100
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

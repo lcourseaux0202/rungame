@@ -6,17 +6,16 @@
 [resource]
 script = ExtResource("2_36ngf")
 card_name = "Chasuble sale"
-description = "Durée boost +
-Puiss. mini boost +"
+description = "Durée boost +"
 illustration = ExtResource("1_eh7v6")
 rarity_weight = 15
 base_speed_modifier = 0
 max_speed_modifier = 0
 acceleration_modifier = 0
 deceleration_modifier = -20
-boost_deceleration_modifier = -15
+boost_deceleration_modifier = -20
 rail_deceleration_modifier = 0
-boost_factor_modifier = 0.5
+boost_factor_modifier = 0.0
 mega_boost_factor_modifier = 0.0
 boost_generation_modifier = 0
 boost_per_xp_modifier = 0.0
@@ -24,5 +23,6 @@ stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 0
 orb_magnet_radius_modifier = 0
-price = 95
+gravity_modifer = 0
+price = 100
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

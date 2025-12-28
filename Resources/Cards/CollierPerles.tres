@@ -6,11 +6,10 @@
 [resource]
 script = ExtResource("2_we46l")
 card_name = "Collier de perles"
-description = "Boost par orbe ++
-Vitesse min +"
+description = "Boost par orbe ++"
 illustration = ExtResource("1_dv60m")
 rarity_weight = 9
-base_speed_modifier = 40
+base_speed_modifier = 0
 max_speed_modifier = 0
 acceleration_modifier = 0
 deceleration_modifier = 0
@@ -19,9 +18,11 @@ rail_deceleration_modifier = 0
 boost_factor_modifier = 0.0
 mega_boost_factor_modifier = 0.0
 boost_generation_modifier = 0
-boost_per_xp_modifier = 0.8
+boost_per_xp_modifier = 1.5
 stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 0
-price = 120
+orb_magnet_radius_modifier = 0
+gravity_modifer = 0
+price = 200
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

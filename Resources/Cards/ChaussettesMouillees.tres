@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_yy18u")
 card_name = "Chaussettes mouillées"
-description = "Boost généré à chaque pas"
+description = "Chacun de vos pas vous chargent d'énergie."
 illustration = ExtResource("1_tq4eo")
 rarity_weight = 1
 base_speed_modifier = 0
@@ -23,6 +23,6 @@ stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 0
 orb_magnet_radius_modifier = 0
-gravity_modifer = 0.0
-price = 200
+gravity_modifer = 0
+price = 500
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

@@ -6,14 +6,12 @@
 [resource]
 script = ExtResource("2_f7d42")
 card_name = "Jus de pomme"
-description = "Boost max. ++
-Accélération -
-"
+description = "Boost max. ++"
 illustration = ExtResource("1_3i1k3")
 rarity_weight = 5
 base_speed_modifier = 0
 max_speed_modifier = 0
-acceleration_modifier = -40
+acceleration_modifier = 0
 deceleration_modifier = 0
 boost_deceleration_modifier = 0
 rail_deceleration_modifier = 0
@@ -24,5 +22,7 @@ boost_per_xp_modifier = 0.0
 stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 25
-price = 115
+orb_magnet_radius_modifier = 0
+gravity_modifer = 0
+price = 200
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

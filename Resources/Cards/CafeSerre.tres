@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_aqim4")
-card_name = "Café serré"
-description = "Les orbes surchargent votre boost, les rails le drainent"
+card_name = "Café très serré"
+description = "Une petite gorgée pour vous requinquer"
 illustration = ExtResource("1_hatjj")
 rarity_weight = 1
 base_speed_modifier = 0
@@ -23,5 +23,6 @@ stock_needed_for_boost_modifier = 0
 jump_number_modifier = 0
 max_boost_modifier = 200
 orb_magnet_radius_modifier = 0
-price = 190
+gravity_modifer = 0
+price = 500
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

@@ -6,23 +6,23 @@
 [resource]
 script = ExtResource("2_b7l63")
 card_name = "Ailes de démons"
-description = "Saut +
-Puiss. mini boost +
-Vitesse rail +"
+description = "Pacte pour un saut et vitesse augmentée."
 illustration = ExtResource("1_polg0")
 rarity_weight = 3
-base_speed_modifier = 0
-max_speed_modifier = 0
-acceleration_modifier = 0
+base_speed_modifier = 66
+max_speed_modifier = 66
+acceleration_modifier = 66
 deceleration_modifier = 0
 boost_deceleration_modifier = 0
-rail_deceleration_modifier = -8
-boost_factor_modifier = 0.7
+rail_deceleration_modifier = 0
+boost_factor_modifier = 0.0
 mega_boost_factor_modifier = 0.0
 boost_generation_modifier = 0
 boost_per_xp_modifier = 0.0
 stock_needed_for_boost_modifier = 0
 jump_number_modifier = 1
 max_boost_modifier = 0
-price = 150
+orb_magnet_radius_modifier = 0
+gravity_modifer = 0
+price = 400
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

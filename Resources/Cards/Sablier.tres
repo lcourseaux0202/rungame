@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_iiha2")
 card_name = "Sablier"
-description = "Vos jambes ne peuvent plus s'arrêter d'elles-mêmes"
+description = "Vos jambes ne peuvent plus s'arrêter d'elles-mêmes."
 illustration = ExtResource("1_t7tay")
 rarity_weight = 1
 base_speed_modifier = 0
@@ -24,5 +24,5 @@ jump_number_modifier = 0
 max_boost_modifier = 0
 orb_magnet_radius_modifier = 0
 gravity_modifer = 0
-price = 215
+price = 500
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"
