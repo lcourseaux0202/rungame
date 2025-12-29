@@ -1,6 +1,8 @@
 extends Node
 
+
 const player_camera_scene = preload("res://Scenes/Game/PlayerCamera.tscn")
+
 @onready var screen_container: GridContainer = $CenterContainer/GridContainer
 @onready var upgrade_select_menu: UpgradeSelectMenu = $UpgradeSelectMenu
 @onready var settings_menu: SettingsMenu = $SettingsMenu
@@ -13,8 +15,11 @@ var first_subviewport : SubViewport = null
 var game_node : Level = null
 var players : Array[Player]
 var player_cameras : Array[PlayerCamera]
+
+@export var difficulty_curve : Curve
 var restarting := false
-var current_level_length := Settings.level_length
+var current_level_length := 0
+var progression := 0.0
 
 const LEVEL_TIME_DURATION = 99
 const MAX_BOOST_STOCK_HELP = 90
@@ -93,11 +98,15 @@ func _update_viewport_size() -> void :
 		subviewport_node.size.y = game_size.y / ceil(float(screen_container.get_child_count()) / float(screen_container.columns))
 
 func _start_game():
+	_set_next_level_length()
+	_update_cameras_limit()
+	game_node.place_finish_line(current_level_length)
 	for player in players:
 		player.start_running()
 	if Settings.is_gamemode_solo():
 		solo_game_ui.start_timer(LEVEL_TIME_DURATION)
 		solo_game_ui.game_over.connect(_trigger_gameover_sequence)
+		
 
 func _trigger_restart_sequence() -> void :
 	if Settings.is_gamemode_solo():
@@ -106,6 +115,7 @@ func _trigger_restart_sequence() -> void :
 	upgrade_select_menu.set_card_receivers(_get_players_ordered_by_position())
 	await upgrade_select_menu.reveal()
 	
+	_set_next_level_length()
 	game_node.restart()
 	var position_buffer = 0
 	if Settings.is_gamemode_solo():
@@ -118,12 +128,14 @@ func _trigger_restart_sequence() -> void :
 		player.speed = player.base_speed
 		player.boost_stock = 0
 		player.update_boost_bar(0)
-	for camera in player_cameras:
-		camera.global_position.x = 0
-		if Settings.is_gamemode_solo():
-			camera.limit_right = current_level_length
+	_update_cameras_limit()
 	restarting = false
 		
+func _set_next_level_length() -> void:
+	progression = min(progression + 1.0 / Settings.number_of_levels, 1.0) 
+	current_level_length = Settings.LAST_LEVEL_LENGTH * difficulty_curve.sample(progression)
+	print(progression)
+	print(current_level_length)
 	
 func _trigger_gameover_sequence() -> void:
 	settings_menu._back_to_menu()
@@ -150,3 +162,10 @@ func _get_players_ordered_by_position() -> Array[Player]:
 		list.append(player)
 	list.sort_custom(func(a, b): return a.global_position.x < b.global_position.x)
 	return list
+
+func _update_cameras_limit():
+	for camera in player_cameras:
+		camera.limit_right = current_level_length
+		if Settings.is_gamemode_solo():
+			camera.global_position.x = 0
+		

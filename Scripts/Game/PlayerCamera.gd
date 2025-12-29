@@ -14,7 +14,6 @@ var player : Player = null
 @export var horizontal_speed: float = 8.0
 
 func _ready() -> void:
-	limit_right = Settings.level_length
 	if Settings.is_gamemode_solo() :
 		follow_threshold *= 2
 	EventBus.zoom_on_player.connect(_zoom_on_player)

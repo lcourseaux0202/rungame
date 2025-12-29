@@ -1,8 +1,11 @@
 extends Node
 
-var max_sections = 100
-var level_length := 5000
-var xp_gain_per_orb = 5
+const LAST_LEVEL_LENGTH := 999999
+var max_sections := 100
+var xp_gain_per_orb := 5
+var number_of_levels := 20
+
+var difficulty_curve : Curve = preload("res://Resources/DifficultyCurve.tres")
 
 enum GAMEMODE{
 	SOLO,
@@ -38,3 +41,4 @@ func is_gamemode_solo():
 	
 func is_gamemode_multi():
 	return gamemode == GAMEMODE.MULTIPLAYER
+	

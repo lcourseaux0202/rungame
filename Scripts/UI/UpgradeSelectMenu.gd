@@ -18,6 +18,7 @@ var reroll_price
 var tween : Tween
 
 func _ready() -> void:
+	continue_button.hide()
 	label_orb_stock.hide()
 	reroll_button.hide()
 	continue_button.pressed.connect(_continue_pressed)
@@ -65,6 +66,7 @@ func _close():
 	tween.tween_property(self, "modulate", Color(Color.BLACK, 0.0), 0.5)
 	await tween.finished
 	label_orb_stock.hide()
+	continue_button.hide()
 	hide()
 
 func reveal() -> void:
@@ -78,6 +80,7 @@ func reveal() -> void:
 	tween = create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "modulate", Color(Color.WHITE, 1.0), 1.0)
 	await tween.finished
+	continue_button.show()
 	_draw_cards()
 	if Settings.is_gamemode_solo():
 		label_orb_stock.show()
