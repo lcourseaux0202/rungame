@@ -15,7 +15,7 @@ var player : Player = null
 
 func _ready() -> void:
 	limit_right = Settings.level_length
-	if Settings.gamemode == Settings.GAMEMODE.SOLO :
+	if Settings.is_gamemode_solo() :
 		follow_threshold *= 2
 	EventBus.zoom_on_player.connect(_zoom_on_player)
 
@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		current_speed = upward_speed
 	global_position.y = lerp(global_position.y, target_y, current_speed * delta)
+
 
 
 func _process(_delta: float) -> void:

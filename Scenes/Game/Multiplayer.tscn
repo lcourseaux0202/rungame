@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckubxnuwec1fx"]
+[gd_scene load_steps=7 format=3 uid="uid://ckubxnuwec1fx"]
 
 [ext_resource type="Script" uid="uid://dtvqnf3vj4b4" path="res://Scripts/Game/Multiplayer.gd" id="1_4chtp"]
 [ext_resource type="AudioStream" uid="uid://bb84ffwrccu2h" path="res://Assets/Tracks/SpeedLight.mp3" id="2_op3lo"]
 [ext_resource type="PackedScene" uid="uid://beeawe0b33fb1" path="res://Scenes/UI/UpgradeSelectMenu.tscn" id="3_ojbuf"]
 [ext_resource type="PackedScene" uid="uid://beg65mxmwr3sa" path="res://Scenes/UI/SettingsMenu.tscn" id="4_66irs"]
 [ext_resource type="PackedScene" uid="uid://y1ew2hgm5smv" path="res://Scenes/UI/LoadingScreen.tscn" id="4_k4lmd"]
+[ext_resource type="PackedScene" uid="uid://cgw8qk3i374ca" path="res://Scenes/UI/SoloGameUI.tscn" id="5_irj5e"]
 
 [node name="Multiplayer" type="Node"]
 script = ExtResource("1_4chtp")
@@ -28,6 +29,9 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
+
+[node name="SoloGameUi" parent="." instance=ExtResource("5_irj5e")]
+visible = false
 
 [node name="UpgradeSelectMenu" parent="." instance=ExtResource("3_ojbuf")]
 visible = false

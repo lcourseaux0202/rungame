@@ -9,9 +9,7 @@ extends Control
 @onready var settings_menu : SettingsMenu = $SettingsMenu
 @onready var customization_menu: Control = $CustomizationMenu
 
-@onready var game_scene = preload("res://Scenes/Game/Game.tscn")
 @onready var multiplayer_scene = preload("res://Scenes/Game/Multiplayer.tscn")
-
 
 func _ready() -> void:
 	start_button.pressed.connect(_start_game)
@@ -19,8 +17,6 @@ func _ready() -> void:
 	custom_button.pressed.connect(_custom_game)
 	settings_button.pressed.connect(_settings_menu)
 	quit_button.pressed.connect(_quit_game)
-
-
 
 func _start_game() -> void:
 	Settings.number_of_players = 1

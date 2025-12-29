@@ -1,11 +1,17 @@
-extends Resource
+class_name CardData extends Resource
 
-class_name CardData 
+enum RARITY{
+	COMMON,
+	UNCOMMON,
+	RARE,
+	EPIC,
+	LEGENDARY
+}
 
 @export var card_name: String = "Card name"
 @export_multiline var description: String = ""
 @export var illustration: Texture2D
-@export var rarity_weight: int = 10
+@export var rarity: RARITY = RARITY.COMMON
 
 @export var base_speed_modifier := 0
 @export var max_speed_modifier := 0
@@ -25,3 +31,19 @@ class_name CardData
 @export var boost_passive_generation := 0
 
 @export var price := 150
+
+func get_rarity_weight() -> int:
+	var rarity_weight = 0
+	match rarity :
+		CardData.RARITY.COMMON :
+			rarity_weight = 27
+		CardData.RARITY.UNCOMMON :
+			rarity_weight = 12
+		CardData.RARITY.RARE :
+			rarity_weight = 5
+		CardData.RARITY.EPIC :
+			rarity_weight = 1
+		CardData.RARITY.LEGENDARY :
+			rarity_weight = 0
+			
+	return rarity_weight

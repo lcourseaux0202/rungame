@@ -67,9 +67,8 @@ func _close():
 	label_orb_stock.hide()
 	hide()
 
-func reveal(mode : Settings.GAMEMODE) -> void:
+func reveal() -> void:
 	_remove_all_displayed_cards()
-	gamemode = mode
 	reroll_price = (base_reroll_price + randi_range(-base_reroll_price * 0.1, base_reroll_price * 0.1)) 
 	reroll_button.text = "Nouveau tirage (" + str(reroll_price) + ")"
 	modulate.a = 0.0
@@ -80,7 +79,7 @@ func reveal(mode : Settings.GAMEMODE) -> void:
 	tween.tween_property(self, "modulate", Color(Color.WHITE, 1.0), 1.0)
 	await tween.finished
 	_draw_cards()
-	if mode == Settings.GAMEMODE.SOLO:
+	if Settings.is_gamemode_solo():
 		label_orb_stock.show()
 		label_orb_stock.text = "Orbes : " + str(current_receiver.xp)
 		reroll_button.show()
@@ -89,7 +88,7 @@ func reveal(mode : Settings.GAMEMODE) -> void:
 func _draw_cards() -> void:
 	for card in cards_container.get_children() :
 		card.queue_free()
-	if gamemode == Settings.GAMEMODE.SOLO:
+	if Settings.is_gamemode_solo():
 		for i in range(displayed_cards_number):
 			spawn_card(pick_random_card_by_weight(), _get_card_emplacement_position(i))
 	else :
@@ -99,13 +98,13 @@ func _draw_cards() -> void:
 func pick_random_card_by_weight():
 	var total_weight = 0
 	for card_data : CardData in card_pool:
-		total_weight += card_data.rarity_weight
+		total_weight += card_data.get_rarity_weight()
 	
 	var roll = randf() * total_weight
 	var cursor = 0
 	
 	for card_data : CardData in card_pool:
-		cursor += card_data.rarity_weight
+		cursor += card_data.get_rarity_weight()
 		if roll <= cursor:
 			return card_data
 	return null

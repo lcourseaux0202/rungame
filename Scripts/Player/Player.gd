@@ -22,6 +22,7 @@ class_name Player extends CharacterBody2D
 @export var auto := false
 
 ### Utils ###
+var can_run := false
 var skin : SkinData = null
 var speed = base_speed
 var boost_stock = 0
@@ -75,6 +76,10 @@ func _ready() -> void:
 	var layer_cible = (player_id - 1) + 2
 	boost_bar.visibility_layer = (1 << (layer_cible - 1))
 	speed_label.visibility_layer = (1 << (layer_cible - 1))
+	
+func start_running() -> void :
+	can_run = true
+	
 
 func _process(delta: float) -> void:
 	aura.modulate.a = min(inverse_lerp(max_speed, max_speed*mega_boost_factor, speed),0.5)

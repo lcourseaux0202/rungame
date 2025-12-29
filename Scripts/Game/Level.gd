@@ -9,6 +9,7 @@ class_name Level extends Node2D
 var next_section_marker : Marker2D = null
 var sections_queue : Array[Section]
 
+signal level_loaded
 
 func _ready() -> void:
 	finish_line.global_position = Vector2(Settings.level_length, 0)
@@ -21,6 +22,8 @@ func _ready() -> void:
 	_place_selected_section(0)
 	for i in range(sectionNumber):
 		_place_random_section()
+		
+	level_loaded.emit()
 
 func _place_selected_section(index : int) -> void:
 	var scene_resource = sections[index]

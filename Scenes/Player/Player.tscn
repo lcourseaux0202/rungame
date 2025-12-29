@@ -215,9 +215,9 @@ libraries = {
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i5acl")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Wait")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Wait" type="Node" parent="StateMachine"]
 script = ExtResource("4_epg6k")
 
 [node name="Running" type="Node" parent="StateMachine"]

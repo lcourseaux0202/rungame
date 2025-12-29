@@ -66,22 +66,26 @@ func load_card(data : CardData, show_price : bool):
 	clickable = false
 	card_name.text = data.card_name
 	card_description.text = data.description
-	rarity_weight = data.rarity_weight
+	rarity_weight = data.get_rarity_weight()
 	
 	if data.illustration:
 		card_illustration.texture = data.illustration
-		
-	if rarity_weight >= 13:
-		card_layout.modulate = Color.BEIGE
-	elif rarity_weight >= 7:
-		card_layout.modulate = Color.LIGHT_GREEN
-	elif rarity_weight >= 4:
-		card_layout.modulate = Color.DODGER_BLUE
-	elif rarity_weight >= 2:
-		card_layout.modulate = Color.MAGENTA
-	else :
-		card_layout.modulate = Color.GOLD
 	
+	var color : Color = Color.BLACK
+	match data.rarity :
+		CardData.RARITY.COMMON :
+			color = Color.BEIGE
+		CardData.RARITY.UNCOMMON :
+			color = Color.LIGHT_GREEN
+		CardData.RARITY.RARE :
+			color = Color.DODGER_BLUE
+		CardData.RARITY.EPIC :
+			color = Color.MAGENTA
+		CardData.RARITY.LEGENDARY :
+			color = Color.GOLD
+			
+	card_layout.modulate = color
+
 	await animation.animation_finished
 
 func can_purchase_card(purchaser : Player) -> bool:
