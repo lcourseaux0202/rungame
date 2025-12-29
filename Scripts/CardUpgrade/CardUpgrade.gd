@@ -12,24 +12,7 @@ class_name CardUpgrade extends Node2D
 @onready var purchase_success: AudioStreamPlayer = $PurchaseSuccess
 @onready var purchase_failure: AudioStreamPlayer = $PurchaseFailure
 
-var base_speed_modifier := 0
-var max_speed_modifier := 0
-var acceleration_modifier := 0
-var deceleration_modifier := 0
-var boost_deceleration_modifier := 0
-var rail_deceleration_modifier := 0
-var boost_factor_modifier := 0
-var mega_boost_factor_modifier := 0
-var boost_generation_modifier := 0
-var boost_per_xp_modifier := 0.0
-var stock_needed_for_boost_modifier := 0
-var jump_number_modifier := 0
-var max_boost_modifier := 0
-var orb_magnet_radius_modifier := 0
-var gravity_modifier := 0
-var boost_passive_generation := 0
-
-var price := 0
+var stats : CardData
 
 @onready var base_scale := self.scale
 
@@ -73,13 +56,12 @@ func _input(event: InputEvent) -> void:
 		pressed.emit(self)
 
 func load_card(data : CardData, show_price : bool):
-	price = (data.price + randi_range(-data.price * 0.1, data.price * 0.1))
+	stats = data
 	if show_price :
 		animation.play("RevealAnimation")
-		price_label.text = str(price)
+		price_label.text = str(data.price)
 	else :
 		animation.play("RevealNoPriceAnimation")
-		price = 0
 	animation.advance(0)
 	clickable = false
 	card_name.text = data.card_name
@@ -100,27 +82,10 @@ func load_card(data : CardData, show_price : bool):
 	else :
 		card_layout.modulate = Color.GOLD
 	
-	base_speed_modifier = data.base_speed_modifier
-	max_speed_modifier = data.max_speed_modifier
-	acceleration_modifier = data.acceleration_modifier
-	deceleration_modifier = data.deceleration_modifier
-	boost_deceleration_modifier = data.boost_deceleration_modifier
-	rail_deceleration_modifier = data.rail_deceleration_modifier
-	boost_factor_modifier = data.boost_factor_modifier
-	mega_boost_factor_modifier = data.mega_boost_factor_modifier
-	boost_generation_modifier = data.boost_generation_modifier
-	boost_per_xp_modifier = data.boost_per_xp_modifier
-	stock_needed_for_boost_modifier = data.stock_needed_for_boost_modifier
-	jump_number_modifier = data.jump_number_modifier
-	max_boost_modifier = data.max_boost_modifier
-	orb_magnet_radius_modifier = data.orb_magnet_radius_modifier
-	gravity_modifier = data.gravity_modifer
-	boost_passive_generation = data.boost_passive_generation
-	
 	await animation.animation_finished
 
 func can_purchase_card(purchaser : Player) -> bool:
-	if purchaser.xp >= price :
+	if purchaser.xp >= stats.price :
 		return true
 	else :
 		animation.stop()
@@ -134,24 +99,24 @@ func can_purchase_card(purchaser : Player) -> bool:
 		return false
 
 func apply_modifier_on_player(receiver : Player):
-	receiver.base_speed += base_speed_modifier
-	receiver.max_speed += max_speed_modifier
-	receiver.acceleration += acceleration_modifier
-	receiver.deceleration += deceleration_modifier
-	receiver.boost_deceleration += boost_deceleration_modifier
-	receiver.rail_deceleration += rail_deceleration_modifier
-	receiver.boost_factor += boost_factor_modifier
-	receiver.mega_boost_factor += mega_boost_factor_modifier
-	receiver.boost_generation += boost_generation_modifier
-	receiver.boost_per_xp += boost_per_xp_modifier
-	receiver.stock_needed_for_boost += stock_needed_for_boost_modifier
-	receiver.jump_number += jump_number_modifier
-	receiver.max_boost += max_boost_modifier
-	receiver.update_orb_magnet_radius(orb_magnet_radius_modifier)
-	receiver.gravity += gravity_modifier
-	receiver.boost_passive_generation += boost_passive_generation
+	receiver.base_speed += stats.base_speed_modifier
+	receiver.max_speed += stats.max_speed_modifier
+	receiver.acceleration += stats.acceleration_modifier
+	receiver.deceleration += stats.deceleration_modifier
+	receiver.boost_deceleration += stats.boost_deceleration_modifier
+	receiver.rail_deceleration += stats.rail_deceleration_modifier
+	receiver.boost_factor += stats.boost_factor_modifier
+	receiver.mega_boost_factor += stats.mega_boost_factor_modifier
+	receiver.boost_generation += stats.boost_generation_modifier
+	receiver.boost_per_xp += stats.boost_per_xp_modifier
+	receiver.stock_needed_for_boost += stats.stock_needed_for_boost_modifier
+	receiver.jump_number += stats.jump_number_modifier
+	receiver.max_boost += stats.max_boost_modifier
+	receiver.update_orb_magnet_radius(stats.orb_magnet_radius_modifier)
+	receiver.gravity += stats.gravity_modifer
+	receiver.boost_passive_generation += stats.boost_passive_generation
 	
-	receiver.xp -= price
+	receiver.xp -= stats.price
 	
 	disappearing = true
 	mouse_over = false
