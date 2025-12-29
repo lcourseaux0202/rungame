@@ -26,5 +26,5 @@ max_boost_modifier = 15
 orb_magnet_radius_modifier = 0
 gravity_modifer = 0
 boost_passive_generation = 0
-price = 100
+price = 200
 metadata/_custom_type_script = "uid://c7wvij1ipayvb"

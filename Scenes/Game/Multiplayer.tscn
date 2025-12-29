@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgw8qk3i374ca" path="res://Scenes/UI/SoloGameUI.tscn" id="5_irj5e"]
 
 [sub_resource type="Curve" id="Curve_irj5e"]
-_data = [Vector2(0, 0.029114), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.85663, 0.0, 0, 0]
+_data = [Vector2(0, 0.0476531), 0.0, 0.0258455, 0, 0, Vector2(0.994126, 0.996546), 2.5996, 0.0, 0, 0]
 point_count = 2
 
 [node name="Multiplayer" type="Node"]

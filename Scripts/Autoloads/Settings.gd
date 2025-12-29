@@ -3,9 +3,7 @@ extends Node
 const LAST_LEVEL_LENGTH := 999999
 var max_sections := 100
 var xp_gain_per_orb := 5
-var number_of_levels := 20
-
-var difficulty_curve : Curve = preload("res://Resources/DifficultyCurve.tres")
+var number_of_levels := 30
 
 enum GAMEMODE{
 	SOLO,

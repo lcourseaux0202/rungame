@@ -103,11 +103,11 @@ func can_purchase_card(purchaser : Player) -> bool:
 		return false
 
 func apply_modifier_on_player(receiver : Player):
-	receiver.base_speed += stats.base_speed_modifier
+	receiver.base_speed = min(receiver.base_speed + stats.base_speed_modifier, receiver.max_speed)
 	receiver.max_speed += stats.max_speed_modifier
 	receiver.acceleration += stats.acceleration_modifier
-	receiver.deceleration += stats.deceleration_modifier
-	receiver.boost_deceleration += stats.boost_deceleration_modifier
+	receiver.deceleration = max(receiver.deceleration + stats.deceleration_modifier, 0)
+	receiver.boost_deceleration = max(receiver.boost_deceleration + stats.boost_deceleration_modifier, 0)
 	receiver.rail_deceleration += stats.rail_deceleration_modifier
 	receiver.boost_factor += stats.boost_factor_modifier
 	receiver.mega_boost_factor += stats.mega_boost_factor_modifier

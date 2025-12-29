@@ -19,6 +19,7 @@ var player_cameras : Array[PlayerCamera]
 @export var difficulty_curve : Curve
 var restarting := false
 var current_level_length := 0
+var current_level := 0
 var progression := 0.0
 
 const LEVEL_TIME_DURATION = 99
@@ -104,7 +105,7 @@ func _start_game():
 	for player in players:
 		player.start_running()
 	if Settings.is_gamemode_solo():
-		solo_game_ui.start_timer(LEVEL_TIME_DURATION)
+		solo_game_ui.start_timer(LEVEL_TIME_DURATION, current_level)
 		solo_game_ui.game_over.connect(_trigger_gameover_sequence)
 		
 
@@ -119,7 +120,7 @@ func _trigger_restart_sequence() -> void :
 	game_node.restart()
 	var position_buffer = 0
 	if Settings.is_gamemode_solo():
-		solo_game_ui.start_timer(LEVEL_TIME_DURATION)
+		solo_game_ui.start_timer(LEVEL_TIME_DURATION, current_level)
 		current_level_length *= 1.05
 		game_node.finish_line.global_position.x = current_level_length
 	for player : Player in players:
@@ -132,10 +133,9 @@ func _trigger_restart_sequence() -> void :
 	restarting = false
 		
 func _set_next_level_length() -> void:
-	progression = min(progression + 1.0 / Settings.number_of_levels, 1.0) 
+	current_level += 1
+	progression = min(float(current_level) / Settings.number_of_levels, 1.0) 
 	current_level_length = Settings.LAST_LEVEL_LENGTH * difficulty_curve.sample(progression)
-	print(progression)
-	print(current_level_length)
 	
 func _trigger_gameover_sequence() -> void:
 	settings_menu._back_to_menu()
