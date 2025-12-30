@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dr4hyxplgk1i3"]
 
-[ext_resource type="Script" uid="uid://uxenlhbvc2mi" path="res://Scripts/UI/CharacterPersonalizationMenu.gd" id="1_y53fa"]
+[ext_resource type="Script" uid="uid://uxenlhbvc2mi" path="res://Scripts/UI/SelectCharacterMenu.gd" id="1_y53fa"]
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_doilu"]
 [ext_resource type="PackedScene" uid="uid://dpp1p4ojueecq" path="res://Scenes/UI/SkinSelector.tscn" id="3_7gg45"]
 
@@ -10,7 +10,7 @@ font_size = 64
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gygn0"]
 
-[node name="CustomizationMenu" type="Control"]
+[node name="SelectCharacterMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,3 +89,5 @@ theme_override_fonts/font = ExtResource("2_doilu")
 theme_override_font_sizes/font_size = 28
 text = "Réinitialiser les les couleurs"
 flat = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

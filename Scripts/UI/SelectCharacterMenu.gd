@@ -1,4 +1,4 @@
-extends Control
+class_name SelectCharacterMenu extends Control
 
 @onready var back_button: Button = $HBoxContainer/BackButton
 @onready var reset_button: Button = $HBoxContainer/ResetButton
@@ -8,6 +8,8 @@ extends Control
 
 var skins_pool : Array[SkinData]= []
 var skin_cursor : int = -1
+
+signal personalization_closed
 
 func _ready() -> void:
 	back_button.pressed.connect(_back_to_menu)
@@ -30,9 +32,13 @@ func _load_skins():
 
 
 func _back_to_menu() -> void :
+	personalization_closed.emit()
 	hide()
-		
 
 func _reset_color():
 	skin_selector_p1.reset_skin()
 	skin_selector_p2.reset_skin()
+
+func _on_visibility_changed() -> void:
+	if skin_selector_p1 and visible: 
+		skin_selector_p1.select()

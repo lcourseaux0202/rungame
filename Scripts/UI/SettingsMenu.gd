@@ -10,6 +10,8 @@ class_name SettingsMenu extends Control
 
 const MAX_VALUE = 100.0 
 
+signal settings_closed
+
 func _ready() -> void:
 	for resolution in Settings.resolutions.keys():
 		resolution_options.add_item(resolution)
@@ -95,6 +97,8 @@ func open_menu(mode : int = 1):
 func _close_menu() -> void :
 	visible = false
 	get_tree().paused = false
+	settings_closed.emit()
+	
 	
 func _back_to_menu() -> void :
 	_close_menu()
@@ -103,3 +107,8 @@ func _back_to_menu() -> void :
 		get_tree().change_scene_to_packed(scene)
 	else:
 		print("Erreur : Impossible de trouver le fichier de scène !")
+
+
+func _on_visibility_changed() -> void:
+	if resolution_options:
+		resolution_options.grab_focus()

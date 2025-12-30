@@ -58,3 +58,6 @@ func _display_skin(index : int):
 	label_skin.text = current_skin.skin_name
 	
 	Settings.selected_skins[player] = current_skin
+
+func select() -> void:
+	previous_skin.grab_focus()

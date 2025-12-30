@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://yd0sgn1bgol6" path="res://Scripts/UI/StartMenu.gd" id="1_4yj2n"]
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_bvkpb"]
 [ext_resource type="PackedScene" uid="uid://beg65mxmwr3sa" path="res://Scenes/UI/SettingsMenu.tscn" id="3_omsb3"]
-[ext_resource type="PackedScene" uid="uid://dr4hyxplgk1i3" path="res://Scenes/UI/CustomizationMenu.tscn" id="4_jeo11"]
+[ext_resource type="PackedScene" uid="uid://dr4hyxplgk1i3" path="res://Scenes/UI/SelectCharacterMenu.tscn" id="4_jeo11"]
 [ext_resource type="AudioStream" uid="uid://bb84ffwrccu2h" path="res://Assets/Tracks/SpeedLight.mp3" id="4_k44vq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvkpb"]
@@ -32,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,33 +40,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpSeparator" type="HSeparator" parent="ColorRect/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="UpSeparator" type="HSeparator" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bvkpb")
 
-[node name="TitleLabel" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Run game"
 label_settings = SubResource("LabelSettings_mhyu8")
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="StartButton" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bvkpb")
 theme_override_font_sizes/font_size = 24
 text = "Solo"
 flat = true
 
-[node name="MultiplayerButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="MultiplayerButton" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bvkpb")
 theme_override_font_sizes/font_size = 24
 text = "Multijoueur"
 flat = true
 
-[node name="CustomButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="CustomButton" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bvkpb")
 theme_override_font_sizes/font_size = 24
@@ -74,21 +78,21 @@ text = "Personnalisation
 "
 flat = true
 
-[node name="SettingsButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bvkpb")
 theme_override_font_sizes/font_size = 24
 text = "Paramètres"
 flat = true
 
-[node name="QuitButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bvkpb")
 theme_override_font_sizes/font_size = 24
 text = "Quitter"
 flat = true
 
-[node name="DownSeparator" type="HSeparator" parent="ColorRect/VBoxContainer"]
+[node name="DownSeparator" type="HSeparator" parent="ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_mhyu8")
@@ -97,7 +101,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_mhyu8")
 visible = false
 layout_mode = 1
 
-[node name="CustomizationMenu" parent="." instance=ExtResource("4_jeo11")]
+[node name="SelectCharacterMenu" parent="." instance=ExtResource("4_jeo11")]
 visible = false
 layout_mode = 1
 

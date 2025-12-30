@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpp1p4ojueecq"]
+[gd_scene load_steps=22 format=3 uid="uid://dpp1p4ojueecq"]
 
 [ext_resource type="Script" uid="uid://dopdna7j7y3i1" path="res://Scripts/UI/SkinSelector.gd" id="1_62kyk"]
 [ext_resource type="Shader" uid="uid://bt2bvnojqjx08" path="res://Assets/Shaders/WhiteGlow.gdshader" id="1_kvpg8"]
@@ -56,17 +56,17 @@ shader = ExtResource("1_kvpg8")
 shader_parameter/line_color = Color(0.188235, 0.188235, 0.188235, 1)
 shader_parameter/line_thickness = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m003h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxqth"]
 atlas = ExtResource("4_0h23f")
-region = Rect2(128, 0, 64, 32)
+region = Rect2(64, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukgio"]
 atlas = ExtResource("4_0h23f")
 region = Rect2(0, 0, 64, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxqth"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m003h"]
 atlas = ExtResource("4_0h23f")
-region = Rect2(64, 0, 64, 32)
+region = Rect2(128, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eekk6"]
 animations = [{
@@ -84,10 +84,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egppx"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0sbp2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2q5m"]
 
@@ -132,18 +128,19 @@ expand_mode = 5
 stretch_mode = 5
 script = ExtResource("3_62kyk")
 sprites = SubResource("SpriteFrames_hhodm")
+frame = 3
 autoplay = true
 playing = true
 
 [node name="AuraAnimation" type="TextureRect" parent="GridContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_133v5")
 layout_mode = 2
-texture = SubResource("AtlasTexture_m003h")
+texture = SubResource("AtlasTexture_vxqth")
 expand_mode = 5
 stretch_mode = 6
 script = ExtResource("3_62kyk")
 sprites = SubResource("SpriteFrames_eekk6")
-frame = 2
+frame = 1
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
 
@@ -152,10 +149,7 @@ layout_mode = 2
 
 [node name="PreviousSkin" type="Button" parent="GridContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_egppx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0sbp2")
 icon = ExtResource("5_345ed")
-flat = true
 
 [node name="VSeparator" type="VSeparator" parent="GridContainer/HBoxContainer"]
 layout_mode = 2
@@ -164,13 +158,12 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_h2q5m")
 
 [node name="NextSkin" type="Button" parent="GridContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_egppx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0sbp2")
 icon = ExtResource("6_jec2k")
-flat = true
 
 [node name="LabelSkin" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Skin choisi"
 label_settings = SubResource("LabelSettings_62kyk")
 horizontal_alignment = 1
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
