@@ -1,7 +1,7 @@
 # Rungame
 
-Un projet personnel de jeu de course 2D développé avec **Godot Engine**. Ce projet a été conçu en premier lieu dans un but d'apprentissage pour explorer les fonctionnalités du moteur et la logique du Game Design.
-Désormais ce projet est devenu mon passe-temps et pourquoi pas un futur jeu commercialisé.
+Un projet personnel de jeu de course 2D développé avec **Godot Engine**. Ce projet a été conçu en premier lieu pour apprendre le moteur et expérimenter avec celui-ci.
+Désormais ce projet est devenu mon passe-temps.
 
 ## Concept du Jeu
 Le joueur contrôle un petit stickman qui court à toute allure à travers des niveaux générés aléatoirement. 
@@ -28,7 +28,7 @@ Le développement se poursuit avec ces objectifs majeurs :
 1. Augmentation de la taille du contenu :
    - plus de skins (13 terminés / 28 prévus actuellement)
    - plus de sections de niveaux (10 terminées / ~100 voulues)
-   - plus de cartes d'améliorations (18 terminées / 35 prévues actuellement)
+   - plus de cartes d'améliorations (35 terminées / 35 prévues actuellement)
 
 2. Ajout d'une **Jukebox** pour laisser au joueur le choix complet de sa playlist en jeu
 
