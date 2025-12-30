@@ -8,11 +8,11 @@ class_name UpgradeSelectMenu extends Control
 @onready var reroll_button: Button = $HBoxContainer/RerollButton
 
 var card_pool := []
-var displayed_cards_number := 2
+var displayed_cards_number := 3
 var receivers : Array[Player]
 var current_receiver: Player
 var current_receiver_index := 0
-var base_reroll_price := 10
+var base_reroll_price := 100
 var gamemode : Settings.GAMEMODE
 var reroll_price
 var tween : Tween
