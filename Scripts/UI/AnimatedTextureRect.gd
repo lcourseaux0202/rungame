@@ -63,3 +63,12 @@ func pause():
 func stop():
 	frame = 0
 	playing = false
+	
+func animate_transparency(duration : float):
+	modulate.a = 1.0
+	var tween : Tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, duration/2.0)
+	await tween.finished
+	tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, duration/2.0)
+	modulate.a = 0.0

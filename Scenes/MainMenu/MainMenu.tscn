@@ -1,0 +1,864 @@
+[gd_scene load_steps=40 format=3 uid="uid://b1olhrcknwvjt"]
+
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_c7oo3"]
+[ext_resource type="Script" uid="uid://p55hepl35liq" path="res://Scripts/MainMenu/MainMenu.gd" id="1_vapy7"]
+[ext_resource type="Theme" uid="uid://bras13nfb7n3n" path="res://Resources/Themes/MainMenuButtonsTheme.tres" id="2_sg7ab"]
+[ext_resource type="AudioStream" uid="uid://bb84ffwrccu2h" path="res://Assets/Tracks/SpeedLight.mp3" id="3_sg7ab"]
+[ext_resource type="Script" uid="uid://b4tsmsmhacccc" path="res://Scripts/UI/AnimatedTextureRect.gd" id="4_0hjx5"]
+[ext_resource type="Script" uid="uid://dhtst7j1psbme" path="res://Scripts/MainMenu/MenuInputManager.gd" id="4_ua038"]
+[ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/Player/PlayerSheet.png" id="5_fv0xt"]
+[ext_resource type="Script" uid="uid://bv6ha5w4h65l1" path="res://Scripts/MainMenu/MenuConfig.gd" id="5_vapy7"]
+[ext_resource type="PackedScene" uid="uid://bc2ddswwm06c3" path="res://Scenes/MainMenu/ArcadeMode/SkinManager.tscn" id="6_fv0xt"]
+[ext_resource type="Theme" uid="uid://cl6jl8i8culga" path="res://Resources/Themes/ArcadeModeButtonsTheme.tres" id="6_sng02"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpx3y"]
+font = ExtResource("1_c7oo3")
+font_size = 128
+
+[sub_resource type="Animation" id="Animation_0hjx5"]
+resource_name = "HideAnimation"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoloOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-100, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoloOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8qovt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoloOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoloOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vapy7"]
+resource_name = "ShowAnimation"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoloOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoloOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hjx5"]
+_data = {
+&"HideAnimation": SubResource("Animation_0hjx5"),
+&"RESET": SubResource("Animation_8qovt"),
+&"ShowAnimation": SubResource("Animation_vapy7")
+}
+
+[sub_resource type="Animation" id="Animation_lic31"]
+resource_name = "HideAnimation"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplayerOptions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MultiplayerOptions:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-100, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sng02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplayerOptions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MultiplayerOptions:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fv0xt"]
+resource_name = "ShowAnimation"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplayerOptions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MultiplayerOptions:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_56wdt"]
+_data = {
+&"HideAnimation": SubResource("Animation_lic31"),
+&"RESET": SubResource("Animation_sng02"),
+&"ShowAnimation": SubResource("Animation_fv0xt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
+atlas = ExtResource("5_fv0xt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sng02"]
+atlas = ExtResource("5_fv0xt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
+atlas = ExtResource("5_fv0xt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
+atlas = ExtResource("5_fv0xt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ah1a3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sng02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lic31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56wdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2pwb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sng02"]
+font = ExtResource("1_c7oo3")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_gkjg1"]
+resource_name = "ShowAnimation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkinsOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkinsOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ee4eu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkinsOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkinsOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_txptg"]
+resource_name = "HideAnimation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkinsOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(100, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkinsOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txptg"]
+_data = {
+&"HideAnimation": SubResource("Animation_txptg"),
+&"RESET": SubResource("Animation_ee4eu"),
+&"ShowAnimation": SubResource("Animation_gkjg1")
+}
+
+[sub_resource type="Animation" id="Animation_ah1a3"]
+resource_name = "HideAnimation"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnimatedTextureRect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.5],
+"method": &"animate_transparency"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_k2pwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_56wdt"]
+resource_name = "ShowAnimation"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnimatedTextureRect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.5],
+"method": &"animate_transparency"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah1a3"]
+_data = {
+&"HideAnimation": SubResource("Animation_ah1a3"),
+&"RESET": SubResource("Animation_k2pwb"),
+&"ShowAnimation": SubResource("Animation_56wdt")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_c7oo3"]
+font = ExtResource("1_c7oo3")
+font_size = 24
+
+[sub_resource type="Resource" id="Resource_8qovt"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons")
+default_button = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SoloButton")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons")])
+anim_player = NodePath("")
+show_anim = ""
+hide_anim = ""
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_ua038"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions")
+default_button = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions/ArcadeButton")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions")])
+anim_player = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloMenuAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_vapy7"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions")
+default_button = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions/LocalButton")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions")])
+anim_player = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerMenuAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_sng02"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/HBoxContainer/ArcadeMenu")
+default_button = NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/StartButton")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons")])
+anim_player = NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ArcadeMenuAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_lic31"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions")
+default_button = NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions/SkinManager")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions")])
+anim_player = NodePath("../MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptionsAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vapy7")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 1360.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Rungame"
+label_settings = SubResource("LabelSettings_kpx3y")
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="MainButtons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="SoloButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Solo"
+alignment = 2
+
+[node name="MultiplayerButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Multijoueur"
+alignment = 2
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Paramètres"
+alignment = 2
+
+[node name="ExtrasButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+disabled = true
+text = "Extras"
+alignment = 2
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Quitter"
+alignment = 2
+
+[node name="SubMenus" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="SoloOptions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus"]
+visible = false
+layout_mode = 1
+offset_right = 195.0
+offset_bottom = 145.0
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="ArcadeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Mode arcade"
+alignment = 2
+
+[node name="VersusButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+disabled = true
+text = "Versus I.A."
+alignment = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Retour"
+alignment = 2
+
+[node name="SoloMenuAnimation" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus"]
+libraries = {
+&"": SubResource("AnimationLibrary_0hjx5")
+}
+
+[node name="MultiplayerOptions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus"]
+visible = false
+layout_mode = 1
+offset_right = 207.0
+offset_bottom = 145.0
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="LocalButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sg7ab")
+text = "Jouer en local"
+alignment = 2
+
+[node name="OnlineButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sg7ab")
+disabled = true
+text = "Jouer en ligne"
+alignment = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_sg7ab")
+text = "Retour"
+alignment = 2
+
+[node name="MultiplayerMenuAnimation" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus"]
+libraries = {
+&"": SubResource("AnimationLibrary_56wdt")
+}
+
+[node name="AnimatedTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_56wdt")
+stretch_mode = 5
+script = ExtResource("4_0hjx5")
+sprites = SubResource("SpriteFrames_ah1a3")
+frame = 2
+autoplay = true
+playing = true
+metadata/_custom_type_script = "uid://b4tsmsmhacccc"
+
+[node name="ArcadeMenu" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="LabelArcadeTitle" type="Label" parent="MarginContainer/HBoxContainer/ArcadeMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+text = "Mode arcade"
+label_settings = SubResource("LabelSettings_sng02")
+horizontal_alignment = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ArcadeMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+theme_override_constants/separation = 250
+alignment = 2
+
+[node name="SubMenus" type="Control" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SkinsOptions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus"]
+visible = false
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 179.0
+
+[node name="SkinManager" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions" node_paths=PackedStringArray("displayer") instance=ExtResource("6_fv0xt")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+columns = 4
+displayer = NodePath("../../../../../AnimatedTextureRect")
+
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_c7oo3")
+theme_override_font_sizes/font_size = 24
+text = "Confirmer"
+
+[node name="SkinsOptionsAnimation" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus"]
+libraries = {
+&"": SubResource("AnimationLibrary_txptg")
+}
+
+[node name="MainButtons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("6_sng02")
+text = "Lancer la partie"
+
+[node name="SkinButton" type="Button" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("6_sng02")
+text = "Changer de skin"
+
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("6_sng02")
+text = "Retour"
+
+[node name="ArcadeMenuAnimation" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/ArcadeMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_ah1a3")
+}
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.1-alpha"
+label_settings = SubResource("LabelSettings_c7oo3")
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sg7ab")
+pitch_scale = 0.8
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MenuInputManager" type="Node" parent="."]
+script = ExtResource("4_ua038")
+base_menu = SubResource("Resource_8qovt")
+popup_menus = Array[ExtResource("5_vapy7")]([SubResource("Resource_ua038"), SubResource("Resource_vapy7"), SubResource("Resource_sng02"), SubResource("Resource_lic31")])
+metadata/_custom_type_script = "uid://dhtst7j1psbme"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SoloButton" to="." method="_on_solo_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions/ArcadeButton" to="." method="_on_arcade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/SoloOptions/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions/LocalButton" to="." method="_on_local_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/SkinButton" to="." method="_on_skin_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/BackButton" to="." method="_on_back_button_pressed"]

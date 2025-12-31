@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc2ddswwm06c3"]
+
+[ext_resource type="Script" uid="uid://i65mt8wjgx1c" path="res://Scripts/MainMenu/ArcadeMode/SkinManager.gd" id="1_vyuqu"]
+
+[node name="SkinManager" type="GridContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -52.0
+offset_right = 88.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+script = ExtResource("1_vyuqu")

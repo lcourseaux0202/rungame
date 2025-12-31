@@ -10,12 +10,9 @@ enum GAMEMODE{
 	MULTIPLAYER
 }
 
-var selected_skins = {
-	1 : null,
-	2 : null,
-	3 : null,
-	4 : null,
-}
+signal skin_changed(player_id : int, skin : SkinData)
+var selected_skins = [null, null]
+
 var default_skin := "res://Resources/Skins/Glacier.tres"
 
 var gamemode : GAMEMODE = GAMEMODE.SOLO
@@ -33,6 +30,10 @@ var resolutions = {
 	"1360x768" : Vector2(1360, 768),
 	"1280x720" : Vector2(1280, 720),
 }
+
+func set_selected_skin(player_id: int, skin: SkinData) -> void:
+	selected_skins[player_id] = skin
+	skin_changed.emit(player_id, skin)
 
 func is_gamemode_solo():
 	return gamemode == GAMEMODE.SOLO

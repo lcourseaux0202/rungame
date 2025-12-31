@@ -102,7 +102,7 @@ func _close_menu() -> void :
 	
 func _back_to_menu() -> void :
 	_close_menu()
-	var scene = load("res://Scenes/UI/StartMenu.tscn")
+	var scene = load("res://Scenes/MainMenu/MainMenu.tscn")
 	if scene:
 		get_tree().change_scene_to_packed(scene)
 	else:
