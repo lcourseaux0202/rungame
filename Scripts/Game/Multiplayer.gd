@@ -4,7 +4,7 @@ extends Node
 const player_camera_scene = preload("res://Scenes/Game/PlayerCamera.tscn")
 
 @onready var screen_container: GridContainer = $CenterContainer/GridContainer
-@onready var upgrade_select_menu: UpgradeSelectMenu = $UpgradeSelectMenu
+@onready var card_menu: CardMenu = $CardMenu
 @onready var settings_menu: SettingsMenu = $SettingsMenu
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var solo_game_ui: SoloGameUI = $SoloGameUi
@@ -17,7 +17,7 @@ var players : Array[Player]
 var player_cameras : Array[PlayerCamera]
 
 @export var difficulty_curve : Curve
-var restarting := false
+var restarting := true
 var current_level_length := 0
 var current_level := 0
 var progression := 0.0
@@ -47,9 +47,9 @@ func _input(event: InputEvent) -> void:
 func new_multiplayer_game(number_of_players : int = 1):
 	for i in range(number_of_players - 1):
 		var new_player : Player = load("res://Scenes/Player/Player.tscn").instantiate()
-		new_player.player_id = screen_container.get_child_count() + 1
+		new_player.player_id = screen_container.get_child_count()
 		game_node.add_child(new_player)
-		_add_new_player_viewport(new_player, i + 1)
+		_add_new_player_viewport(new_player, i)
 		_update_viewport_size()
 		
 		players.append(new_player)
@@ -107,21 +107,21 @@ func _start_game():
 	if Settings.is_gamemode_solo():
 		solo_game_ui.start_timer(LEVEL_TIME_DURATION, current_level)
 		solo_game_ui.game_over.connect(_trigger_gameover_sequence)
-		
+	
+	restarting = false
 
 func _trigger_restart_sequence() -> void :
 	if Settings.is_gamemode_solo():
 		solo_game_ui.stop_timer()
 		
-	upgrade_select_menu.set_card_receivers(_get_players_ordered_by_position())
-	await upgrade_select_menu.reveal()
+	card_menu.set_players(_get_players_ordered_by_position())
+	await card_menu.reveal_menu()
 	
 	_set_next_level_length()
 	game_node.restart()
 	var position_buffer = 0
 	if Settings.is_gamemode_solo():
 		solo_game_ui.start_timer(LEVEL_TIME_DURATION, current_level)
-		current_level_length *= 1.05
 		game_node.finish_line.global_position.x = current_level_length
 	for player : Player in players:
 		player.global_position.x = 50 * position_buffer
@@ -136,6 +136,7 @@ func _set_next_level_length() -> void:
 	current_level += 1
 	progression = min(float(current_level) / Settings.number_of_levels, 1.0) 
 	current_level_length = Settings.LAST_LEVEL_LENGTH * difficulty_curve.sample(progression)
+	print(current_level_length)
 	
 func _trigger_gameover_sequence() -> void:
 	settings_menu._back_to_menu()

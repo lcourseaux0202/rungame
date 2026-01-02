@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://2bh6cy2afan1"]
+
+[ext_resource type="Script" uid="uid://drhdeujhtm7ou" path="res://Scripts/CardUpgrade/CardMenu.gd" id="1_62h5f"]
+[ext_resource type="Script" uid="uid://c2h7e0eu37thr" path="res://Scripts/UI/CarouselContainer.gd" id="1_v2idy"]
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_bkvkq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bkvkq"]
+font = ExtResource("2_bkvkq")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_572uf"]
+font = ExtResource("2_bkvkq")
+font_size = 34
+
+[sub_resource type="Animation" id="Animation_bkvkq"]
+resource_name = "RevealCardsAnimation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(3.36359, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_572uf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i52g"]
+_data = {
+&"RESET": SubResource("Animation_572uf"),
+&"RevealCardsAnimation": SubResource("Animation_bkvkq")
+}
+
+[node name="CardMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62h5f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TitleLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Ouverture de cartes !"
+label_settings = SubResource("LabelSettings_bkvkq")
+
+[node name="ExplanationLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Explications"
+label_settings = SubResource("LabelSettings_572uf")
+horizontal_alignment = 1
+
+[node name="CardCarousel" type="Node2D" parent="." node_paths=PackedStringArray("position_offset_node")]
+script = ExtResource("1_v2idy")
+spacing = 0.0
+opacity_strength = 0.0
+scale_strength = 0.2
+follow_button_focus = true
+position_offset_node = NodePath("CardsContainer")
+metadata/_custom_type_script = "uid://c2h7e0eu37thr"
+
+[node name="CardsContainer" type="Control" parent="CardCarousel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -144.001
+offset_right = -104.001
+offset_bottom = 40.0
+
+[node name="BoosterCarousel" type="Node2D" parent="." node_paths=PackedStringArray("position_offset_node")]
+script = ExtResource("1_v2idy")
+spacing = 0.0
+opacity_strength = 0.0
+scale_strength = 0.2
+follow_button_focus = true
+position_offset_node = NodePath("BoostersContainer")
+metadata/_custom_type_script = "uid://c2h7e0eu37thr"
+
+[node name="BoostersContainer" type="Control" parent="BoosterCarousel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -158.497
+offset_right = -118.497
+offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CardCarousel")
+libraries = {
+&"": SubResource("AnimationLibrary_0i52g")
+}

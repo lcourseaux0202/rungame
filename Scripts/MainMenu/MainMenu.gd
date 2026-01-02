@@ -40,8 +40,8 @@ func _on_arcade_button_pressed() -> void:
 	menu_input_manager.open_menu(arcade_menu, arcade_button)
 
 func _on_local_button_pressed() -> void:
-	Settings.number_of_players = 2
-	Settings.gamemode = Settings.GAMEMODE.SOLO
+	Settings.number_of_players = 4
+	Settings.gamemode = Settings.GAMEMODE.MULTIPLAYER
 	SceneTransition.go_to_scene(multiplayer_scene)
 
 func _on_settings_button_pressed() -> void:

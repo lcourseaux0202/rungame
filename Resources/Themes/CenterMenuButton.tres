@@ -1,0 +1,54 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://drkk06alsvpsn"]
+
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_3a7ya"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3a7ya"]
+skew = Vector2(0.2, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxons"]
+skew = Vector2(0.2, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sssiq"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.2, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xsex"]
+skew = Vector2(0.2, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 28
+Button/fonts/font = ExtResource("1_3a7ya")
+Button/styles/focus = SubResource("StyleBoxFlat_3a7ya")
+Button/styles/hover = SubResource("StyleBoxFlat_vxons")
+Button/styles/normal = SubResource("StyleBoxFlat_sssiq")
+Button/styles/pressed = SubResource("StyleBoxFlat_8xsex")

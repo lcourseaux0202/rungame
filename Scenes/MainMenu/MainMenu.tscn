@@ -1,15 +1,16 @@
-[gd_scene load_steps=40 format=3 uid="uid://b1olhrcknwvjt"]
+[gd_scene load_steps=41 format=3 uid="uid://b1olhrcknwvjt"]
 
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_c7oo3"]
 [ext_resource type="Script" uid="uid://p55hepl35liq" path="res://Scripts/MainMenu/MainMenu.gd" id="1_vapy7"]
-[ext_resource type="Theme" uid="uid://bras13nfb7n3n" path="res://Resources/Themes/MainMenuButtonsTheme.tres" id="2_sg7ab"]
+[ext_resource type="Theme" uid="uid://bras13nfb7n3n" path="res://Resources/Themes/LeftMenuButtonsTheme.tres" id="2_sg7ab"]
 [ext_resource type="AudioStream" uid="uid://bb84ffwrccu2h" path="res://Assets/Tracks/SpeedLight.mp3" id="3_sg7ab"]
 [ext_resource type="Script" uid="uid://b4tsmsmhacccc" path="res://Scripts/UI/AnimatedTextureRect.gd" id="4_0hjx5"]
 [ext_resource type="Script" uid="uid://dhtst7j1psbme" path="res://Scripts/MainMenu/MenuInputManager.gd" id="4_ua038"]
 [ext_resource type="Texture2D" uid="uid://jt26tknpri3k" path="res://Assets/Sprites/Player/PlayerSheet.png" id="5_fv0xt"]
 [ext_resource type="Script" uid="uid://bv6ha5w4h65l1" path="res://Scripts/MainMenu/MenuConfig.gd" id="5_vapy7"]
 [ext_resource type="PackedScene" uid="uid://bc2ddswwm06c3" path="res://Scenes/MainMenu/ArcadeMode/SkinManager.tscn" id="6_fv0xt"]
-[ext_resource type="Theme" uid="uid://cl6jl8i8culga" path="res://Resources/Themes/ArcadeModeButtonsTheme.tres" id="6_sng02"]
+[ext_resource type="Theme" uid="uid://cl6jl8i8culga" path="res://Resources/Themes/RightMenuButtonsTheme.tres" id="6_sng02"]
+[ext_resource type="Theme" uid="uid://drkk06alsvpsn" path="res://Resources/Themes/CenterMenuButton.tres" id="7_lic31"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kpx3y"]
 font = ExtResource("1_c7oo3")
@@ -199,17 +200,17 @@ _data = {
 &"ShowAnimation": SubResource("Animation_fv0xt")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
 atlas = ExtResource("5_fv0xt")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sng02"]
 atlas = ExtResource("5_fv0xt")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
 atlas = ExtResource("5_fv0xt")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
 atlas = ExtResource("5_fv0xt")
@@ -239,8 +240,8 @@ animations = [{
 font = ExtResource("1_c7oo3")
 font_size = 64
 
-[sub_resource type="Animation" id="Animation_gkjg1"]
-resource_name = "ShowAnimation"
+[sub_resource type="Animation" id="Animation_txptg"]
+resource_name = "HideAnimation"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -252,7 +253,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(100, 0), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(100, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -264,7 +265,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ee4eu"]
@@ -294,8 +295,8 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_txptg"]
-resource_name = "HideAnimation"
+[sub_resource type="Animation" id="Animation_gkjg1"]
+resource_name = "ShowAnimation"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -307,7 +308,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(100, 0)]
+"values": [Vector2(100, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -319,7 +320,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txptg"]
@@ -732,11 +733,11 @@ libraries = {
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_56wdt")
+texture = SubResource("AtlasTexture_lic31")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 2
+frame = 1
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -776,14 +777,12 @@ offset_bottom = 179.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_mode = 2
 columns = 4
 displayer = NodePath("../../../../../AnimatedTextureRect")
 
 [node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_c7oo3")
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("7_lic31")
 text = "Confirmer"
 
 [node name="SkinsOptionsAnimation" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus"]

@@ -1,0 +1,206 @@
+[gd_scene load_steps=19 format=3 uid="uid://bpil0aes6hlsw"]
+
+[ext_resource type="Script" uid="uid://bafw033gs1uqc" path="res://Scripts/CardUpgrade/Card.gd" id="1_71eub"]
+[ext_resource type="Texture2D" uid="uid://bcqsexthxqpr4" path="res://Assets/Sprites/CardsIllustration/EmptyCard.png" id="2_6vbt6"]
+[ext_resource type="Texture2D" uid="uid://b8jp2p7gxl3n6" path="res://Assets/Sprites/CardsIllustration/EmptyIllustration.png" id="3_1mdby"]
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="3_6vbt6"]
+[ext_resource type="Shader" uid="uid://bfnkig0y675yk" path="res://Assets/Shaders/Highlight.gdshader" id="5_1mdby"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mdby"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av6g4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1ga5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xypab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vv8s6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mef7g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vbt6"]
+font = ExtResource("3_6vbt6")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_av6g4"]
+font = ExtResource("3_6vbt6")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_av6g4"]
+shader = ExtResource("5_1mdby")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.09
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.3
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_1mdby"]
+font = ExtResource("3_6vbt6")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_1mdby"]
+resource_name = "BuyAnimation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(0.482968, 0.420448, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200), Vector2(0, -1000)]
+}
+
+[sub_resource type="Animation" id="Animation_av6g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_av6g4"]
+_data = {
+&"BuyAnimation": SubResource("Animation_1mdby"),
+&"RESET": SubResource("Animation_av6g4")
+}
+
+[node name="Card" type="Button"]
+custom_minimum_size = Vector2(288, 394)
+offset_right = 288.0
+offset_bottom = 394.0
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1mdby")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_av6g4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p1ga5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xypab")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vv8s6")
+flat = true
+script = ExtResource("1_71eub")
+
+[node name="Visual" type="Control" parent="."]
+custom_minimum_size = Vector2(288, 394)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(143, 189)
+mouse_filter = 1
+
+[node name="CardLayout" type="TextureRect" parent="Visual"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_6vbt6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Visual/CardLayout"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftSeparator" type="VSeparator" parent="Visual/CardLayout/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mef7g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Visual/CardLayout/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CardTitleLabel" type="Label" parent="Visual/CardLayout/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+text = "Titre"
+label_settings = SubResource("LabelSettings_6vbt6")
+horizontal_alignment = 1
+
+[node name="CardDescriptionLabel" type="Label" parent="Visual/CardLayout/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+text = "Vitesse min. ++"
+label_settings = SubResource("LabelSettings_av6g4")
+autowrap_mode = 2
+
+[node name="RightSeparator" type="VSeparator" parent="Visual/CardLayout/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mef7g")
+
+[node name="CardIllustration" type="TextureRect" parent="Visual/CardLayout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_1mdby")
+
+[node name="HighLight" type="ColorRect" parent="Visual/CardLayout/CardIllustration"]
+material = SubResource("ShaderMaterial_av6g4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PriceLabel" type="Label" parent="Visual"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = 26.0
+offset_right = 17.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+text = "123"
+label_settings = SubResource("LabelSettings_1mdby")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_av6g4")
+}

@@ -21,6 +21,7 @@ class_name Player extends CharacterBody2D
 @export_range(0.0,10.0) var min_animation_speed_scale := 0.6
 @export var auto := false
 
+
 ### Utils ###
 var can_run := false
 var skin : SkinData = null
@@ -49,15 +50,15 @@ var obstacle_encountered : bool = false
 var input_up: String
 var input_right: String
 var input_down: String
-@export var player_id := 1
+@export var player_id := 0
 
 func _ready() -> void:
 	add_to_group("Players")
 	orb_magnet.orb_detected.connect(_handle_orb_gathering)
 	
-	input_up = "JumpP%d" % player_id
-	input_right = "BoostP%d" % player_id
-	input_down = "FastFallP%d" % player_id
+	input_up = "JumpP%d" % (player_id + 1)
+	input_right = "BoostP%d" % (player_id + 1)
+	input_down = "FastFallP%d" % (player_id + 1)
 	
 	global_position.x -= player_id * 10
 	
