@@ -40,7 +40,7 @@ func _on_arcade_button_pressed() -> void:
 	menu_input_manager.open_menu(arcade_menu, arcade_button)
 
 func _on_local_button_pressed() -> void:
-	Settings.number_of_players = 4
+	Settings.number_of_players = 2
 	Settings.gamemode = Settings.GAMEMODE.MULTIPLAYER
 	SceneTransition.go_to_scene(multiplayer_scene)
 
@@ -50,10 +50,8 @@ func _on_settings_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_skin_button_pressed() -> void:
 	menu_input_manager.open_menu(skins_options, skin_button)
-
 
 func _on_start_button_pressed() -> void:
 	Settings.number_of_players = 1

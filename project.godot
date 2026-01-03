@@ -25,6 +25,7 @@ SceneTransition="*res://Scenes/UI/SceneTransition.tscn"
 
 window/size/viewport_width=1360
 window/size/viewport_height=768
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 

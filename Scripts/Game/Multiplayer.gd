@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 func new_multiplayer_game(number_of_players : int = 1):
 	for i in range(number_of_players - 1):
 		var new_player : Player = load("res://Scenes/Player/Player.tscn").instantiate()
-		new_player.player_id = screen_container.get_child_count()
+		new_player.player_id = i + 1
 		game_node.add_child(new_player)
 		_add_new_player_viewport(new_player, i)
 		_update_viewport_size()
