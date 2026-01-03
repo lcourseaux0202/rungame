@@ -8,5 +8,6 @@ script = ExtResource("2_g0d7w")
 booster_name = "TestBooster1"
 illustration = ExtResource("1_7nckq")
 card_number = 3
-pick_number = 1
+pick_number = 2
+price = 100
 metadata/_custom_type_script = "uid://b8rsyrpeyr3t1"

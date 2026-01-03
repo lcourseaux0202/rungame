@@ -12,4 +12,5 @@ func load_booster(data : BoosterData) -> void :
 		name = data.booster_name
 		illustration.texture = data.illustration
 		card_number = data.card_number
+		pick_number = data.pick_number
 		label_price.text = str(data.price)

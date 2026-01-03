@@ -42,6 +42,12 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	load_all_cards()
 	load_all_boosters()
+	get_viewport().gui_focus_changed.connect(_on_focus_changed)
+
+func _on_focus_changed(control:Control) -> void:
+	if control != null and visible:
+		print(control.name)
+		
 
 func reveal_menu() -> void :
 	modulate.a = 0.0
@@ -63,10 +69,9 @@ func reveal_menu() -> void :
 	if tween:
 		tween.kill()
 	tween = create_tween().set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "modulate", Color(Color.WHITE, 1.0), 1.0)
+	tween.tween_property(self, "modulate:a", 1.0, 1.0)
 	await tween.finished
 	get_tree().paused = true
-
 
 func load_all_cards():
 	var path = "res://Resources/Cards/"
@@ -97,7 +102,7 @@ func _open_booster(booster : Booster) -> void :
 	_delete_all_boosters()
 	_delete_all_cards()
 	
-	card_for_this_booster = booster.card_number
+	card_for_this_booster = booster.pick_number
 	for i in range(booster.card_number):
 		spawn_card(pick_random_card_by_weight())
 	
@@ -135,8 +140,9 @@ func _handle_card_gained(card : Card) -> void:
 
 func next_turn():
 	_delete_all_cards()
+	cards_gained = 0
 	receiver_index += 1
-	if receiver_index >= players.size() :
+	if receiver_index >= players.size():
 		_close_menu()
 	else :
 		card_carousel.position = get_viewport_rect().size / 2.0
@@ -147,9 +153,17 @@ func next_turn():
 	
 		for booster_data in booster_pool:
 			spawn_booster(booster_data)
+		
+		if boosters_container.get_child_count() > 0:
+			boosters_container.get_child(0).grab_focus()
+		
+		current_state = CardMenuState.Booster
 
 func _close_menu():
-	hide()
+	if tween :
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 1.0)
 	get_tree().paused = false
 	current_state = CardMenuState.Booster
 	cards_gained = 0

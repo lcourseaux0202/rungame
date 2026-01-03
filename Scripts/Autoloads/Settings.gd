@@ -1,6 +1,6 @@
 extends Node
 
-const LAST_LEVEL_LENGTH := 999999
+const LAST_LEVEL_LENGTH := 500000
 var max_sections := 100
 var xp_gain_per_orb := 5
 var number_of_levels := 30

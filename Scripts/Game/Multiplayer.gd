@@ -119,10 +119,10 @@ func _trigger_restart_sequence() -> void :
 	
 	_set_next_level_length()
 	game_node.restart()
+	game_node.finish_line.global_position.x = current_level_length
 	var position_buffer = 0
 	if Settings.is_gamemode_solo():
 		solo_game_ui.start_timer(LEVEL_TIME_DURATION, current_level)
-		game_node.finish_line.global_position.x = current_level_length
 	for player : Player in players:
 		player.global_position.x = 50 * position_buffer
 		position_buffer += 1
