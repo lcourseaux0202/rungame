@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://61cecci0rie1"]
+[gd_scene load_steps=8 format=3 uid="uid://61cecci0rie1"]
 
 [ext_resource type="Script" uid="uid://cuecvvxd75aul" path="res://Scripts/CardUpgrade/Booster.gd" id="1_n2euh"]
 [ext_resource type="Texture2D" uid="uid://cwqry1nf4s2jo" path="res://Assets/Sprites/BoostersIllustration/BoosterPlaceholder.png" id="1_x2y4i"]
+[ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="3_i2014"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x2y4i"]
+font = ExtResource("3_i2014")
+font_size = 48
 
 [sub_resource type="Animation" id="Animation_n2euh"]
 resource_name = "OpeningAnimation"
@@ -114,13 +117,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
+offset_left = -25.5
 offset_top = 8.0
-offset_right = 20.0
-offset_bottom = 31.0
+offset_right = 25.5
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 0
+text = "123"
 label_settings = SubResource("LabelSettings_x2y4i")
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

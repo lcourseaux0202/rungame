@@ -19,8 +19,6 @@ var can_assign : bool = true
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion or not event.is_pressed() or not visible:
 		return
-
-	# On utilise une action générique "ui_accept" ou n'importe quelle touche
 	if event.is_action_pressed("ui_accept") or event is InputEventKey or event is InputEventJoypadButton:
 		match current_assign_state:
 			AssignState.PLAYER_1:

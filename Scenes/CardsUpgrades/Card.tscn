@@ -6,15 +6,15 @@
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="3_6vbt6"]
 [ext_resource type="Shader" uid="uid://bfnkig0y675yk" path="res://Assets/Shaders/Highlight.gdshader" id="5_1mdby"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mdby"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av6g4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1ga5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vv8s6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xypab"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vv8s6"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1ga5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av6g4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mdby"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mef7g"]
 
@@ -89,11 +89,11 @@ offset_bottom = 394.0
 size_flags_horizontal = 3
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1mdby")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_av6g4")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_p1ga5")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_xypab")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vv8s6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xypab")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p1ga5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_av6g4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1mdby")
 flat = true
 script = ExtResource("1_71eub")
 
@@ -183,6 +183,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PriceLabel" type="Label" parent="Visual"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
