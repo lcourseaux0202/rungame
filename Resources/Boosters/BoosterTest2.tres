@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BoosterData" load_steps=3 format=3 uid="uid://bx7mug2akbkt1"]
 
-[ext_resource type="Texture2D" uid="uid://cwqry1nf4s2jo" path="res://Assets/Sprites/BoostersIllustration/BoosterPlaceholder.png" id="1_xjcjl"]
+[ext_resource type="Texture2D" uid="uid://bonhxnt02pujt" path="res://Assets/Sprites/BoostersIllustration/Booster2.png" id="1_xjcjl"]
 [ext_resource type="Script" uid="uid://b8rsyrpeyr3t1" path="res://Scripts/CardUpgrade/BoosterData.gd" id="2_xqxo7"]
 
 [resource]
@@ -9,4 +9,5 @@ booster_name = "TestBooster2"
 illustration = ExtResource("1_xjcjl")
 card_number = 5
 pick_number = 2
+price = 300
 metadata/_custom_type_script = "uid://b8rsyrpeyr3t1"

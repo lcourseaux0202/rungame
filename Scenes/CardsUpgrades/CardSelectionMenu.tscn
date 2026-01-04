@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2bh6cy2afan1"]
+[gd_scene load_steps=10 format=3 uid="uid://2bh6cy2afan1"]
 
 [ext_resource type="Script" uid="uid://drhdeujhtm7ou" path="res://Scripts/CardUpgrade/CardMenu.gd" id="1_62h5f"]
 [ext_resource type="Script" uid="uid://c2h7e0eu37thr" path="res://Scripts/UI/CarouselContainer.gd" id="1_v2idy"]
@@ -11,6 +11,10 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_572uf"]
 font = ExtResource("2_bkvkq")
 font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_0i52g"]
+font = ExtResource("2_bkvkq")
+font_size = 32
 
 [sub_resource type="Animation" id="Animation_572uf"]
 length = 0.001
@@ -96,6 +100,21 @@ size_flags_vertical = 8
 text = "Explications"
 label_settings = SubResource("LabelSettings_572uf")
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="OrbsLabel" type="Label" parent="MarginContainer/Control"]
+layout_mode = 0
+offset_top = 84.0
+offset_right = 77.0
+offset_bottom = 119.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Orbes :"
+label_settings = SubResource("LabelSettings_0i52g")
 
 [node name="CardCarousel" type="Node2D" parent="." node_paths=PackedStringArray("position_offset_node")]
 script = ExtResource("1_v2idy")

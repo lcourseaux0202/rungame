@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://beg65mxmwr3sa"]
+[gd_scene load_steps=6 format=3 uid="uid://beg65mxmwr3sa"]
 
 [ext_resource type="Script" uid="uid://bwhs81xqpvbpn" path="res://Scripts/UI/SettingsMenu.gd" id="1_q4b8a"]
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="2_s4v4x"]
@@ -12,8 +12,6 @@ font = ExtResource("2_s4v4x")
 font_size = 24
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_q4b8a"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4b8a"]
 
 [node name="SettingsMenu" type="Control"]
 process_mode = 3
@@ -56,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -29.0
-offset_right = 65.5
-offset_bottom = 29.0
+offset_left = -195.875
+offset_top = -118.5
+offset_right = 195.875
+offset_bottom = 118.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 30
@@ -76,7 +74,7 @@ vertical_alignment = 1
 [node name="ResolutionOptions" type="OptionButton" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 4
 flat = true
 
@@ -92,7 +90,7 @@ vertical_alignment = 1
 [node name="FullscreenCheckbox" type="CheckBox" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 4
 flat = true
 
@@ -108,7 +106,9 @@ vertical_alignment = 1
 [node name="MasterSlider" type="HSlider" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
+step = 10.0
 
 [node name="LabelAudioMusic" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -122,7 +122,9 @@ vertical_alignment = 1
 [node name="MusicSlider" type="HSlider" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
+step = 10.0
 
 [node name="LabelAudioSFX" type="Label" parent="GridContainer"]
 layout_mode = 2
@@ -136,36 +138,36 @@ vertical_alignment = 1
 [node name="SFXSlider" type="HSlider" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
+step = 10.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -39.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = 88.0
+offset_right = 127.5
+offset_bottom = 170.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
-[node name="BackButton" type="Button" parent="HBoxContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_s4v4x")
 theme_override_font_sizes/font_size = 28
 button_group = SubResource("ButtonGroup_q4b8a")
-text = "Retour"
+text = "Retour au jeu"
 flat = true
 
-[node name="Separator" type="VSeparator" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/separator = SubResource("StyleBoxEmpty_q4b8a")
-
-[node name="BackToMenuButton" type="Button" parent="HBoxContainer"]
+[node name="BackToMenuButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_s4v4x")
 theme_override_font_sizes/font_size = 28

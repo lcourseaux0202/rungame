@@ -32,10 +32,14 @@ func _ready() -> void:
 	sfx_slider.value_changed.connect(_change_sfx_volume)
 	back_button.pressed.connect(_close_menu)
 	back_to_menu_button.pressed.connect(_back_to_menu)
-	
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		_close_menu()
+	if event.is_action_released("ui_cancel"):
+		if visible :
+			_close_menu()
+		else : 
+			open_menu()
+
 
 func _change_resolution(index: int) -> void:
 	var key = resolution_options.get_item_text(index)
@@ -91,6 +95,7 @@ func _change_sfx_volume(value: float) -> void:
 		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
 
 func open_menu(mode : int = 1):
+	get_tree().paused = true
 	back_to_menu_button.visible = (mode == 1)
 	show()
 
@@ -98,7 +103,6 @@ func _close_menu() -> void :
 	visible = false
 	get_tree().paused = false
 	settings_closed.emit()
-	
 	
 func _back_to_menu() -> void :
 	_close_menu()

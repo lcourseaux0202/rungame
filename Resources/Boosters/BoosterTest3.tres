@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="BoosterData" load_steps=3 format=3 uid="uid://y6p3sr4xsho5"]
 
-[ext_resource type="Texture2D" uid="uid://cwqry1nf4s2jo" path="res://Assets/Sprites/BoostersIllustration/BoosterPlaceholder.png" id="1_i4wki"]
+[ext_resource type="Texture2D" uid="uid://cwni2mbk1oop0" path="res://Assets/Sprites/BoostersIllustration/Booster3.png" id="1_i4wki"]
 [ext_resource type="Script" uid="uid://b8rsyrpeyr3t1" path="res://Scripts/CardUpgrade/BoosterData.gd" id="2_sod7p"]
 
 [resource]
 script = ExtResource("2_sod7p")
 booster_name = "TestBooster3"
 illustration = ExtResource("1_i4wki")
-card_number = 10
+card_number = 7
 pick_number = 2
-price = 100
+price = 500
 metadata/_custom_type_script = "uid://b8rsyrpeyr3t1"

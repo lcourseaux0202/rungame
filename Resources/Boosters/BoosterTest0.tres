@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BoosterData" load_steps=3 format=3 uid="uid://djyouvm0wlvha"]
+
+[ext_resource type="Texture2D" uid="uid://dub4jvrvcjp2d" path="res://Assets/Sprites/BoostersIllustration/Booster0.png" id="1_jrbnu"]
+[ext_resource type="Script" uid="uid://b8rsyrpeyr3t1" path="res://Scripts/CardUpgrade/BoosterData.gd" id="2_moq5t"]
+
+[resource]
+script = ExtResource("2_moq5t")
+booster_name = "TestBooster1"
+illustration = ExtResource("1_jrbnu")
+price = 0
+metadata/_custom_type_script = "uid://b8rsyrpeyr3t1"

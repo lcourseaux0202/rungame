@@ -5,6 +5,8 @@ class_name CardMenu extends Control
 @onready var card_carousel: CarouselContainer = $CardCarousel
 @onready var cards_container: Control = $CardCarousel/CardsContainer
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var orbs_label: Label = $MarginContainer/Control/OrbsLabel
+@onready var explanation_label: Label = $MarginContainer/ExplanationLabel
 
 var tween : Tween
 
@@ -26,6 +28,10 @@ var receiver_index : int
 func set_players(ordered_players : Array[Player]):
 	players = ordered_players
 	receiver_index = 0
+	orbs_label.text = "Orbes : " + str(players[receiver_index].xp)
+	orbs_label.show()
+	explanation_label.text = "Joueur " + str(players[receiver_index].player_id + 1) + " : choisissez un booster."
+	explanation_label.add_theme_color_override("font_color", players[receiver_index].skin.character_color)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
@@ -42,12 +48,6 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	load_all_cards()
 	load_all_boosters()
-	get_viewport().gui_focus_changed.connect(_on_focus_changed)
-
-func _on_focus_changed(control:Control) -> void:
-	if control != null and visible:
-		print(control.name)
-		
 
 func reveal_menu() -> void :
 	modulate.a = 0.0
@@ -96,22 +96,29 @@ func load_all_boosters():
 			file_name = dir.get_next()
 
 func _open_booster(booster : Booster) -> void :
-	booster.reparent(booster_carousel)
-	booster.animation_player.play("OpeningAnimation")
-	
-	_delete_all_boosters()
-	_delete_all_cards()
-	
-	card_for_this_booster = booster.pick_number
-	for i in range(booster.card_number):
-		spawn_card(pick_random_card_by_weight())
-	
-	card_carousel.show()
-	animation.play("RevealCardsAnimation")
-	card_carousel.selected_index = cards_container.get_child_count() / 2
-	current_state = CardMenuState.Card
-	await booster.animation_player.animation_finished
-	booster.queue_free()
+	if players[receiver_index].xp >= booster.price :
+		orbs_label.hide()
+		
+		booster.reparent(booster_carousel)
+		booster.animation_player.play("OpeningAnimation")
+
+		_delete_all_boosters()
+		_delete_all_cards()
+
+		card_for_this_booster = booster.pick_number
+
+		explanation_label.text = "Vous pouvez encore choisir [" + str(card_for_this_booster) + "] carte(s)."
+
+		for i in range(booster.card_number):
+			spawn_card(pick_random_card_by_weight())
+
+		card_carousel.show()
+		animation.play("RevealCardsAnimation")
+		@warning_ignore("integer_division")
+		card_carousel.selected_index = cards_container.get_child_count() / 2
+		current_state = CardMenuState.Card
+		await booster.animation_player.animation_finished
+		booster.queue_free()
 
 func spawn_card(card_res: CardData):
 	if card_res != null:
@@ -135,6 +142,7 @@ func spawn_booster(booster_res: BoosterData):
 func _handle_card_gained(card : Card) -> void:
 	card.reparent(card_carousel)
 	cards_gained += 1
+	explanation_label.text = "Vous pouvez encore choisir [" + str(card_for_this_booster - cards_gained) + "] carte(s)."
 	if cards_gained >= card_for_this_booster :
 		next_turn()
 
@@ -145,6 +153,12 @@ func next_turn():
 	if receiver_index >= players.size():
 		_close_menu()
 	else :
+		orbs_label.text = "Orbes : " + str(players[receiver_index].xp)
+		orbs_label.show()
+		
+		explanation_label.text = "Joueur " + str(players[receiver_index].player_id + 1) + " : choisissez un booster."
+		explanation_label.add_theme_color_override("font_color", players[receiver_index].skin.character_color)
+		
 		card_carousel.position = get_viewport_rect().size / 2.0
 		card_carousel.hide()
 		

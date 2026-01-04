@@ -2,6 +2,7 @@ class_name Booster extends Button
 
 var card_number : int
 var pick_number : int
+var price : int
 
 @onready var label_price: Label = $LabelPrice
 @onready var illustration: TextureRect = $TextureRect
@@ -13,4 +14,5 @@ func load_booster(data : BoosterData) -> void :
 		illustration.texture = data.illustration
 		card_number = data.card_number
 		pick_number = data.pick_number
-		label_price.text = str(data.price)
+		price = data.price
+		label_price.text = str(price)

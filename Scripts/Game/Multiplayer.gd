@@ -39,11 +39,6 @@ func _process(delta: float) -> void:
 	if players.size() > 1 :
 		_boost_worst_player(delta)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		settings_menu.open_menu()
-		get_tree().paused = true
-
 func new_multiplayer_game(number_of_players : int = 1):
 	for i in range(number_of_players - 1):
 		var new_player : Player = load("res://Scenes/Player/Player.tscn").instantiate()

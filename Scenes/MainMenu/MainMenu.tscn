@@ -202,9 +202,9 @@ _data = {
 &"ShowAnimation": SubResource("Animation_fv0xt")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
 atlas = ExtResource("5_fv0xt")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sng02"]
 atlas = ExtResource("5_fv0xt")
@@ -214,9 +214,9 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("5_fv0xt")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
 atlas = ExtResource("5_fv0xt")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ah1a3"]
 animations = [{
@@ -1291,11 +1291,11 @@ libraries = {
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_k2pwb")
+texture = SubResource("AtlasTexture_56wdt")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 3
+frame = 2
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -1590,11 +1590,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_k2pwb")
+texture = SubResource("AtlasTexture_56wdt")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 3
+frame = 2
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -1642,11 +1642,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_k2pwb")
+texture = SubResource("AtlasTexture_56wdt")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 3
+frame = 2
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
