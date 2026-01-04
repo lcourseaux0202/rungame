@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bras13nfb7n3n"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bras13nfb7n3n"]
 
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_0sxf5"]
 
@@ -50,6 +50,30 @@ expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tlgcq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txgyk"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 100
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seod8"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 100
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro8k3"]
 skew = Vector2(0.1, 0)
 border_width_left = 100
@@ -78,4 +102,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_4wrbx")
 Button/styles/normal = SubResource("StyleBoxFlat_0sxf5")
 Button/styles/pressed = SubResource("StyleBoxEmpty_tlgcq")
 CheckButton/font_sizes/font_size = 24
+CheckButton/styles/hover = SubResource("StyleBoxFlat_txgyk")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_seod8")
 HSlider/styles/slider = SubResource("StyleBoxFlat_ro8k3")

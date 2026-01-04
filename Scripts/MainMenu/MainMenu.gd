@@ -19,13 +19,45 @@ class_name MainMenu extends Control
 
 @onready var display_options: VBoxContainer = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions
 @onready var display_button: Button = $MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/DisplayButton
+
+@onready var resolution_options: OptionButton = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/ResolutionOptions
+@onready var fullscreen_button: CheckButton = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/FullscreenButton
+@onready var v_sync_button: CheckButton = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/VSyncButton
+
 @onready var audio_options: VBoxContainer = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions
 @onready var audio_button: Button = $MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/AudioButton
 
+@onready var master_volume: HSlider = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master/MasterVolume
+@onready var music_volume: HSlider = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Music/MusicVolume
+@onready var sfx_volume: HSlider = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/SFX/SFXVolume
+
 var multiplayer_scene = preload("res://Scenes/Game/Multiplayer.tscn")
+
+const MAX_VALUE = 100.0 
 
 func _ready() -> void:
 	Settings.skin_changed.connect(_on_skin_changed)
+	
+	for resolution in Settings.resolutions.keys():
+		resolution_options.add_item(resolution)
+		
+	fullscreen_button.button_pressed = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	resolution_options.disabled = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
+	var master_vol = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
+	var music_vol = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+	var sfx_vol = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	master_volume.value = master_vol * master_volume.max_value
+	music_volume.value = music_vol * music_volume.max_value
+	sfx_volume.value = sfx_vol * sfx_volume.max_value
+	
+	resolution_options.item_selected.connect(_change_resolution)
+	fullscreen_button.toggled.connect(_toggle_fullscreen)
+	v_sync_button.toggled.connect(_toggle_v_sync)
+	
+	master_volume.value_changed.connect(_change_master_volume)
+	music_volume.value_changed.connect(_change_music_volume)
+	sfx_volume.value_changed.connect(_change_sfx_volume)
 
 func _on_skin_changed(player_id, skin_resource):
 	if player_id == 0 and skin_resource:
@@ -72,3 +104,63 @@ func _on_display_button_pressed() -> void:
 
 func _on_audio_button_pressed() -> void:
 	menu_input_manager.open_menu(audio_options, audio_button)
+
+### Settings menu ###
+func _change_resolution(index: int) -> void:
+	var key = resolution_options.get_item_text(index)
+	var new_resolution = Settings.resolutions[key]
+	
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	fullscreen_button.button_pressed = false
+	
+	get_window().size = new_resolution
+	
+	center_window()
+
+func center_window():
+	var window = get_window()
+	if window.mode == Window.MODE_WINDOWED:
+		if not Engine.is_editor_hint():
+			var screen_center = DisplayServer.screen_get_position(0) + DisplayServer.screen_get_size(0) / 2
+			var window_size = window.get_size_with_decorations()
+			window.position = screen_center - window_size / 2
+
+func _toggle_fullscreen(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		resolution_options.disabled = true
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		center_window()
+		resolution_options.disabled = false
+		
+func _toggle_v_sync(toggled_on : bool) -> void:
+	if toggled_on :
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else :
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func _change_master_volume(value: float) -> void:
+	if value <= 0:
+		AudioServer.set_bus_mute(0, true)
+	else:
+		AudioServer.set_bus_mute(0, false)
+		var db_val = linear_to_db(value / MAX_VALUE)
+		AudioServer.set_bus_volume_db(0, db_val)
+
+func _change_music_volume(value: float) -> void:
+	var bus_idx = AudioServer.get_bus_index("Music")
+	if value <= 0:
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		AudioServer.set_bus_mute(bus_idx, false)
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
+
+func _change_sfx_volume(value: float) -> void:
+	var bus_idx = AudioServer.get_bus_index("SFX")
+	if value <= 0:
+		AudioServer.set_bus_mute(bus_idx, true)
+	else:
+		AudioServer.set_bus_mute(bus_idx, false)
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
