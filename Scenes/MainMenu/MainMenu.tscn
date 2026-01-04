@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b1olhrcknwvjt"]
+[gd_scene load_steps=53 format=3 uid="uid://b1olhrcknwvjt"]
 
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_c7oo3"]
 [ext_resource type="Script" uid="uid://p55hepl35liq" path="res://Scripts/MainMenu/MainMenu.gd" id="1_vapy7"]
@@ -522,6 +522,262 @@ _data = {
 &"ShowAnimation": SubResource("Animation_56wdt")
 }
 
+[sub_resource type="Animation" id="Animation_fwa5k"]
+resource_name = "ShowAnimation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rw3b1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(66, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e4du8"]
+resource_name = "HideAnimation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-100, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trxxf"]
+_data = {
+&"HideAnimation": SubResource("Animation_e4du8"),
+&"RESET": SubResource("Animation_rw3b1"),
+&"ShowAnimation": SubResource("Animation_fwa5k")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_lic31"]
+font = ExtResource("1_c7oo3")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_cmo68"]
+resource_name = "ShowAnimation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5o35t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ahojg"]
+resource_name = "HideAnimation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahojg"]
+_data = {
+&"HideAnimation": SubResource("Animation_ahojg"),
+&"RESET": SubResource("Animation_5o35t"),
+&"ShowAnimation": SubResource("Animation_cmo68")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_c7oo3"]
 font = ExtResource("1_c7oo3")
 font_size = 24
@@ -531,9 +787,6 @@ script = ExtResource("5_vapy7")
 menu_parent = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons")
 default_button = NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SoloButton")
 button_parents = Array[NodePath]([NodePath("../MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons")])
-anim_player = NodePath("")
-show_anim = ""
-hide_anim = ""
 metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
 
 [sub_resource type="Resource" id="Resource_ua038"]
@@ -576,6 +829,33 @@ show_anim = "ShowAnimation"
 hide_anim = "HideAnimation"
 metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
 
+[sub_resource type="Resource" id="Resource_56wdt"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/SettingsOptions")
+default_button = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/DisplayButton")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/MainButtons")])
+anim_player = NodePath("../MarginContainer/SettingsOptions/SettingsMenuAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_k2pwb"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions")
+default_button = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/ResolutionOptions")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions")])
+anim_player = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptionsAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_ah1a3"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions")
+default_button = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master/MasterVolume")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master"), NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Music"), NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/SFX"), NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions")])
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -586,7 +866,7 @@ grow_vertical = 2
 script = ExtResource("1_vapy7")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_right = 1360.0
 offset_bottom = 768.0
 grow_horizontal = 2
@@ -821,6 +1101,174 @@ libraries = {
 &"": SubResource("AnimationLibrary_ah1a3")
 }
 
+[node name="SettingsOptions" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LabelSettingsTitle" type="Label" parent="MarginContainer/SettingsOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+text = "Paramètres"
+label_settings = SubResource("LabelSettings_sng02")
+horizontal_alignment = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/SettingsOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+
+[node name="MainButtons" type="VBoxContainer" parent="MarginContainer/SettingsOptions/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="DisplayButton" type="Button" parent="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_sg7ab")
+text = "Fenêtre"
+alignment = 2
+
+[node name="AudioButton" type="Button" parent="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_sg7ab")
+text = "Audio"
+alignment = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_sg7ab")
+text = "Retour
+"
+alignment = 2
+
+[node name="SubMenus" type="Control" parent="MarginContainer/SettingsOptions/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="DisplayOptions" type="VBoxContainer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_right = 252.0
+offset_bottom = 306.0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="ResolutionOptions" type="OptionButton" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+alignment = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+
+[node name="FullscreenButton" type="CheckButton" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Plein écran"
+alignment = 2
+
+[node name="VSyncButton" type="CheckButton" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Vsync"
+alignment = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions"]
+layout_mode = 2
+theme = ExtResource("2_sg7ab")
+text = "Retour"
+alignment = 2
+
+[node name="DisplayOptionsAnimation" type="AnimationPlayer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus"]
+libraries = {
+&"": SubResource("AnimationLibrary_trxxf")
+}
+
+[node name="AudioOptions" type="VBoxContainer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus"]
+visible = false
+layout_mode = 1
+offset_right = 379.0
+offset_bottom = 290.0
+theme_override_constants/separation = 50
+
+[node name="Master" type="HBoxContainer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+label_settings = SubResource("LabelSettings_lic31")
+horizontal_alignment = 2
+
+[node name="MasterVolume" type="HSlider" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_sg7ab")
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Musique"
+label_settings = SubResource("LabelSettings_lic31")
+horizontal_alignment = 2
+
+[node name="MusicVolume" type="HSlider" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_sg7ab")
+
+[node name="SFX" type="HBoxContainer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Effets sonores"
+label_settings = SubResource("LabelSettings_lic31")
+horizontal_alignment = 2
+
+[node name="SFXVolume" type="HSlider" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_sg7ab")
+
+[node name="BackButton" type="Button" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("7_lic31")
+theme_override_font_sizes/font_size = 32
+text = "Retour"
+
+[node name="AudioOptionsAnimation" type="AnimationPlayer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus"]
+
+[node name="SettingsMenuAnimation" type="AnimationPlayer" parent="MarginContainer/SettingsOptions"]
+libraries = {
+&"": SubResource("AnimationLibrary_ahojg")
+}
+
 [node name="VersionLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -846,7 +1294,7 @@ bus = &"Music"
 [node name="MenuInputManager" type="Node" parent="."]
 script = ExtResource("4_ua038")
 base_menu = SubResource("Resource_8qovt")
-popup_menus = Array[ExtResource("5_vapy7")]([SubResource("Resource_ua038"), SubResource("Resource_vapy7"), SubResource("Resource_sng02"), SubResource("Resource_lic31")])
+popup_menus = Array[ExtResource("5_vapy7")]([SubResource("Resource_ua038"), SubResource("Resource_vapy7"), SubResource("Resource_sng02"), SubResource("Resource_lic31"), SubResource("Resource_56wdt"), SubResource("Resource_k2pwb"), SubResource("Resource_ah1a3")])
 metadata/_custom_type_script = "uid://dhtst7j1psbme"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SoloButton" to="." method="_on_solo_button_pressed"]
@@ -861,3 +1309,8 @@ metadata/_custom_type_script = "uid://dhtst7j1psbme"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/SkinButton" to="." method="_on_skin_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/DisplayButton" to="." method="_on_display_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/BackButton" to="." method="_on_back_button_pressed"]

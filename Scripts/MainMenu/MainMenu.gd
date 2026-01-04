@@ -14,6 +14,14 @@ class_name MainMenu extends Control
 @onready var skin_button: Button = $MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/MainButtons/SkinButton
 @onready var skins_options: VBoxContainer = $MarginContainer/HBoxContainer/ArcadeMenu/ButtonsContainer/SubMenus/SkinsOptions
 
+@onready var settings_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SettingsButton
+@onready var settings_options: VBoxContainer = $MarginContainer/SettingsOptions
+
+@onready var display_options: VBoxContainer = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions
+@onready var display_button: Button = $MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/DisplayButton
+@onready var audio_options: VBoxContainer = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions
+@onready var audio_button: Button = $MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/AudioButton
+
 var multiplayer_scene = preload("res://Scenes/Game/Multiplayer.tscn")
 
 func _ready() -> void:
@@ -45,7 +53,7 @@ func _on_local_button_pressed() -> void:
 	SceneTransition.go_to_scene(multiplayer_scene)
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	menu_input_manager.open_menu(settings_options, settings_button)
 	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
@@ -57,3 +65,10 @@ func _on_start_button_pressed() -> void:
 	Settings.number_of_players = 1
 	Settings.gamemode = Settings.GAMEMODE.SOLO
 	SceneTransition.go_to_scene(multiplayer_scene)
+
+
+func _on_display_button_pressed() -> void:
+	menu_input_manager.open_menu(display_options, display_button)
+
+func _on_audio_button_pressed() -> void:
+	menu_input_manager.open_menu(audio_options, audio_button)
