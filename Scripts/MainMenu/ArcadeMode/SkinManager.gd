@@ -2,6 +2,7 @@
 class_name SkinManager extends GridContainer
 
 var skins = []
+@export var player_id := 0
 @export var displayer : AnimatedTextureRect
 @export var skins_buttons_size := 32
 const SKINS_PATH = "res://Resources/Skins/"
@@ -52,12 +53,24 @@ func _create_skins_buttons() -> void:
 		
 		add_child(new_button)
 
-func _display_skin(button_pressed : Button, skin : SkinData) -> void:
+func _display_skin(_button_pressed : Button, skin : SkinData) -> void:
 	displayer.modulate = skin.character_color
-	Settings.set_selected_skin(0,skin)
+	Settings.set_selected_skin(player_id,skin)
 
 func _on_focus_entered() -> void:
 	if get_child_count() > 0:
 		var first_button = get_child(0) as Button
 		if first_button:
 			first_button.grab_focus()
+
+func toggle_on(enable):
+	if enable :
+		focus_mode = Control.FOCUS_ALL
+	else :
+		focus_mode = Control.FOCUS_NONE
+	for button : Button in get_children():
+		button.disabled = !enable
+		if enable : 
+			button.focus_mode = Control.FOCUS_ALL
+		else :
+			button.focus_mode = Control.FOCUS_NONE

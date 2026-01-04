@@ -202,21 +202,21 @@ _data = {
 &"ShowAnimation": SubResource("Animation_fv0xt")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
 atlas = ExtResource("5_fv0xt")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sng02"]
 atlas = ExtResource("5_fv0xt")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
+atlas = ExtResource("5_fv0xt")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
 atlas = ExtResource("5_fv0xt")
 region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
-atlas = ExtResource("5_fv0xt")
-region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ah1a3"]
 animations = [{
@@ -1128,7 +1128,7 @@ metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
 script = ExtResource("5_vapy7")
 menu_parent = NodePath("../MarginContainer/MultiplayerMenu")
 default_button = NodePath("../MarginContainer/MultiplayerMenu/HBoxContainer/BackButton")
-button_parents = Array[NodePath]([NodePath("../MarginContainer/MultiplayerMenu/HBoxContainer")])
+button_parents = Array[NodePath]([NodePath("../MarginContainer/MultiplayerMenu/HBoxContainer"), NodePath("../MarginContainer/MultiplayerMenu/PlayersSettings/Player1"), NodePath("../MarginContainer/MultiplayerMenu/PlayersSettings/Player2")])
 anim_player = NodePath("../MarginContainer/MultiplayerMenu/MultiplayerMenuAnimation")
 show_anim = "ShowAnimation"
 hide_anim = "HideAnimation"
@@ -1291,11 +1291,11 @@ libraries = {
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_lic31")
+texture = SubResource("AtlasTexture_k2pwb")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 1
+frame = 3
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -1552,7 +1552,7 @@ libraries = {
 [node name="MultiplayerMenu" type="VBoxContainer" parent="MarginContainer"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 30
 script = ExtResource("9_k2pwb")
 
 [node name="LabelSettingsTitle" type="Label" parent="MarginContainer/MultiplayerMenu"]
@@ -1572,6 +1572,7 @@ theme_override_constants/separation = 200
 [node name="Player1" type="VBoxContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
 
 [node name="Player1Label" type="Label" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1"]
 layout_mode = 2
@@ -1589,11 +1590,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_lic31")
+texture = SubResource("AtlasTexture_k2pwb")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 1
+frame = 3
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -1605,13 +1606,21 @@ text = "Appuyez sur une touche"
 label_settings = SubResource("LabelSettings_56wdt")
 horizontal_alignment = 1
 
-[node name="SkinManagerP1" type="GridContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1"]
+[node name="SkinManagerP1" type="GridContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1" node_paths=PackedStringArray("displayer")]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 2
 columns = 10
 script = ExtResource("9_56wdt")
+displayer = NodePath("../HBoxContainer/Player1Preview")
 metadata/_custom_type_script = "uid://i65mt8wjgx1c"
+
+[node name="ReadyP1Button" type="Button" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("7_lic31")
+text = "Prêt !"
 
 [node name="Player2" type="VBoxContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings"]
 layout_mode = 2
@@ -1633,11 +1642,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_lic31")
+texture = SubResource("AtlasTexture_k2pwb")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 1
+frame = 3
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -1649,17 +1658,26 @@ text = "Appuyez sur une touche"
 label_settings = SubResource("LabelSettings_56wdt")
 horizontal_alignment = 1
 
-[node name="SkinManagerP2" type="GridContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2"]
+[node name="SkinManagerP2" type="GridContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2" node_paths=PackedStringArray("displayer")]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 2
 columns = 10
 script = ExtResource("9_56wdt")
+player_id = 1
+displayer = NodePath("../HBoxContainer/Player2Preview")
 metadata/_custom_type_script = "uid://i65mt8wjgx1c"
+
+[node name="ReadyP2Button" type="Button" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("7_lic31")
+text = "Prêt !"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MultiplayerMenu"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 100
 alignment = 1
 
@@ -1726,4 +1744,7 @@ metadata/_custom_type_script = "uid://dhtst7j1psbme"
 [connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="visibility_changed" from="MarginContainer/MultiplayerMenu" to="MarginContainer/MultiplayerMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/MultiplayerMenu/PlayersSettings/Player1/ReadyP1Button" to="MarginContainer/MultiplayerMenu" method="_on_ready_p_1_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MultiplayerMenu/PlayersSettings/Player2/ReadyP2Button" to="MarginContainer/MultiplayerMenu" method="_on_ready_p_2_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MultiplayerMenu/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MultiplayerMenu/HBoxContainer/StartButton" to="." method="_on_multiplayer_start_button_pressed"]

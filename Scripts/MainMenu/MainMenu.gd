@@ -84,9 +84,6 @@ func _on_arcade_button_pressed() -> void:
 
 func _on_local_button_pressed() -> void:
 	menu_input_manager.open_menu(multiplayer_menu, local_button)
-	#Settings.number_of_players = 2
-	#Settings.gamemode = Settings.GAMEMODE.MULTIPLAYER
-	#SceneTransition.go_to_scene(multiplayer_scene)
 
 func _on_settings_button_pressed() -> void:
 	menu_input_manager.open_menu(settings_options, settings_button)
@@ -170,5 +167,26 @@ func _change_sfx_volume(value: float) -> void:
 		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
 
 
-func _on_multiplayer_menu_visibility_changed() -> void:
-	pass # Replace with function body.
+func _on_multiplayer_start_button_pressed() -> void:
+	print_input_map()
+	Settings.number_of_players = 2
+	Settings.gamemode = Settings.GAMEMODE.MULTIPLAYER
+	SceneTransition.go_to_scene(multiplayer_scene)
+
+func print_input_map():
+	print("--- INPUT MAP CONFIGURATION ---")
+	# On récupère toutes les actions (y compris les ui_ par défaut)
+	var actions = InputMap.get_actions()
+	
+	for action in actions:
+		# On récupère tous les événements liés à cette action (clavier, manette, souris)
+		var events = InputMap.action_get_events(action)
+		var event_list = []
+		
+		for event in events:
+			# On transforme l'événement en texte lisible (ex: "Space", "Joypad Button 0")
+			event_list.append(event.as_text())
+		
+		# On affiche l'action et ses touches
+		print("Action: %s | Touches: %s" % [action, ", ".join(event_list)])
+	print("--------------------------------")
