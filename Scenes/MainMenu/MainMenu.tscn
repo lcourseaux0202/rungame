@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b1olhrcknwvjt"]
+[gd_scene load_steps=66 format=3 uid="uid://b1olhrcknwvjt"]
 
 [ext_resource type="FontFile" uid="uid://donfw1xb4wbfa" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_c7oo3"]
 [ext_resource type="Script" uid="uid://p55hepl35liq" path="res://Scripts/MainMenu/MainMenu.gd" id="1_vapy7"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bc2ddswwm06c3" path="res://Scenes/MainMenu/ArcadeMode/SkinManager.tscn" id="6_fv0xt"]
 [ext_resource type="Theme" uid="uid://cl6jl8i8culga" path="res://Resources/Themes/RightMenuButtonsTheme.tres" id="6_sng02"]
 [ext_resource type="Theme" uid="uid://drkk06alsvpsn" path="res://Resources/Themes/CenterMenuButton.tres" id="7_lic31"]
+[ext_resource type="Script" uid="uid://i65mt8wjgx1c" path="res://Scripts/MainMenu/ArcadeMode/SkinManager.gd" id="9_56wdt"]
+[ext_resource type="Script" uid="uid://cl8llecbv1xog" path="res://Scripts/MainMenu/MultiplayerMenu.gd" id="9_k2pwb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kpx3y"]
 font = ExtResource("1_c7oo3")
@@ -200,21 +202,21 @@ _data = {
 &"ShowAnimation": SubResource("Animation_fv0xt")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
 atlas = ExtResource("5_fv0xt")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sng02"]
 atlas = ExtResource("5_fv0xt")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lic31"]
-atlas = ExtResource("5_fv0xt")
-region = Rect2(32, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_56wdt"]
 atlas = ExtResource("5_fv0xt")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2pwb"]
+atlas = ExtResource("5_fv0xt")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ah1a3"]
 animations = [{
@@ -616,6 +618,98 @@ _data = {
 font = ExtResource("1_c7oo3")
 font_size = 32
 
+[sub_resource type="Animation" id="Animation_38te7"]
+resource_name = "HideAnimation"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-100, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4gy81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_trxxf"]
+resource_name = "ShowAnimation"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioOptions:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0wod"]
+_data = {
+&"HideAnimation": SubResource("Animation_38te7"),
+&"RESET": SubResource("Animation_4gy81"),
+&"ShowAnimation": SubResource("Animation_trxxf")
+}
+
 [sub_resource type="Animation" id="Animation_ahojg"]
 resource_name = "HideAnimation"
 step = 0.1
@@ -778,6 +872,177 @@ _data = {
 &"ShowAnimation": SubResource("Animation_cmo68")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_k2pwb"]
+font = ExtResource("1_c7oo3")
+font_size = 38
+
+[sub_resource type="LabelSettings" id="LabelSettings_56wdt"]
+font = ExtResource("1_c7oo3")
+font_size = 24
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_v0wod"]
+resource_name = "ShowAnimation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sk70k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HBoxContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jtvy7"]
+resource_name = "HideAnimation"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtvy7"]
+_data = {
+&"HideAnimation": SubResource("Animation_jtvy7"),
+&"RESET": SubResource("Animation_sk70k"),
+&"ShowAnimation": SubResource("Animation_v0wod")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_c7oo3"]
 font = ExtResource("1_c7oo3")
 font_size = 24
@@ -854,6 +1119,19 @@ script = ExtResource("5_vapy7")
 menu_parent = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions")
 default_button = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master/MasterVolume")
 button_parents = Array[NodePath]([NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Master"), NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Music"), NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/SFX"), NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions")])
+anim_player = NodePath("../MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptionsAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
+metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
+
+[sub_resource type="Resource" id="Resource_yxyvl"]
+script = ExtResource("5_vapy7")
+menu_parent = NodePath("../MarginContainer/MultiplayerMenu")
+default_button = NodePath("../MarginContainer/MultiplayerMenu/HBoxContainer/BackButton")
+button_parents = Array[NodePath]([NodePath("../MarginContainer/MultiplayerMenu/HBoxContainer")])
+anim_player = NodePath("../MarginContainer/MultiplayerMenu/MultiplayerMenuAnimation")
+show_anim = "ShowAnimation"
+hide_anim = "HideAnimation"
 metadata/_custom_type_script = "uid://bv6ha5w4h65l1"
 
 [node name="MainMenu" type="Control"]
@@ -1013,11 +1291,11 @@ libraries = {
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = SubResource("AtlasTexture_k2pwb")
+texture = SubResource("AtlasTexture_lic31")
 stretch_mode = 5
 script = ExtResource("4_0hjx5")
 sprites = SubResource("SpriteFrames_ah1a3")
-frame = 3
+frame = 1
 autoplay = true
 playing = true
 metadata/_custom_type_script = "uid://b4tsmsmhacccc"
@@ -1262,10 +1540,144 @@ theme_override_font_sizes/font_size = 32
 text = "Retour"
 
 [node name="AudioOptionsAnimation" type="AnimationPlayer" parent="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus"]
+libraries = {
+&"": SubResource("AnimationLibrary_v0wod")
+}
 
 [node name="SettingsMenuAnimation" type="AnimationPlayer" parent="MarginContainer/SettingsOptions"]
 libraries = {
 &"": SubResource("AnimationLibrary_ahojg")
+}
+
+[node name="MultiplayerMenu" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("9_k2pwb")
+
+[node name="LabelSettingsTitle" type="Label" parent="MarginContainer/MultiplayerMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Multijoueur local"
+label_settings = SubResource("LabelSettings_sng02")
+horizontal_alignment = 2
+
+[node name="PlayersSettings" type="HBoxContainer" parent="MarginContainer/MultiplayerMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 200
+
+[node name="Player1" type="VBoxContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player1Label" type="Label" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Joueur 1"
+label_settings = SubResource("LabelSettings_k2pwb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Player1Preview" type="TextureRect" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lic31")
+stretch_mode = 5
+script = ExtResource("4_0hjx5")
+sprites = SubResource("SpriteFrames_ah1a3")
+frame = 1
+autoplay = true
+playing = true
+metadata/_custom_type_script = "uid://b4tsmsmhacccc"
+
+[node name="PressButton1Label" type="Label" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Appuyez sur une touche"
+label_settings = SubResource("LabelSettings_56wdt")
+horizontal_alignment = 1
+
+[node name="SkinManagerP1" type="GridContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player1"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 2
+columns = 10
+script = ExtResource("9_56wdt")
+metadata/_custom_type_script = "uid://i65mt8wjgx1c"
+
+[node name="Player2" type="VBoxContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player2Label" type="Label" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Joueur 2"
+label_settings = SubResource("LabelSettings_k2pwb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Player2Preview" type="TextureRect" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lic31")
+stretch_mode = 5
+script = ExtResource("4_0hjx5")
+sprites = SubResource("SpriteFrames_ah1a3")
+frame = 1
+autoplay = true
+playing = true
+metadata/_custom_type_script = "uid://b4tsmsmhacccc"
+
+[node name="PressButton2Label" type="Label" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Appuyez sur une touche"
+label_settings = SubResource("LabelSettings_56wdt")
+horizontal_alignment = 1
+
+[node name="SkinManagerP2" type="GridContainer" parent="MarginContainer/MultiplayerMenu/PlayersSettings/Player2"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 2
+columns = 10
+script = ExtResource("9_56wdt")
+metadata/_custom_type_script = "uid://i65mt8wjgx1c"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MultiplayerMenu"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/MultiplayerMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("7_lic31")
+text = "Retour"
+
+[node name="StartButton" type="Button" parent="MarginContainer/MultiplayerMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("7_lic31")
+text = "Commencer"
+
+[node name="MultiplayerMenuAnimation" type="AnimationPlayer" parent="MarginContainer/MultiplayerMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_jtvy7")
 }
 
 [node name="VersionLabel" type="Label" parent="."]
@@ -1293,7 +1705,7 @@ bus = &"Music"
 [node name="MenuInputManager" type="Node" parent="."]
 script = ExtResource("4_ua038")
 base_menu = SubResource("Resource_8qovt")
-popup_menus = Array[ExtResource("5_vapy7")]([SubResource("Resource_ua038"), SubResource("Resource_vapy7"), SubResource("Resource_sng02"), SubResource("Resource_lic31"), SubResource("Resource_56wdt"), SubResource("Resource_k2pwb"), SubResource("Resource_ah1a3")])
+popup_menus = Array[ExtResource("5_vapy7")]([SubResource("Resource_ua038"), SubResource("Resource_vapy7"), SubResource("Resource_sng02"), SubResource("Resource_lic31"), SubResource("Resource_56wdt"), SubResource("Resource_k2pwb"), SubResource("Resource_ah1a3"), SubResource("Resource_yxyvl")])
 metadata/_custom_type_script = "uid://dhtst7j1psbme"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/MainButtons/SoloButton" to="." method="_on_solo_button_pressed"]
@@ -1313,3 +1725,5 @@ metadata/_custom_type_script = "uid://dhtst7j1psbme"
 [connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/MainButtons/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/DisplayOptions/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="visibility_changed" from="MarginContainer/MultiplayerMenu" to="MarginContainer/MultiplayerMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/MultiplayerMenu/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

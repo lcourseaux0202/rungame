@@ -31,6 +31,9 @@ class_name MainMenu extends Control
 @onready var music_volume: HSlider = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/Music/MusicVolume
 @onready var sfx_volume: HSlider = $MarginContainer/SettingsOptions/ButtonsContainer/SubMenus/AudioOptions/SFX/SFXVolume
 
+@onready var multiplayer_menu: VBoxContainer = $MarginContainer/MultiplayerMenu
+@onready var local_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/ButtonsContainer/SubMenus/MultiplayerOptions/LocalButton
+
 var multiplayer_scene = preload("res://Scenes/Game/Multiplayer.tscn")
 
 const MAX_VALUE = 100.0 
@@ -80,9 +83,10 @@ func _on_arcade_button_pressed() -> void:
 	menu_input_manager.open_menu(arcade_menu, arcade_button)
 
 func _on_local_button_pressed() -> void:
-	Settings.number_of_players = 2
-	Settings.gamemode = Settings.GAMEMODE.MULTIPLAYER
-	SceneTransition.go_to_scene(multiplayer_scene)
+	menu_input_manager.open_menu(multiplayer_menu, local_button)
+	#Settings.number_of_players = 2
+	#Settings.gamemode = Settings.GAMEMODE.MULTIPLAYER
+	#SceneTransition.go_to_scene(multiplayer_scene)
 
 func _on_settings_button_pressed() -> void:
 	menu_input_manager.open_menu(settings_options, settings_button)
@@ -164,3 +168,7 @@ func _change_sfx_volume(value: float) -> void:
 	else:
 		AudioServer.set_bus_mute(bus_idx, false)
 		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / MAX_VALUE))
+
+
+func _on_multiplayer_menu_visibility_changed() -> void:
+	pass # Replace with function body.
