@@ -22,6 +22,11 @@ Joueur 2 :
 - D : Booster
 - S : Chute rapide
 
+Manette (multijoueur seulement) :
+- A : Sauter
+- X : Booster
+- B : Chute rapide
+
 ## Roadmap
 Le développement se poursuit avec ces objectifs majeurs :
 
