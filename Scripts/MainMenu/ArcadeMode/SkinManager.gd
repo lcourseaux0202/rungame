@@ -21,18 +21,28 @@ func load_skins_from_folder():
 		var file_name = dir.get_next()
 		
 		while file_name != "":
-			if not dir.current_is_dir() and (file_name.ends_with(".tres") or file_name.ends_with(".res")):
-				var full_path = SKINS_PATH + file_name
-				var skin_resource = load(full_path)
+			if not dir.current_is_dir():
+				var clean_file_name = file_name.replace(".remap", "").replace(".import", "")
 				
-				if skin_resource:
-					skins.append(skin_resource)
-					print("Skin chargé : ", file_name)
+				if clean_file_name.ends_with(".tres") or clean_file_name.ends_with(".res"):
+					var full_path = SKINS_PATH + clean_file_name
+					
+					var already_loaded = false
+					for s in skins:
+						if s.resource_path == full_path:
+							already_loaded = true
+							break
+					
+					if not already_loaded:
+						var skin_resource = load(full_path)
+						if skin_resource:
+							skins.append(skin_resource)
+							print("Skin chargé : ", clean_file_name)
 			
 			file_name = dir.get_next()
 		dir.list_dir_end()
 	else:
-		print("Erreur : Impossible d'accéder au dossier des skins.")
+		print("Erreur : Impossible d'accéder au dossier des skins à l'adresse : ", SKINS_PATH)
 
 func _create_skins_buttons() -> void:
 	for skin : SkinData in skins:

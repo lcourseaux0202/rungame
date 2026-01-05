@@ -36,13 +36,34 @@ func _input(event: InputEvent) -> void:
 func load_all_cards():
 	var path = "res://Resources/Cards/"
 	var dir = DirAccess.open(path)
+	
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		
 		while file_name != "":
-			if file_name.ends_with(".tres"):
-				card_pool.append(load(path + file_name))
+			if not dir.current_is_dir():
+				var clean_name = file_name.replace(".remap", "").replace(".import", "")
+				
+				if clean_name.ends_with(".tres"):
+					var full_path = path + clean_name
+					
+					var already_loaded = false
+					for card in card_pool:
+						if card.resource_path == full_path:
+							already_loaded = true
+							break
+					
+					if not already_loaded:
+						var card_res = load(full_path)
+						if card_res:
+							card_pool.append(card_res)
+							print("Carte chargée : ", clean_name)
+							
 			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Erreur : Impossible d'accéder au dossier des cartes : ", path)
 
 func open() -> void :
 	if tween:
