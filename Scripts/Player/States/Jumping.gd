@@ -2,7 +2,7 @@ extends PlayerState
 
 var n_jump : int
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, data := {}) -> void:
 	player.velocity.y = -player.jump_impulse
 	player.animation_player.play("AirAnimation")
 	if data.has("n_jump"):

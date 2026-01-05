@@ -98,7 +98,6 @@ func load_all_cards():
 						var card_res = load(full_path)
 						if card_res:
 							card_pool.append(card_res)
-							print("Carte chargée : ", clean_name)
 							
 			file_name = dir.get_next()
 		dir.list_dir_end()
@@ -129,7 +128,6 @@ func load_all_boosters():
 						var card_res = load(full_path)
 						if card_res:
 							booster_pool.append(card_res)
-							print("Booster chargé : ", clean_name)
 							
 			file_name = dir.get_next()
 		dir.list_dir_end()

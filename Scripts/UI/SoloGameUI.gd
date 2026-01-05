@@ -19,5 +19,5 @@ func stop_timer():
 	timer.stop()
 	hide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	timer_label.text = str(int(timer.time_left))

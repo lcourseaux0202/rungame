@@ -74,7 +74,6 @@ func _map_keyboard_action(action_full: String, player_num: int, action_type: Str
 			"Boost":    new_event.keycode = KEY_D
 	
 	InputMap.action_add_event(action_full, new_event)
-	print("Action clavier ", action_full, " mappée sur la touche : ", OS.get_keycode_string(new_event.keycode))
 
 func _map_joypad_action(action_full: String, device: int, action_type: String):
 	var new_event = InputEventJoypadButton.new()
@@ -86,7 +85,6 @@ func _map_joypad_action(action_full: String, device: int, action_type: String):
 		"FastFall": new_event.button_index = JOY_BUTTON_B
 		
 	InputMap.action_add_event(action_full, new_event)
-	print("Action ", action_full, " mappée sur l'appareil ", device)
 
 func _on_visibility_changed() -> void:
 	if visible :

@@ -82,7 +82,7 @@ func start_running() -> void :
 	can_run = true
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	aura.modulate.a = min(inverse_lerp(max_speed, max_speed*mega_boost_factor, speed),0.5)
 	speed_label.text = str(int(speed / 10)) + " Km/h"
 	speed = min(speed, max_speed*mega_boost_factor)

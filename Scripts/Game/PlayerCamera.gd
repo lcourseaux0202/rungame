@@ -46,10 +46,10 @@ func _process(_delta: float) -> void:
 		offset = lerp(offset, base_offset, 0.01)
 
 
-func _zoom_on_player(player : Player) -> void:
+func _zoom_on_player(target : Player) -> void:
 	var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
-	if player != null:
+	if target != null:
 		zooming_on_player = true
 		tween.tween_property(self, "zoom", zoom_factor, 0.5)
 	else:

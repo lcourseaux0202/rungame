@@ -37,7 +37,6 @@ func load_skins_from_folder():
 						var skin_resource = load(full_path)
 						if skin_resource:
 							skins.append(skin_resource)
-							print("Skin chargé : ", clean_file_name)
 			
 			file_name = dir.get_next()
 		dir.list_dir_end()

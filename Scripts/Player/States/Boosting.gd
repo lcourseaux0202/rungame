@@ -1,7 +1,7 @@
 extends PlayerState
 
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	player.animation_player.play("RunAnimation")
 	
 	if player.boost_stock >= 100.0:

@@ -47,5 +47,5 @@ func update_value(boost_value : float, stock_needed_for_boost : float, max_boost
 		mat.set_shader_parameter("can_boost", (boost_value >= stock_needed_for_boost))
 		mat.set_shader_parameter("is_full", (boost_value >= max_value))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	overcharge_boost_bar.visible = (overcharge_boost_bar.value > 100)

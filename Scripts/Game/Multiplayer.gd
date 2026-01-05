@@ -90,6 +90,7 @@ func _update_viewport_size() -> void :
 	for viewport_node in screen_container.get_children():
 		var subviewport_node : SubViewport = viewport_node.get_child(0)
 		var game_size : Vector2 = get_viewport().get_visible_rect().size
+		@warning_ignore("narrowing_conversion")
 		subviewport_node.size.x = game_size.x / screen_container.columns
 		subviewport_node.size.y = game_size.y / ceil(float(screen_container.get_child_count()) / float(screen_container.columns))
 
@@ -130,8 +131,8 @@ func _trigger_restart_sequence() -> void :
 func _set_next_level_length() -> void:
 	current_level += 1
 	progression = min(float(current_level) / Settings.number_of_levels, 1.0) 
+	@warning_ignore("narrowing_conversion")
 	current_level_length = Settings.LAST_LEVEL_LENGTH * difficulty_curve.sample(progression)
-	print(current_level_length)
 	
 func _trigger_gameover_sequence() -> void:
 	settings_menu._back_to_menu()

@@ -1,6 +1,7 @@
 class_name State extends Node
 
 ## Emitted when the state finishes and wants to transition to another state.
+@warning_ignore("unused_signal")
 signal finished(next_state_path: String, data: Dictionary)
 
 ## Called by the state machine when receiving unhandled input events.
@@ -17,6 +18,7 @@ func physics_update(_delta: float) -> void:
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
+@warning_ignore("unused_parameter")
 func enter(previous_state_path: String, data := {}) -> void:
 	pass
 

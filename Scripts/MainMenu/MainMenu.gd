@@ -174,19 +174,11 @@ func _on_multiplayer_start_button_pressed() -> void:
 	SceneTransition.go_to_scene(multiplayer_scene)
 
 func print_input_map():
-	print("--- INPUT MAP CONFIGURATION ---")
-	# On récupère toutes les actions (y compris les ui_ par défaut)
 	var actions = InputMap.get_actions()
 	
 	for action in actions:
-		# On récupère tous les événements liés à cette action (clavier, manette, souris)
 		var events = InputMap.action_get_events(action)
 		var event_list = []
 		
 		for event in events:
-			# On transforme l'événement en texte lisible (ex: "Space", "Joypad Button 0")
 			event_list.append(event.as_text())
-		
-		# On affiche l'action et ses touches
-		print("Action: %s | Touches: %s" % [action, ", ".join(event_list)])
-	print("--------------------------------")
